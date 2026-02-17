@@ -314,29 +314,41 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold mb-10 text-center reveal">Formação Acadêmica</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-tech-card p-6 rounded-lg border border-gray-800 hover:border-tech-cyan transition-all hover:-translate-y-2 reveal delay-100">
-                    <div class="text-tech-cyan text-4xl mb-4"><i class="fas fa-laptop-code"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Técnico em Informática</h3>
-                    <p class="text-tech-muted text-sm">SENAI/PR</p>
-                    <p class="text-xs text-gray-500 mt-2">1.200 horas</p>
+                <!-- Wrapper Reveal separado do Card Interno para não travar o hover -->
+                <div class="reveal delay-100">
+                    <div class="h-full bg-tech-card p-6 rounded-lg border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-tech-cyan hover:shadow-lg hover:shadow-tech-cyan/20">
+                        <div class="text-tech-cyan text-4xl mb-4"><i class="fas fa-laptop-code"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Técnico em Informática</h3>
+                        <p class="text-tech-muted text-sm">SENAI/PR</p>
+                        <p class="text-xs text-gray-500 mt-2">1.200 horas</p>
+                    </div>
                 </div>
-                <div class="bg-tech-card p-6 rounded-lg border border-gray-800 hover:border-tech-blue transition-all hover:-translate-y-2 reveal delay-200">
-                    <div class="text-tech-blue text-4xl mb-4"><i class="fas fa-user-tie"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Auxiliar Administrativo</h3>
-                    <p class="text-tech-muted text-sm">SENAC/PR</p>
-                    <p class="text-xs text-gray-500 mt-2">576 horas</p>
+                
+                <div class="reveal delay-200">
+                    <div class="h-full bg-tech-card p-6 rounded-lg border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-tech-blue hover:shadow-lg hover:shadow-tech-blue/20">
+                        <div class="text-tech-blue text-4xl mb-4"><i class="fas fa-user-tie"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Auxiliar Administrativo</h3>
+                        <p class="text-tech-muted text-sm">SENAC/PR</p>
+                        <p class="text-xs text-gray-500 mt-2">576 horas</p>
+                    </div>
                 </div>
-                <div class="bg-tech-card p-6 rounded-lg border border-gray-800 hover:border-green-500 transition-all hover:-translate-y-2 reveal delay-300">
-                    <div class="text-green-500 text-4xl mb-4"><i class="fas fa-code"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Desenvolvimento</h3>
-                    <p class="text-tech-muted text-sm">Udemy (Online)</p>
-                    <p class="text-xs text-gray-500 mt-2">Java (Android) e Python em andamento</p>
+
+                <div class="reveal delay-300">
+                    <div class="h-full bg-tech-card p-6 rounded-lg border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-green-500 hover:shadow-lg hover:shadow-green-500/20">
+                        <div class="text-green-500 text-4xl mb-4"><i class="fas fa-code"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Desenvolvimento</h3>
+                        <p class="text-tech-muted text-sm">Udemy (Online)</p>
+                        <p class="text-xs text-gray-500 mt-2">Java (Android) e Python em andamento</p>
+                    </div>
                 </div>
-                <div class="bg-tech-card p-6 rounded-lg border border-gray-800 hover:border-purple-500 transition-all hover:-translate-y-2 reveal delay-100">
-                    <div class="text-purple-500 text-4xl mb-4"><i class="fas fa-graduation-cap"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Ensino Médio</h3>
-                    <p class="text-tech-muted text-sm">SESI/PR</p>
-                    <p class="text-xs text-gray-500 mt-2">Concluído</p>
+
+                <div class="reveal delay-100">
+                    <div class="h-full bg-tech-card p-6 rounded-lg border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20">
+                        <div class="text-purple-500 text-4xl mb-4"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="font-bold text-lg mb-2">Ensino Médio</h3>
+                        <p class="text-tech-muted text-sm">SESI/PR</p>
+                        <p class="text-xs text-gray-500 mt-2">Concluído</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -347,47 +359,60 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center reveal">Trabalhos & Projetos</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="group relative overflow-hidden rounded-xl bg-tech-card border border-gray-800 hover:border-tech-blue transition-all duration-300 reveal delay-100 hover:-translate-y-2 shadow-lg">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-card to-transparent z-10 opacity-80"></div>
-                        <i class="fas fa-mobile-alt text-6xl text-gray-600 group-hover:text-tech-blue transition-colors z-0 transform group-hover:scale-110 duration-500"></i>
-                    </div>
-                    <div class="p-6 relative z-20 bg-tech-card">
-                        <h3 class="text-xl font-bold mb-2">Unise Digital App</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Aplicativo Android desenvolvido para a instituição. Embora descontinuado, representou um marco na aplicação de conhecimentos Java e Mobile.
-                        </p>
-                        <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white">Java/Android</span>
-                    </div>
-                </div>
-
-                <div class="group relative overflow-hidden rounded-xl bg-tech-card border border-gray-800 hover:border-tech-cyan transition-all duration-300 reveal delay-200 hover:-translate-y-2 shadow-lg">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-card to-transparent z-10 opacity-80"></div>
-                        <i class="fas fa-comments text-6xl text-gray-600 group-hover:text-tech-cyan transition-colors z-0 transform group-hover:scale-110 duration-500"></i>
-                    </div>
-                    <div class="p-6 relative z-20 bg-tech-card">
-                        <h3 class="text-xl font-bold mb-2">Suporte Online Chat</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Implementação de soluções de chat para atendimento ágil. Foco na redução do tempo de resposta e melhoria da UX do cliente.
-                        </p>
-                        <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white">Integração</span>
-                        <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white ml-2">UX</span>
+                <!-- Wrapper Reveal separado do Card Interno -->
+                <div class="reveal delay-100">
+                    <div class="h-full group relative overflow-hidden rounded-xl bg-tech-card border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-tech-blue hover:shadow-xl hover:shadow-tech-blue/20 flex flex-col">
+                        <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden shrink-0">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card to-transparent z-10 opacity-80"></div>
+                            <i class="fas fa-mobile-alt text-6xl text-gray-600 group-hover:text-tech-blue transition-colors z-0 transform group-hover:scale-110 duration-500"></i>
+                        </div>
+                        <div class="p-6 relative z-20 bg-tech-card flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2">Unise Digital App</h3>
+                            <p class="text-gray-400 text-sm mb-4 flex-grow">
+                                Aplicativo Android desenvolvido para a instituição. Embora descontinuado, representou um marco na aplicação de conhecimentos Java e Mobile.
+                            </p>
+                            <div>
+                                <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white">Java/Android</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-xl bg-tech-card border border-gray-800 hover:border-green-400 transition-all duration-300 reveal delay-300 hover:-translate-y-2 shadow-lg">
-                    <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-tech-card to-transparent z-10 opacity-80"></div>
-                        <i class="fas fa-columns text-6xl text-gray-600 group-hover:text-green-400 transition-colors z-0 transform group-hover:scale-110 duration-500"></i>
+                <div class="reveal delay-200">
+                    <div class="h-full group relative overflow-hidden rounded-xl bg-tech-card border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-tech-cyan hover:shadow-xl hover:shadow-tech-cyan/20 flex flex-col">
+                        <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden shrink-0">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card to-transparent z-10 opacity-80"></div>
+                            <i class="fas fa-comments text-6xl text-gray-600 group-hover:text-tech-cyan transition-colors z-0 transform group-hover:scale-110 duration-500"></i>
+                        </div>
+                        <div class="p-6 relative z-20 bg-tech-card flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2">Suporte Online Chat</h3>
+                            <p class="text-gray-400 text-sm mb-4 flex-grow">
+                                Implementação de soluções de chat para atendimento ágil. Foco na redução do tempo de resposta e melhoria da UX do cliente.
+                            </p>
+                            <div>
+                                <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white">Integração</span>
+                                <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white ml-2">UX</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6 relative z-20 bg-tech-card">
-                        <h3 class="text-xl font-bold mb-2">Landing Pages</h3>
-                        <p class="text-gray-400 text-sm mb-4">
-                            Criação de páginas de aterrissagem focadas em conversão e divulgação de cursos, como Pós-Graduação em Saúde Mental.
-                        </p>
-                        <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white">Web Design</span>
-                        <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white ml-2">Frontend</span>
+                </div>
+
+                <div class="reveal delay-300">
+                    <div class="h-full group relative overflow-hidden rounded-xl bg-tech-card border border-gray-800 transition-all duration-300 hover:-translate-y-2 hover:border-green-400 hover:shadow-xl hover:shadow-green-400/20 flex flex-col">
+                        <div class="h-48 bg-gray-800 flex items-center justify-center relative overflow-hidden shrink-0">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card to-transparent z-10 opacity-80"></div>
+                            <i class="fas fa-columns text-6xl text-gray-600 group-hover:text-green-400 transition-colors z-0 transform group-hover:scale-110 duration-500"></i>
+                        </div>
+                        <div class="p-6 relative z-20 bg-tech-card flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2">Landing Pages</h3>
+                            <p class="text-gray-400 text-sm mb-4 flex-grow">
+                                Criação de páginas de aterrissagem focadas em conversão e divulgação de cursos, como Pós-Graduação em Saúde Mental.
+                            </p>
+                            <div>
+                                <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white">Web Design</span>
+                                <span class="inline-block px-2 py-1 bg-gray-700 text-xs rounded text-white ml-2">Frontend</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
