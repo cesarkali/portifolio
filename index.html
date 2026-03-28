@@ -100,49 +100,83 @@
                 </div>
             </div>
         </div>
-        <!-- NEW LUXURY MOBILE MENU OVERLAY -->
-        <div id="mobile-menu-luxury"
-            class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-2xl hidden flex-col items-center justify-start py-24 overflow-y-auto transition-all duration-500 no-print">
-            <button id="close-menu-btn"
-                class="absolute top-8 right-8 text-gray-400 hover:text-white transition-colors p-4 bg-white/5 rounded-2xl border border-white/10">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
+    </nav>
 
-            <div class="flex flex-col items-center gap-8 mb-16">
+    <!-- Menu mobile (fora do nav: fixed à viewport; nav usa backdrop-filter) -->
+    <div id="mobile-menu-luxury"
+        class="mobile-menu-overlay fixed inset-0 z-[100] min-h-[100dvh] hidden flex-col items-center justify-center overflow-hidden px-5 py-8 no-print md:hidden"
+        aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+        <div id="mobile-menu-drawer"
+            class="w-full max-w-sm flex flex-col relative z-10 my-auto pointer-events-auto max-h-[min(88dvh,40rem)] overflow-y-auto overscroll-contain rounded-3xl border border-white/[0.07] bg-black/40 px-5 py-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_25px_50px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+            <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
+                <div>
+                    <span class="text-[10px] font-mono font-semibold text-tech-cyan/80 uppercase tracking-[0.2em]">Menu</span>
+                    <p class="text-sm text-gray-400 mt-0.5">Escolha uma seção</p>
+                </div>
+                <button id="close-menu-btn" type="button"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all"
+                    aria-label="Fechar menu">
+                    <i class="fas fa-times text-base"></i>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-2.5 w-full" aria-label="Seções">
                 <a href="#inicio"
-                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
-                    <i class="fas fa-home text-xl opacity-50"></i> Início
+                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
+                        <i class="fas fa-home text-sm" aria-hidden="true"></i>
+                    </span>
+                    Início
                 </a>
                 <a href="#sobre"
-                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
-                    <i class="fas fa-user text-xl opacity-50"></i> Sobre
+                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
+                        <i class="fas fa-user text-sm" aria-hidden="true"></i>
+                    </span>
+                    Sobre
                 </a>
                 <a href="#experiencia"
-                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
-                    <i class="fas fa-briefcase text-xl opacity-50"></i> Jornada
+                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
+                        <i class="fas fa-briefcase text-sm" aria-hidden="true"></i>
+                    </span>
+                    Jornada
                 </a>
                 <a href="#projetos"
-                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
-                    <i class="fas fa-code text-xl opacity-50"></i> Projetos
+                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
+                        <i class="fas fa-code text-sm" aria-hidden="true"></i>
+                    </span>
+                    Projetos
                 </a>
                 <a href="#contato"
-                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
-                    <i class="fas fa-envelope text-xl opacity-50"></i> Contato
+                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
+                        <i class="fas fa-envelope text-sm" aria-hidden="true"></i>
+                    </span>
+                    Contato
+                </a>
+            </nav>
+
+            <div class="mt-6 pt-5 border-t border-white/[0.06] flex justify-center gap-6">
+                <a href="https://linkedin.com/in/hxtdll" target="_blank" rel="noopener noreferrer"
+                    class="mobile-social-link text-gray-500 hover:text-tech-blue transition-colors p-2 rounded-lg hover:bg-white/5"
+                    aria-label="LinkedIn">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a href="https://github.com/cesarkali" target="_blank" rel="noopener noreferrer"
+                    class="mobile-social-link text-gray-500 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+                    aria-label="GitHub">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer"
+                    class="mobile-social-link text-gray-500 hover:text-green-500 transition-colors p-2 rounded-lg hover:bg-white/5"
+                    aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp text-xl"></i>
                 </a>
             </div>
-
-            <div class="flex gap-8 px-8 py-6 bg-white/5 rounded-3xl border border-white/10">
-                <a href="https://linkedin.com/in/hxtdll" target="_blank"
-                    class="text-gray-400 hover:text-tech-blue transition-colors"><i
-                        class="fab fa-linkedin text-3xl"></i></a>
-                <a href="https://github.com/cesarkali" target="_blank"
-                    class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github text-3xl"></i></a>
-                <a href="https://wa.me/5546999839486" target="_blank"
-                    class="text-gray-400 hover:text-green-500 transition-colors"><i
-                        class="fab fa-whatsapp text-3xl"></i></a>
-            </div>
         </div>
-    </nav>
+    </div>
 
     <section id="inicio"
         class="no-print relative min-h-screen flex items-center justify-center bg-gradient-hero pt-20 overflow-hidden print:pt-0 print:min-h-0">
@@ -239,9 +273,11 @@
                     </p>
 
                     <div class="flex gap-4 text-tech-muted text-sm no-print">
-                        <span class="flex items-center gap-2 hover:text-tech-cyan transition-colors"><i
-                                class="fas fa-map-marker-alt text-tech-blue"></i> Pato Branco,
-                            PR</span>
+                        <button type="button" id="location-trigger-btn"
+                            class="flex items-center gap-2 hover:text-tech-cyan transition-colors text-left cursor-pointer bg-transparent border-0 p-0 text-inherit text-sm">
+                            <i class="fas fa-map-marker-alt text-tech-blue" aria-hidden="true"></i>
+                            <span id="location-selected-label" class="text-inherit" aria-live="polite">Pato Branco, PR</span>
+                        </button>
                         <span class="flex items-center gap-2 hover:text-tech-cyan transition-colors"><i
                                 class="fas fa-envelope text-tech-blue"></i> hxt.dll@gmail.com</span>
                     </div>
@@ -662,6 +698,70 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal: seleção de local -->
+    <div id="location-modal"
+        class="fixed inset-0 z-[110] hidden items-center justify-center p-4 sm:p-6 no-print"
+        aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="location-modal-title">
+        <div id="location-modal-backdrop"
+            class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/80 backdrop-blur-md"
+            aria-hidden="true"></div>
+        <div
+            class="location-modal-panel relative z-10 w-full max-w-sm rounded-[1.75rem] border border-white/[0.1] bg-gradient-to-b from-zinc-900/95 to-black/95 p-7 shadow-[0_0_0_1px_rgba(0,212,255,0.08),0_32px_64px_-16px_rgba(0,0,0,0.85)]">
+            <div class="flex items-start justify-between gap-4 mb-6">
+                <div class="flex items-start gap-4">
+                    <div
+                        class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-tech-blue/30 to-tech-cyan/10 ring-1 ring-tech-cyan/20">
+                        <i class="fas fa-location-dot text-xl text-tech-cyan" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-tech-cyan/90 mb-1">Preferência</p>
+                        <h2 id="location-modal-title" class="text-xl font-bold text-white tracking-tight leading-tight">Como prefere trabalhar?</h2>
+                    </div>
+                </div>
+                <button type="button" id="location-modal-close"
+                    class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-white/10 transition-colors -mt-1"
+                    aria-label="Fechar">
+                    <i class="fas fa-times text-sm"></i>
+                </button>
+            </div>
+            <p class="text-sm text-gray-400 mb-5 leading-relaxed" id="location-modal-desc">Toque em uma opção. O texto ao lado do mapa na seção Sobre será atualizado.</p>
+            <div class="flex flex-col gap-2.5" role="listbox" aria-labelledby="location-modal-title">
+                <button type="button" data-location-option data-location-label="Pato Branco, PR"
+                    class="location-option-btn group flex w-full items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3.5 text-left text-[15px] font-medium text-gray-100 transition-all hover:border-tech-cyan/40 hover:bg-tech-blue/[0.12] hover:shadow-[0_0_20px_-8px_rgba(0,212,255,0.35)]">
+                    <span class="flex items-center gap-3">
+                        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-tech-cyan group-hover:bg-tech-blue/20 transition-colors">
+                            <i class="fas fa-city text-sm" aria-hidden="true"></i>
+                        </span>
+                        Pato Branco, PR
+                    </span>
+                    <i class="fas fa-chevron-right text-xs text-gray-600 group-hover:text-tech-cyan transition-colors" aria-hidden="true"></i>
+                </button>
+                <button type="button" data-location-option data-location-label="Remoto (Brasil)"
+                    class="location-option-btn group flex w-full items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3.5 text-left text-[15px] font-medium text-gray-100 transition-all hover:border-tech-cyan/40 hover:bg-tech-blue/[0.12] hover:shadow-[0_0_20px_-8px_rgba(0,212,255,0.35)]">
+                    <span class="flex items-center gap-3">
+                        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-tech-cyan group-hover:bg-tech-blue/20 transition-colors">
+                            <i class="fas fa-wifi text-sm" aria-hidden="true"></i>
+                        </span>
+                        Remoto (Brasil)
+                    </span>
+                    <i class="fas fa-chevron-right text-xs text-gray-600 group-hover:text-tech-cyan transition-colors" aria-hidden="true"></i>
+                </button>
+                <button type="button" data-location-option data-location-label="Híbrido"
+                    class="location-option-btn group flex w-full items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3.5 text-left text-[15px] font-medium text-gray-100 transition-all hover:border-tech-cyan/40 hover:bg-tech-blue/[0.12] hover:shadow-[0_0_20px_-8px_rgba(0,212,255,0.35)]">
+                    <span class="flex items-center gap-3">
+                        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-tech-cyan group-hover:bg-tech-blue/20 transition-colors">
+                            <i class="fas fa-shuffle text-sm" aria-hidden="true"></i>
+                        </span>
+                        Híbrido
+                    </span>
+                    <i class="fas fa-chevron-right text-xs text-gray-600 group-hover:text-tech-cyan transition-colors" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Botões Flutuantes (WhatsApp e PDF) -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-[9999] no-print">
