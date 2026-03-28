@@ -39,10 +39,26 @@ body {
 }
 
 .nav-glass {
-    background: rgba(3, 3, 3, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(3, 3, 3, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-scrolled {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    background: rgba(3, 3, 3, 0.9) !important;
+    backdrop-filter: blur(24px) !important;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.15) !important;
+}
+
+#progress-bar {
+    box-shadow: 0 0 15px rgba(0, 112, 243, 0.5);
+}
+
+section {
+    scroll-margin-top: 100px;
 }
 
 /* SCROLLBAR PERSONALIZADA TECH */
@@ -59,8 +75,81 @@ body {
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+nav a {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
     background: #00d4ff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after, nav a.font-bold::after {
+    width: 80%;
+}
+
+#mobile-menu-luxury {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.05); /* Reduzido de 1.1 para ser mais sutil */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(3, 3, 3, 0.98) !important; /* Mais sólido para evitar sobreposição confusa */
+}
+
+#mobile-menu-luxury.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    display: flex !important;
+}
+
+.mobile-link {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #ffffff !important; /* Branco puro para contraste total */
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+#mobile-menu-luxury.active .mobile-link {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Stagger delay for links */
+.mobile-link:nth-child(1) { transition-delay: 0.15s; }
+.mobile-link:nth-child(2) { transition-delay: 0.25s; }
+.mobile-link:nth-child(3) { transition-delay: 0.35s; }
+.mobile-link:nth-child(4) { transition-delay: 0.45s; }
+.mobile-link:nth-child(5) { transition-delay: 0.55s; }
+#mobile-menu-luxury .mobile-link i {
+    width: 40px;
+    text-align: center;
+    color: var(--tech-cyan); /* Ícones com cor definida para destaque */
+    opacity: 0.8;
+}
+
+#mobile-menu-luxury .mobile-link:hover {
+    color: var(--tech-cyan) !important;
+    transform: translateX(10px); /* Leve deslocamento lateral no hover */
+}
+
+.nav-glass img {
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nav-glass:hover img {
+    transform: scale(1.05);
+    border-color: var(--tech-cyan);
 }
 
 /* ANIMAÇÕES DE REVEAL REFINADAS */
@@ -199,21 +288,41 @@ body {
         margin-bottom: 1.5rem !important;
     }
 
-    /* Stack & Ferramentas como Tags */
-    #sobre .grid-cols-3, #sobre .grid-cols-2 {
+    /* Expertise & Soft Skills como Tags no PDF */
+    #sobre .grid-cols-1, #sobre .flex-wrap {
         display: flex !important;
         flex-wrap: wrap !important;
         gap: 8px !important;
     }
 
-    #sobre .grid > div {
+    #sobre .glass, #sobre .px-4.py-2 {
         background: #f8f9fa !important;
         border: 1px solid #e9ecef !important;
-        padding: 4px 12px !important;
+        padding: 6px 12px !important;
         border-radius: 6px !important;
-        font-size: 9.5pt !important;
-        color: #333 !important;
-        font-weight: 500 !important;
+        width: auto !important;
+        display: inline-block !important;
+        margin-right: 5px !important;
+        margin-bottom: 5px !important;
+    }
+
+    #sobre h3 {
+        font-size: 11pt !important;
+        color: #0070f3 !important;
+        margin-top: 10px !important;
+        margin-bottom: 5px !important;
+        width: 100% !important;
+    }
+
+    #sobre p.text-xs {
+        font-size: 9pt !important;
+        color: #666 !important;
+        display: block !important;
+        margin-top: 2px !important;
+    }
+
+    #sobre .w-2.h-2, #sobre .w-10.h-10 {
+        display: none !important;
     }
 
     /* Experiência Profissional */

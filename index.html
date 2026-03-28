@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="bg-mesh-dynamic text-tech-text antialiased selection:bg-tech-blue selection:text-white relative min-h-screen">
+<body
+    class="bg-mesh-dynamic text-tech-text antialiased selection:bg-tech-blue selection:text-white relative min-h-screen">
     <!-- Overlay de Textura Premium -->
     <div class="noise-overlay"></div>
 
@@ -47,48 +48,104 @@
         </div>
     </div>
 
+    <!-- BARRA DE PROGRESSO DE LEITURA -->
+    <div id="progress-bar"
+        class="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-tech-blue via-tech-cyan to-purple-500 z-[100] transition-all duration-150 no-print"
+        style="width: 0%"></div>
+
     <nav class="fixed w-full z-50 nav-glass transition-all duration-300 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0"></div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#inicio"
-                            class="hover:text-tech-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
-                        <a href="#sobre"
-                            class="hover:text-tech-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre</a>
-                        <a href="#experiencia"
-                            class="hover:text-tech-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Jornada</a>
-                        <a href="#projetos"
-                            class="hover:text-tech-cyan px-3 py-2 rounded-md text-sm font-medium transition-colors">Projetos</a>
-                        <a href="#contato"
-                            class="px-4 py-2 rounded-full bg-tech-blue hover:bg-blue-600 text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(0,112,243,0.3)] hover:scale-105">Contato</a>
+                <!-- LOGO & STATUS -->
+                <div class="flex items-center gap-3">
+                    <div class="relative shrink-0 no-print">
+                        <img src="julio.jpg" alt="Júlio César"
+                            class="w-10 h-10 rounded-full border border-tech-cyan/30 shadow-[0_0_10px_rgba(0,212,255,0.2)] object-cover">
+                        <span
+                            class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-black rounded-full"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <a href="#inicio" class="text-xl font-black tracking-tighter text-white group leading-none">
+                            JÚLIO<span class="text-tech-cyan group-hover:text-tech-blue transition-colors">CÉSAR</span>
+                        </a>
+                        <div class="flex items-center gap-1.5 mt-1 sm:hidden lg:flex">
+                            <span
+                                class="text-[9px] font-bold text-green-400 uppercase tracking-widest leading-none">Disponível</span>
+                        </div>
                     </div>
                 </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-bars"></i>
+
+                <!-- DESKTOP NAV -->
+                <div class="hidden md:flex items-center gap-8">
+                    <div class="flex items-center gap-6 text-sm font-medium">
+                        <a href="#inicio" class="nav-link text-gray-300 hover:text-white transition-colors">Início</a>
+                        <a href="#sobre" class="nav-link text-gray-300 hover:text-white transition-colors">Sobre</a>
+                        <a href="#experiencia"
+                            class="nav-link text-gray-300 hover:text-white transition-colors">Jornada</a>
+                        <a href="#projetos"
+                            class="nav-link text-gray-300 hover:text-white transition-colors">Projetos</a>
+                    </div>
+                    <a href="#contato"
+                        class="px-5 py-2.5 bg-tech-blue/10 border border-tech-blue/30 text-tech-blue text-xs font-bold rounded-xl hover:bg-tech-blue hover:text-white transition-all shadow-lg shadow-tech-blue/10">
+                        CONTATO <i class="fas fa-paper-plane ml-2 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- MOBILE TOGGLE -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn"
+                        class="p-2.5 text-gray-300 hover:text-white focus:outline-none bg-white/5 rounded-xl border border-white/10">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="hidden md:hidden bg-tech-card" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <!-- NEW LUXURY MOBILE MENU OVERLAY -->
+        <div id="mobile-menu-luxury"
+            class="fixed inset-0 z-[100] bg-black/98 backdrop-blur-2xl hidden flex-col items-center justify-start py-24 overflow-y-auto transition-all duration-500 no-print">
+            <button id="close-menu-btn"
+                class="absolute top-8 right-8 text-gray-400 hover:text-white transition-colors p-4 bg-white/5 rounded-2xl border border-white/10">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+
+            <div class="flex flex-col items-center gap-8 mb-16">
                 <a href="#inicio"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Início</a>
+                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
+                    <i class="fas fa-home text-xl opacity-50"></i> Início
+                </a>
                 <a href="#sobre"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
+                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
+                    <i class="fas fa-user text-xl opacity-50"></i> Sobre
+                </a>
                 <a href="#experiencia"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Jornada</a>
+                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
+                    <i class="fas fa-briefcase text-xl opacity-50"></i> Jornada
+                </a>
                 <a href="#projetos"
-                    class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projetos</a>
-                <a href="#contato" class="text-tech-blue font-bold block px-3 py-2 rounded-md text-base">Contato</a>
+                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
+                    <i class="fas fa-code text-xl opacity-50"></i> Projetos
+                </a>
+                <a href="#contato"
+                    class="mobile-link text-3xl font-bold text-gray-400 hover:text-tech-cyan transition-all flex items-center gap-4">
+                    <i class="fas fa-envelope text-xl opacity-50"></i> Contato
+                </a>
+            </div>
+
+            <div class="flex gap-8 px-8 py-6 bg-white/5 rounded-3xl border border-white/10">
+                <a href="https://linkedin.com/in/hxtdll" target="_blank"
+                    class="text-gray-400 hover:text-tech-blue transition-colors"><i
+                        class="fab fa-linkedin text-3xl"></i></a>
+                <a href="https://github.com/cesarkali" target="_blank"
+                    class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github text-3xl"></i></a>
+                <a href="https://wa.me/5546999839486" target="_blank"
+                    class="text-gray-400 hover:text-green-500 transition-colors"><i
+                        class="fab fa-whatsapp text-3xl"></i></a>
             </div>
         </div>
     </nav>
 
-    <section id="inicio" class="no-print relative min-h-screen flex items-center justify-center bg-gradient-hero pt-20 overflow-hidden print:pt-0 print:min-h-0">
+    <section id="inicio"
+        class="no-print relative min-h-screen flex items-center justify-center bg-gradient-hero pt-20 overflow-hidden print:pt-0 print:min-h-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center relative z-10">
             <!-- Coluna de Texto -->
             <div
@@ -96,19 +153,26 @@
 
                 <!-- Badge Tecnológico -->
                 <div class="reveal-left inline-block mb-6">
-                    <div class="px-4 py-1.5 text-xs font-mono font-semibold tracking-wider text-tech-accent uppercase bg-tech-blue/10 rounded-full border border-tech-blue/20 flex items-center gap-2">
+                    <div
+                        class="px-4 py-1.5 text-xs font-mono font-semibold tracking-wider text-tech-accent uppercase bg-tech-blue/10 rounded-full border border-tech-blue/20 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-tech-cyan animate-pulse"></span>
                         Disponível para novos desafios
                     </div>
                 </div>
 
-                <div class="mb-12 min-h-[140px] sm:min-h-[180px] md:min-h-[240px] flex flex-col justify-center text-center md:text-left">
-                    <span class="block uppercase tracking-widest text-xs sm:text-sm mb-4 font-mono text-tech-accent no-print">Olá, eu me chamo</span>
-                    <h1 class="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-4 text-white opacity-90">
+                <div
+                    class="mb-12 min-h-[140px] sm:min-h-[180px] md:min-h-[240px] flex flex-col justify-center text-center md:text-left">
+                    <span
+                        class="block uppercase tracking-widest text-xs sm:text-sm mb-4 font-mono text-tech-accent no-print">Olá,
+                        eu me chamo</span>
+                    <h1
+                        class="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-4 text-white opacity-90">
                         Júlio César
                     </h1>
-                    <div class="h-[1.2em] flex items-center justify-center md:justify-start text-2xl sm:text-4xl md:text-5xl font-bold">
-                        <span id="typing-text" class="text-gradient whitespace-nowrap"></span><span class="text-tech-cyan animate-pulse">|</span>
+                    <div
+                        class="h-[1.2em] flex items-center justify-center md:justify-start text-2xl sm:text-4xl md:text-5xl font-bold">
+                        <span id="typing-text" class="text-gradient whitespace-nowrap"></span><span
+                            class="text-tech-cyan animate-pulse">|</span>
                     </div>
                 </div>
 
@@ -169,9 +233,9 @@
                     <p class="text-tech-muted mb-6 print:text-black">
                         Acredito que a tecnologia deve facilitar processos e, por isso, combino meu perfil analítico com
                         uma excelente comunicação para atuar como um elo entre as necessidades do dia a dia e as
-                        soluções técnicas. Seja prestando suporte direto, mapeando processos lógicos ou criando
-                        documentações, meu foco é sempre garantir a integridade do sistema e ajudar a equipe a trabalhar
-                        de forma mais inteligente.
+                        soluções técnicas. Atuo como facilitador e <span class="text-tech-blue font-semibold">referência
+                            técnica</span> para a equipe, garantindo a integridade do sistema através de práticas
+                        rigorosas de teste e gestão de riscos.
                     </p>
 
                     <div class="flex gap-4 text-tech-muted text-sm no-print">
@@ -186,42 +250,100 @@
                 <div class="reveal delay-200 print:mb-6">
                     <h2
                         class="text-3xl font-bold mb-6 border-l-4 border-tech-cyan pl-4 print:border-black print:text-2xl print:mb-2">
-                        Stack & Ferramentas</h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 print:grid-cols-3">
+                        Expertise Técnica</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 print:grid-cols-2">
                         <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col items-center group print:border print:border-gray-300 print:p-2">
-                            <div class="w-16 h-16 rounded-xl bg-tech-blue/10 flex items-center justify-center mb-4 group-hover:bg-tech-blue/20 transition-colors no-print">
-                                <i class="fab fa-jira text-3xl text-blue-500 group-hover:scale-110 transition-transform"></i>
+                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-tech-blue/10 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors no-print">
+                                    <i class="fas fa-layer-group text-xl text-tech-blue"></i>
+                                </div>
+                                <h3 class="font-bold text-white print:text-black print:text-sm">Desenvolvimento Low-Code
+                                </h3>
                             </div>
-                            <span class="font-bold print:text-black">Jira</span>
+                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Criação de soluções,
+                                automações e melhorias de sistemas com foco em eficiência operacional.</p>
+                        </div>
+
+                        <div
+                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-tech-cyan/10 flex items-center justify-center group-hover:bg-tech-cyan/20 transition-colors no-print">
+                                    <i class="fas fa-check-double text-xl text-tech-cyan"></i>
+                                </div>
+                                <h3 class="font-bold text-white print:text-black print:text-sm">Quality Assurance (QA)
+                                </h3>
+                            </div>
+                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Cenários de teste,
+                                homologação de bugs e validação em ambientes sandbox/bancos de teste.</p>
+                        </div>
+
+                        <div
+                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors no-print">
+                                    <i class="fas fa-tools text-xl text-purple-400"></i>
+                                </div>
+                                <h3 class="font-bold text-white print:text-black print:text-sm">Troubleshooting</h3>
+                            </div>
+                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Diagnóstico e correção
+                                autônoma de bugs complexos e configurações críticas de sistema.</p>
+                        </div>
+
+                        <div
+                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors no-print">
+                                    <i class="fas fa-project-diagram text-xl text-green-400"></i>
+                                </div>
+                                <h3 class="font-bold text-white print:text-black print:text-sm">Análise de Viabilidade
+                                </h3>
+                            </div>
+                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Mapeamento de processos
+                                e avaliação lógica/logística antes da execução de projetos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIFERENCIAIS COMPORTAMENTAIS (Soft Skills) -->
+            <div class="mt-16 reveal delay-300">
+                <div class="glass p-8 rounded-3xl border border-tech-blue/20">
+                    <h3 class="text-xl font-bold mb-6 text-tech-accent flex items-center gap-3">
+                        <i class="fas fa-brain text-tech-blue"></i> Diferenciais Comportamentais
+                    </h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div
+                            class="px-4 py-2 rounded-xl bg-tech-blue/5 border border-tech-blue/10 flex items-center gap-3 group hover:border-tech-blue/30 transition-all">
+                            <span class="w-2 h-2 rounded-full bg-tech-blue"></span>
+                            <span
+                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Pensamento
+                                Analítico e Investigativo</span>
                         </div>
                         <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col items-center group print:border print:border-gray-300 print:p-2">
-                            <div class="w-16 h-16 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-4 group-hover:bg-yellow-500/20 transition-colors no-print">
-                                <i class="fas fa-database text-3xl text-yellow-500 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <span class="font-bold print:text-black">SQL / DB</span>
+                            class="px-4 py-2 rounded-xl bg-tech-cyan/5 border border-tech-cyan/10 flex items-center gap-3 group hover:border-tech-cyan/30 transition-all">
+                            <span class="w-2 h-2 rounded-full bg-tech-cyan"></span>
+                            <span
+                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Hiperfoco
+                                e Autodidatismo</span>
                         </div>
                         <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col items-center group print:border print:border-gray-300 print:p-2">
-                            <div class="w-16 h-16 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 group-hover:bg-green-500/20 transition-colors no-print">
-                                <i class="fas fa-headset text-3xl text-green-500 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <span class="font-bold print:text-black">Movidesk</span>
+                            class="px-4 py-2 rounded-xl bg-purple-500/5 border border-purple-500/10 flex items-center gap-3 group hover:border-purple-500/30 transition-all">
+                            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                            <span
+                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Mentoria
+                                e Facilitação Técnica</span>
                         </div>
                         <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col items-center group print:border print:border-gray-300 print:p-2">
-                            <div class="w-16 h-16 rounded-xl bg-blue-400/10 flex items-center justify-center mb-4 group-hover:bg-blue-400/20 transition-colors no-print">
-                                <i class="fas fa-code text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <span class="font-bold print:text-black">VS Code</span>
-                        </div>
-                        <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col items-center group print:border print:border-gray-300 print:p-2">
-                            <div class="w-16 h-16 rounded-xl bg-yellow-300/10 flex items-center justify-center mb-4 group-hover:bg-yellow-300/20 transition-colors no-print">
-                                <i class="fab fa-python text-3xl text-yellow-300 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <span class="font-bold print:text-black">Python</span>
+                            class="px-4 py-2 rounded-xl bg-green-500/5 border border-green-500/10 flex items-center gap-3 group hover:border-green-500/30 transition-all">
+                            <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                            <span
+                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Gestão
+                                de Risco e Integridade</span>
                         </div>
                     </div>
                 </div>
@@ -259,19 +381,25 @@
                             <p class="text-tech-accent text-sm mb-4 font-mono font-medium print:text-black">
                                 <em>Promoção interna: Suporte > QA > Product Owner</em>
                             </p>
-                            <ul class="list-disc list-inside text-gray-300 space-y-3 text-sm print:text-black leading-relaxed">
-                                <li>Gestão do backlog do produto e priorização de features utilizando Jira.</li>
-                                <li>Ponte direta entre <span class="text-tech-blue">stakeholders</span> e time de desenvolvimento.</li>
-                                <li>Garantia da qualidade (QA) e validação técnica de entregas.</li>
-                                <li>Análise de banco de dados SQL e suporte técnico avançado.</li>
-                                <li><strong class="text-white">Desenvolvimento de automações Low-Code e soluções com IA.</strong></li>
+                            <ul
+                                class="list-disc list-inside text-gray-300 space-y-3 text-sm print:text-black leading-relaxed">
+                                <li>Gestão estratégica do backlog e priorização de features com foco em <span
+                                        class="text-tech-blue">viabilidade lógica</span>.</li>
+                                <li>Ponte direta entre stakeholders e time de desenvolvimento, mapeando processos
+                                    complexos.</li>
+                                <li>Garantia da qualidade e homologação técnica rigorosa em ambientes sandbox.</li>
+                                <li>Análise avançada de dados SQL para suporte à tomada de decisão.</li>
+                                <li><strong class="text-white">Implementação de melhorias via Low-Code e automações
+                                        focadas na integridade do sistema.</strong></li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div class="relative pl-8 md:pl-0 reveal delay-200 experience-item">
-                    <div class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-gray-600 rounded-full z-10 experience-dot print:bg-gray-400"></div>
+                    <div
+                        class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-gray-600 rounded-full z-10 experience-dot print:bg-gray-400">
+                    </div>
                     <div class="md:flex items-start justify-between group print:block">
                         <div class="md:w-1/3 mb-2 md:mb-0 md:text-right md:pr-8 print:text-left print:mb-1">
                             <h3 class="text-white font-bold text-lg print:text-black">Faculdade Unise</h3>
@@ -293,7 +421,9 @@
                 </div>
 
                 <div class="relative pl-8 md:pl-0 reveal delay-300 experience-item">
-                    <div class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-gray-600 rounded-full z-10 experience-dot print:bg-gray-400"></div>
+                    <div
+                        class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-gray-600 rounded-full z-10 experience-dot print:bg-gray-400">
+                    </div>
                     <div class="md:flex items-start justify-between group print:block">
                         <div class="md:w-1/3 mb-2 md:mb-0 md:text-right md:pr-8 print:text-left print:mb-1">
                             <h3 class="text-white font-bold text-lg print:text-black">Supermercado Condor</h3>
@@ -341,7 +471,9 @@
                 <div class="reveal delay-100">
                     <div
                         class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div class="text-tech-cyan text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden"><i class="fas fa-laptop-code"></i></div>
+                        <div
+                            class="text-tech-cyan text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
+                            <i class="fas fa-laptop-code"></i></div>
                         <h3 class="font-bold text-xl mb-2 print:text-black">Técnico em Informática</h3>
                         <p class="text-tech-muted text-base print:text-black">SENAI/PR</p>
                         <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">1.200 horas | 2021</p>
@@ -351,7 +483,9 @@
                 <div class="reveal delay-200">
                     <div
                         class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div class="text-tech-blue text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden"><i class="fas fa-user-tie"></i></div>
+                        <div
+                            class="text-tech-blue text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
+                            <i class="fas fa-user-tie"></i></div>
                         <h3 class="font-bold text-xl mb-2 print:text-black">Auxiliar Administrativo</h3>
                         <p class="text-tech-muted text-base print:text-black">SENAC/PR</p>
                         <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">576 horas | 2018</p>
@@ -361,7 +495,9 @@
                 <div class="reveal delay-300">
                     <div
                         class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div class="text-green-500 text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden"><i class="fas fa-code"></i></div>
+                        <div
+                            class="text-green-500 text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
+                            <i class="fas fa-code"></i></div>
                         <h3 class="font-bold text-xl mb-2 print:text-black">Desenvolvimento</h3>
                         <p class="text-tech-muted text-base print:text-black">Udemy (Online)</p>
                         <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">Java (Android) e Python</p>
@@ -371,7 +507,9 @@
                 <div class="reveal delay-100">
                     <div
                         class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div class="text-purple-500 text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden"><i class="fas fa-graduation-cap"></i>
+                        <div
+                            class="text-purple-500 text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
                         <h3 class="font-bold text-xl mb-2 print:text-black">Ensino Médio</h3>
                         <p class="text-tech-muted text-base print:text-black">SESI/PR</p>
@@ -390,12 +528,10 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Wrapper Reveal separado do Card Interno -->
                 <div class="reveal delay-100">
-                    <div
-                        class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
+                    <div class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
                         <div
                             class="h-48 bg-tech-black/40 flex items-center justify-center relative overflow-hidden shrink-0 no-print">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
                             </div>
                             <i
                                 class="fas fa-mobile-alt text-6xl text-tech-blue/30 group-hover:text-tech-blue transition-colors z-0 transform group-hover:scale-110 duration-700"></i>
@@ -407,20 +543,20 @@
                                 marco na aplicação de conhecimentos Java e Mobile.
                             </p>
                             <div class="flex gap-2 flex-wrap">
-                                <span class="px-3 py-1 bg-tech-blue/10 border border-tech-blue/20 text-[10px] font-mono rounded-full text-tech-cyan uppercase">Java</span>
-                                <span class="px-3 py-1 bg-tech-blue/10 border border-tech-blue/20 text-[10px] font-mono rounded-full text-tech-cyan uppercase">Android</span>
+                                <span
+                                    class="px-3 py-1 bg-tech-blue/10 border border-tech-blue/20 text-[10px] font-mono rounded-full text-tech-cyan uppercase">Java</span>
+                                <span
+                                    class="px-3 py-1 bg-tech-blue/10 border border-tech-blue/20 text-[10px] font-mono rounded-full text-tech-cyan uppercase">Android</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="reveal delay-200">
-                    <div
-                        class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
+                    <div class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
                         <div
                             class="h-48 bg-tech-black/40 flex items-center justify-center relative overflow-hidden shrink-0 no-print">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
                             </div>
                             <i
                                 class="fas fa-comments text-6xl text-tech-cyan/30 group-hover:text-tech-cyan transition-colors z-0 transform group-hover:scale-110 duration-700"></i>
@@ -432,20 +568,21 @@
                                 resposta e melhoria da UX do cliente.
                             </p>
                             <div class="flex gap-2 flex-wrap">
-                                <span class="px-3 py-1 bg-tech-cyan/10 border border-tech-cyan/20 text-[10px] font-mono rounded-full text-tech-accent uppercase">UX Design</span>
-                                <span class="px-3 py-1 bg-tech-cyan/10 border border-tech-cyan/20 text-[10px] font-mono rounded-full text-tech-accent uppercase">CSAT</span>
+                                <span
+                                    class="px-3 py-1 bg-tech-cyan/10 border border-tech-cyan/20 text-[10px] font-mono rounded-full text-tech-accent uppercase">UX
+                                    Design</span>
+                                <span
+                                    class="px-3 py-1 bg-tech-cyan/10 border border-tech-cyan/20 text-[10px] font-mono rounded-full text-tech-accent uppercase">CSAT</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="reveal delay-300">
-                    <div
-                        class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
+                    <div class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
                         <div
                             class="h-48 bg-tech-black/40 flex items-center justify-center relative overflow-hidden shrink-0 no-print">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
                             </div>
                             <i
                                 class="fas fa-columns text-6xl text-green-500/30 group-hover:text-green-400 transition-colors z-0 transform group-hover:scale-110 duration-700"></i>
@@ -453,11 +590,14 @@
                         <div class="p-8 relative z-20 flex flex-col flex-grow">
                             <h3 class="text-2xl font-bold mb-3 text-white">Landing Pages</h3>
                             <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                                Criação de páginas de aterrissagem focadas em conversão, utilizando as melhores práticas de SEO e acessibilidade.
+                                Criação de páginas de aterrissagem focadas em conversão, utilizando as melhores práticas
+                                de SEO e acessibilidade.
                             </p>
                             <div class="flex gap-2 flex-wrap">
-                                <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-[10px] font-mono rounded-full text-green-400 uppercase">Frontend</span>
-                                <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-[10px] font-mono rounded-full text-green-400 uppercase">SEO</span>
+                                <span
+                                    class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-[10px] font-mono rounded-full text-green-400 uppercase">Frontend</span>
+                                <span
+                                    class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-[10px] font-mono rounded-full text-green-400 uppercase">SEO</span>
                             </div>
                         </div>
                     </div>
@@ -469,16 +609,20 @@
     <footer id="contato"
         class="bg-black py-16 border-t border-gray-900 reveal print:py-4 print:bg-white print:border-none">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center print:text-left relative z-10">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8 no-print text-white">Vamos <span class="text-gradient">construir</span> algo novo?</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 no-print text-white">Vamos <span
+                    class="text-gradient">construir</span> algo novo?</h2>
             <p class="text-tech-muted mb-12 max-w-2xl mx-auto no-print text-lg">
-                Se você busca alguém para gerenciar produtos com <span class="text-white">visão técnica</span> e foco em <span class="text-white">resultados mensuráveis</span>, estou pronto para uma conversa.
+                Se você busca alguém para gerenciar produtos com <span class="text-white">visão técnica</span> e foco em
+                <span class="text-white">resultados mensuráveis</span>, estou pronto para uma conversa.
             </p>
 
             <div class="flex flex-col md:flex-row justify-center gap-6 mb-16 print:hidden">
                 <a href="mailto:hxt.dll@gmail.com"
                     class="glass interactive-card flex items-center justify-center gap-4 px-8 py-5 rounded-2xl group">
-                    <div class="w-12 h-12 rounded-xl bg-tech-blue/10 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors">
-                        <i class="fas fa-envelope text-tech-blue text-2xl group-hover:rotate-12 transition-transform"></i>
+                    <div
+                        class="w-12 h-12 rounded-xl bg-tech-blue/10 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors">
+                        <i
+                            class="fas fa-envelope text-tech-blue text-2xl group-hover:rotate-12 transition-transform"></i>
                     </div>
                     <div class="text-left">
                         <div class="text-xs text-tech-muted uppercase font-mono">Direto</div>
@@ -487,8 +631,10 @@
                 </a>
                 <a href="https://wa.me/5546999839486" target="_blank"
                     class="glass interactive-card flex items-center justify-center gap-4 px-8 py-5 rounded-2xl group">
-                    <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-                        <i class="fab fa-whatsapp text-green-500 text-2xl group-hover:rotate-12 transition-transform"></i>
+                    <div
+                        class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
+                        <i
+                            class="fab fa-whatsapp text-green-500 text-2xl group-hover:rotate-12 transition-transform"></i>
                     </div>
                     <div class="text-left">
                         <div class="text-xs text-tech-muted uppercase font-mono">Rápido</div>
@@ -519,13 +665,20 @@
 
     <!-- Botões Flutuantes (WhatsApp e PDF) -->
     <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-[9999] no-print">
-        <a href="https://wa.me/5546999839486" target="_blank" class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform group relative" title="Chamar no WhatsApp">
+        <a href="https://wa.me/5546999839486" target="_blank"
+            class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform group relative"
+            title="Chamar no WhatsApp">
             <i class="fab fa-whatsapp text-2xl"></i>
-            <span class="absolute right-16 bg-tech-card px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-800">WhatsApp</span>
+            <span
+                class="absolute right-16 bg-tech-card px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-800">WhatsApp</span>
         </a>
-        <button onclick="window.print()" class="w-14 h-14 bg-tech-blue rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform group relative" title="Salvar PDF/Imprimir">
+        <button onclick="window.print()"
+            class="w-14 h-14 bg-tech-blue rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform group relative"
+            title="Salvar PDF/Imprimir">
             <i class="fas fa-file-pdf text-2xl"></i>
-            <span class="absolute right-16 bg-tech-card px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-800">Gerar PDF</span>
+            <span
+                class="absolute right-16 bg-tech-card px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-800">Gerar
+                PDF</span>
         </button>
     </div>
 
