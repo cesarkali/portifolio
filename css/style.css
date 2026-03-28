@@ -1,68 +1,119 @@
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #050505;
-    color: #e5e5e5;
+    background-color: #030303;
+    color: #fdfdfd;
     overflow-x: hidden;
-    /* CURSOR PERSONALIZADO */
     cursor: url('../cursorsite.png'), auto;
 }
 
-.bg-gradient-hero {
-    background: radial-gradient(circle at top right, rgba(0, 112, 243, 0.15), transparent 40%),
-        radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.1), transparent 40%);
+/* BACKGROUND DINÂMICO PREMIUM */
+.bg-mesh-dynamic {
+    background-color: #030303;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 112, 243, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 0%, rgba(121, 40, 202, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(255, 0, 128, 0.05) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(0, 212, 255, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 0.03;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
 }
 
 .glass {
-    background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(15, 15, 15, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .nav-glass {
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(3, 3, 3, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* SCROLLBAR PERSONALIZADA TECH */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #030303;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
+    background: linear-gradient(to bottom, #0070f3, #00d4ff);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #0070f3;
+    background: #00d4ff;
 }
 
+/* ANIMAÇÕES DE REVEAL REFINADAS */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease-out;
+    transform: translateY(30px) scale(0.98);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
-.delay-100 {
-    transition-delay: 100ms;
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.delay-200 {
-    transition-delay: 200ms;
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.delay-300 {
-    transition-delay: 300ms;
+/* EFEITOS DE CARD E INTERATIVIDADE */
+.interactive-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+.interactive-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 112, 243, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 112, 243, 0.15);
+}
+
+.experience-dot {
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover .experience-dot {
+    transform: scale(1.5);
+    background-color: #00d4ff !important;
+    box-shadow: 0 0 15px #00d4ff;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #0070f3 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 
 /* ESTILOS DE IMPRESSÃO (PDF) */
 @media print {
@@ -77,19 +128,28 @@ body {
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        transition: none !important;
+        animation: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
+        transform: none !important;
     }
 
     body {
         background-color: white !important;
+        background-image: none !important;
         color: black !important;
         font-size: 10.5pt !important;
         line-height: 1.5 !important;
         overflow: visible !important;
     }
 
-    /* Ocultar elementos web */
-    nav, #inicio, section#inicio, footer .no-print, .no-print, .animate-pulse-slow, .bg-gradient-hero, button {
+    /* Ocultar apenas elementos estritamente web e decorativos */
+    nav, #inicio, section#inicio, footer .no-print, .no-print, .animate-pulse-slow, .bg-gradient-hero, button, 
+    .noise-overlay, #bg-mesh {
         display: none !important;
+        visibility: hidden !important;
     }
 
     /* Cabeçalho de Impressão Profissional */
@@ -229,8 +289,9 @@ body {
         backdrop-filter: none !important;
     }
 
-    p, span, li {
+    p, span, li, h1, h2, h3, h4, div {
         color: #333 !important;
+        background: transparent !important;
     }
 
     /* FOTO COLORIDA */
