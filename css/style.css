@@ -58,7 +58,7 @@ body {
 }
 
 section {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
 }
 
 /* SCROLLBAR PERSONALIZADA TECH */
@@ -126,9 +126,9 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 }
 
 .mobile-link {
-    transform: translateY(14px);
     opacity: 0;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    transform: translateY(8px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease;
 }
 
 #mobile-menu-luxury.active .mobile-link {
@@ -136,11 +136,12 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     opacity: 1;
 }
 
-.mobile-link:nth-child(1) { transition-delay: 0.08s; }
-.mobile-link:nth-child(2) { transition-delay: 0.14s; }
-.mobile-link:nth-child(3) { transition-delay: 0.2s; }
-.mobile-link:nth-child(4) { transition-delay: 0.26s; }
-.mobile-link:nth-child(5) { transition-delay: 0.32s; }
+.mobile-link:nth-child(1) { transition-delay: 0.05s; }
+.mobile-link:nth-child(2) { transition-delay: 0.08s; }
+.mobile-link:nth-child(3) { transition-delay: 0.11s; }
+.mobile-link:nth-child(4) { transition-delay: 0.14s; }
+.mobile-link:nth-child(5) { transition-delay: 0.17s; }
+.mobile-link:nth-child(6) { transition-delay: 0.20s; }
 
 #mobile-menu-luxury.active .mobile-social-link {
     opacity: 1;
@@ -166,13 +167,23 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 /* ANIMAÇÕES DE REVEAL REFINADAS */
 .reveal {
     opacity: 0;
-    transform: translateY(30px) scale(0.98);
+    transform: translateY(20px);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+}
+
+/* Reveal fade-only variant */
+.reveal-fade {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-fade.active {
+    opacity: 1;
 }
 
 .reveal-left {
@@ -192,9 +203,9 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 }
 
 .interactive-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-4px);
     border-color: rgba(0, 112, 243, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 112, 243, 0.15);
+    box-shadow: 0 12px 32px rgba(0, 112, 243, 0.12);
 }
 
 .experience-dot {
@@ -214,15 +225,51 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     -webkit-text-fill-color: transparent;
 }
 
+/* HERO TEXT ANIMATION */
+.hero-text-animate {
+    animation: heroTextIn 0.8s ease-out forwards;
+}
+
+@keyframes heroTextIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating animation for hero photo */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+.hero-photo-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Staggered hero children */
+.hero-child {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroChildIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes heroChildIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+.hero-child:nth-child(1) { animation-delay: 0.1s; }
+.hero-child:nth-child(2) { animation-delay: 0.2s; }
+.hero-child:nth-child(3) { animation-delay: 0.3s; }
+.hero-child:nth-child(4) { animation-delay: 0.4s; }
+.hero-child:nth-child(5) { animation-delay: 0.5s; }
+.hero-child:nth-child(6) { animation-delay: 0.6s; }
+
 
 /* ESTILOS DE IMPRESSÃO (PDF) */
 @media print {
-    /* Forçar visibilidade imediata de todos os elementos */
-    .reveal {
+    /* Reset animations */
+    .reveal, .reveal-left, .reveal-fade, .hero-child {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
         visibility: visible !important;
+        animation: none !important;
     }
 
     * {
@@ -234,198 +281,300 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         -webkit-backdrop-filter: none !important;
         filter: none !important;
         transform: none !important;
+        box-shadow: none !important;
     }
 
-    body {
-        background-color: white !important;
+    html, body {
+        background: white !important;
         background-image: none !important;
-        color: black !important;
-        font-size: 10.5pt !important;
-        line-height: 1.5 !important;
+        color: #222 !important;
+        color-scheme: light !important;
+        font-size: 9.5pt !important;
+        line-height: 1.4 !important;
         overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Ocultar apenas elementos estritamente web e decorativos */
-    nav, #inicio, section#inicio, footer .no-print, .no-print, .animate-pulse-slow, .bg-gradient-hero, button, 
-    .noise-overlay, #bg-mesh {
+    @page {
+        margin: 1.2cm 1.5cm;
+        size: A4;
+    }
+
+    /* ── HIDE everything web-only ── */
+    nav,
+    #inicio,
+    #como-trabalho,
+    #kali-lightbox,
+    #location-modal,
+    .no-print,
+    .noise-overlay,
+    .fixed,
+    button {
         display: none !important;
         visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Cabeçalho de Impressão Profissional */
+    /* ── SHOW print header ── */
     .print-header {
         display: block !important;
-        border-bottom: 3px solid #0070f3 !important;
-        padding-bottom: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
+        border-bottom: 2px solid #0070f3 !important;
+        padding-bottom: 0.6rem !important;
+        margin-bottom: 1rem !important;
     }
 
+    /* ── Sections: compact, no padding ── */
     section {
         display: block !important;
         padding: 0 !important;
-        margin-bottom: 2rem !important;
-        page-break-inside: auto !important;
+        margin: 0 0 0.8rem 0 !important;
+        background: white !important;
+        border: none !important;
+        min-height: 0 !important;
     }
 
+    /* ── Typography ── */
     h2 {
-        font-size: 15pt !important;
+        font-size: 10pt !important;
         color: #0070f3 !important;
-        border-bottom: 1px solid #eee !important;
-        padding-bottom: 5px !important;
-        margin-bottom: 15px !important;
+        border-bottom: 1px solid #ddd !important;
+        padding-bottom: 2px !important;
+        margin: 0.6rem 0 0.4rem 0 !important;
         text-transform: uppercase !important;
-        letter-spacing: 1px !important;
+        letter-spacing: 0.5px !important;
         font-weight: 700 !important;
     }
 
     h3 {
-        font-size: 12.5pt !important;
+        font-size: 10pt !important;
         font-weight: 700 !important;
-        margin-bottom: 4px !important;
+        margin: 0 0 2px 0 !important;
+        color: #111 !important;
     }
 
     h4 {
-        font-size: 11pt !important;
+        font-size: 9.5pt !important;
         font-weight: 600 !important;
-        margin-bottom: 4px !important;
+        margin: 0 0 2px 0 !important;
+        color: #111 !important;
     }
 
-    /* Sobre Mim e Skills Layout */
-    #sobre .grid {
-        display: block !important;
-    }
-
-    #sobre .reveal {
-        margin-bottom: 1.5rem !important;
-    }
-
-    /* Expertise & Soft Skills como Tags no PDF */
-    #sobre .grid-cols-1, #sobre .flex-wrap {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-    }
-
-    #sobre .glass, #sobre .px-4.py-2 {
-        background: #f8f9fa !important;
-        border: 1px solid #e9ecef !important;
-        padding: 6px 12px !important;
-        border-radius: 6px !important;
-        width: auto !important;
-        display: inline-block !important;
-        margin-right: 5px !important;
-        margin-bottom: 5px !important;
-    }
-
-    #sobre h3 {
-        font-size: 11pt !important;
-        color: #0070f3 !important;
-        margin-top: 10px !important;
-        margin-bottom: 5px !important;
-        width: 100% !important;
-    }
-
-    #sobre p.text-xs {
-        font-size: 9pt !important;
-        color: #666 !important;
-        display: block !important;
-        margin-top: 2px !important;
-    }
-
-    #sobre .w-2.h-2, #sobre .w-10.h-10 {
-        display: none !important;
-    }
-
-    /* Experiência Profissional */
-    #experiencia .relative.border-l {
-        border-left: 2px solid #0070f3 !important;
-    }
-
-    .experience-item, .relative.pl-8 {
-        page-break-inside: avoid !important;
-        margin-bottom: 1.5rem !important;
-    }
-
-    #experiencia .md\:flex {
-        display: block !important;
-    }
-
-    #experiencia .md\:w-1\/3 {
-        width: 100% !important;
-        text-align: left !important;
-        margin-bottom: 5px !important;
-        font-weight: 700 !important;
-        color: #0070f3 !important;
-    }
-
-    #experiencia .md\:w-2\/3 {
-        width: 100% !important;
-    }
-
-    /* Listas */
-    ul.list-disc {
-        margin-left: 1.5rem !important;
-        color: #444 !important;
-    }
-
-    li {
-        margin-bottom: 4px !important;
-    }
-
-    /* Formação Acadêmica */
-    #experiencia + section .grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1.5rem !important;
-    }
-
-    /* Projetos */
-    section#projetos {
-        page-break-before: always !important;
-        break-before: page !important;
-        margin-top: 0 !important;
-    }
-
-    #projetos .grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1.5rem !important;
-    }
-
-    #projetos .h-48 {
-        display: none !important;
-    }
-
-    #projetos .glass {
-        border-left: 3px solid #0070f3 !important;
-        padding-left: 10px !important;
-    }
-
-    /* Cores e UI */
-    .glass, .bg-tech-card, .bg-tech-dark, .bg-tech-card *, .bg-tech-dark * {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-    }
-
-    p, span, li, h1, h2, h3, h4, div {
+    p, li, span, div {
         color: #333 !important;
         background: transparent !important;
+        font-size: 9pt !important;
     }
 
-    /* FOTO COLORIDA */
+    a { color: #0070f3 !important; }
+
+    /* ── Sobre ── */
+    #sobre {
+        padding: 0 !important;
+        margin-bottom: 0.6rem !important;
+    }
+    #sobre .grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+    #sobre .reveal { margin-bottom: 0 !important; }
+    #sobre .space-y-0 {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.2rem !important;
+    }
+    #sobre .expertise-item {
+        border-bottom: 1px solid #eee !important;
+        padding: 2px 0 !important;
+    }
+    #sobre .mt-8 { margin-top: 0.4rem !important; }
+    #sobre .flex-wrap {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 3px !important;
+    }
+    #sobre .rounded-full {
+        background: #f0f0f0 !important;
+        border: 1px solid #ddd !important;
+        color: #333 !important;
+        font-size: 7.5pt !important;
+        padding: 1px 6px !important;
+    }
+
+    /* ── Experiência ── */
+    #experiencia {
+        margin-bottom: 0.6rem !important;
+    }
+    #experiencia .divide-y > div {
+        display: grid !important;
+        grid-template-columns: 130px 1fr !important;
+        gap: 0.5rem !important;
+        padding: 0.3rem 0 !important;
+        border-bottom: 1px solid #eee !important;
+        page-break-inside: avoid !important;
+    }
+    #experiencia ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 2px 0 0 0 !important;
+    }
+    #experiencia ul li {
+        color: #444 !important;
+        font-size: 8pt !important;
+        margin-bottom: 1px !important;
+        padding-left: 0 !important;
+    }
+    #experiencia ul li span { display: none !important; }
+
+    /* ── Formação ── */
+    #experiencia + section {
+        margin-bottom: 0.6rem !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+    }
+    #experiencia + section .divide-y > div {
+        display: grid !important;
+        grid-template-columns: 130px 1fr !important;
+        gap: 0.4rem !important;
+        padding: 0.25rem 0 !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    /* ── Projetos ── */
+    section#projetos {
+        page-break-before: auto !important;
+        break-before: auto !important;
+        margin-top: 0 !important;
+    }
+    .financial-kali-card {
+        border: 1px solid #ddd !important;
+        background: white !important;
+        padding: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .financial-kali-card .no-print { display: none !important; }
+    #projetos .divide-y > div {
+        padding: 0.3rem 0 !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    /* ── Footer ── */
+    footer {
+        background: white !important;
+        border: none !important;
+        padding: 0.5rem 0 0 0 !important;
+        margin: 0 !important;
+    }
+
+    /* ── Images ── */
     img {
         filter: none !important;
-        -webkit-filter: none !important;
         opacity: 1 !important;
-        max-width: 110px !important;
-        border-radius: 8px !important;
-        border: 2px solid #eee !important;
+        max-width: 90px !important;
+        border-radius: 4px !important;
+        border: 1px solid #ddd !important;
     }
 
-    @page {
-        margin: 1.5cm;
-        size: A4;
+    /* ── text-gradient fallback ── */
+    .text-gradient {
+        -webkit-text-fill-color: #0070f3 !important;
+        color: #0070f3 !important;
+        background: none !important;
     }
+
+    /* ── Glass/dark backgrounds → transparent ── */
+    .glass, [class*="bg-tech"], [class*="bg-black"], [class*="bg-white"] {
+        background: transparent !important;
+        border-color: #ddd !important;
+    }
+
+    /* ── Section labels (mono uppercase) → hide ── */
+    .font-mono.uppercase.tracking-\[0\.3em\],
+    .font-mono.uppercase.tracking-\[0\.4em\] {
+        display: none !important;
+    }
+}
+
+/* ── Experience rows ────────────────────────────────────────────────────── */
+#experiencia .divide-y > div {
+    transition: background 0.2s ease;
+}
+#experiencia .divide-y > div:hover {
+    background: rgba(255,255,255,0.015);
+}
+
+/* ── Lightbox image transition ──────────────────────────────────────────── */
+#lightbox-img {
+    transition: opacity 0.15s ease;
+}
+#kali-lightbox.flex #lightbox-img {
+    opacity: 1;
+}
+
+/* ── Financial Kali Gallery ─────────────────────────────────────────────── */
+.kali-thumb {
+    opacity: 0.4;
+    transition: opacity 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.kali-thumb.active,
+.kali-thumb:hover {
+    opacity: 1;
+}
+
+.kali-thumb:hover {
+    transform: scale(1.05);
+}
+
+.kali-thumb.active {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    opacity: 1;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* ── Editorial hero photo background ───────────────────────────────────── */
+@media (min-width: 1024px) {
+    #inicio {
+        min-height: 100vh;
+    }
+}
+
+/* ── Section dividers ───────────────────────────────────────────────────── */
+#sobre, #como-trabalho, #experiencia, #projetos, footer {
+    border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ── Experience timeline refinement ────────────────────────────────────── */
+#experiencia .relative.border-l {
+    border-color: rgba(255,255,255,0.06);
+}
+
+/* ── Expertise list items ───────────────────────────────────────────────── */
+.expertise-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.2s ease;
+}
+.expertise-item:last-child {
+    border-bottom: none;
+}
+.expertise-item:hover .expertise-arrow {
+    color: rgba(255, 255, 255, 0.6);
+    transform: translateX(3px);
+}
+.expertise-arrow {
+    transition: all 0.2s ease;
+    color: rgba(255,255,255,0.12);
 }

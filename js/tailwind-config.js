@@ -52,6 +52,9 @@ tailwind.config = {
             },
             backgroundImage: {
                 'mesh-gradient': "radial-gradient(at 0% 0%, rgba(0, 112, 243, 0.15) 0, transparent 50%), radial-gradient(at 50% 0%, rgba(121, 40, 202, 0.1) 0, transparent 50%), radial-gradient(at 100% 0%, rgba(255, 0, 128, 0.05) 0, transparent 50%)",
+            },
+            transitionDelay: {
+                '400': '400ms',
             }
         }
     }

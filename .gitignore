@@ -1,0 +1,12 @@
+# Kiro IDE
+.kiro/
+
+# Dependências de desenvolvimento (property tests)
+node_modules/
+package-lock.json
+
+# Testes locais (não fazem parte do site)
+tests/
+
+# Editor
+.vscode/

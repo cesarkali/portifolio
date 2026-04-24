@@ -1,4 +1,7 @@
-﻿// Bloqueio de scroll reutilizável (html + body + iOS)
+﻿// Gallery logic (pure, no DOM)
+import { createGallery } from './gallery.js';
+
+// Bloqueio de scroll reutilizável (html + body + iOS)
 let scrollLockCount = 0;
 let savedScrollY = 0;
 
@@ -19,6 +22,7 @@ function lockScroll() {
 function unlockScroll() {
     scrollLockCount = Math.max(0, scrollLockCount - 1);
     if (scrollLockCount !== 0) return;
+    const scrollY = savedScrollY;
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
@@ -26,12 +30,15 @@ function unlockScroll() {
     document.documentElement.style.overscrollBehavior = '';
     document.body.style.overflow = '';
     document.body.style.overscrollBehavior = '';
-    window.scrollTo(0, savedScrollY);
+    // Use requestAnimationFrame to avoid visual jump
+    requestAnimationFrame(() => {
+        window.scrollTo({ top: scrollY, behavior: 'instant' });
+    });
 }
 
 // EFEITO DE TYPING (DIGITAÇÃO) NO HERO
 const typingElement = document.getElementById('typing-text');
-const texts = ['Product Owner', 'QA Engineer', 'Low-Code Expert', 'Tech Analyst'];
+const texts = ['Product Owner', 'LowCode Builder', '100% IA', 'QA Engineer'];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -218,6 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
+        const lightbox = document.getElementById('kali-lightbox');
+        if (lightbox && !lightbox.classList.contains('hidden')) {
+            closeKaliLightbox();
+            return;
+        }
         if (locationModal && !locationModal.classList.contains('hidden')) {
             closeLocationModal();
             return;
@@ -226,4 +238,139 @@ document.addEventListener('DOMContentLoaded', () => {
             closeLuxuryMenu();
         }
     });
+
+    // ── Financial Kali Gallery ──────────────────────────────────────────────
+    if (document.getElementById('kali-main-img')) {
+        updateKaliGallery(0);
+
+        // Auto-play: advance every 4s, pause on hover/touch
+        _startKaliAutoPlay();
+
+        const kaliCard = document.querySelector('.financial-kali-card');
+        if (kaliCard) {
+            kaliCard.addEventListener('mouseenter', _stopKaliAutoPlay);
+            kaliCard.addEventListener('mouseleave', _startKaliAutoPlay);
+            kaliCard.addEventListener('touchstart', _stopKaliAutoPlay, { passive: true });
+        }
+    }
 });
+
+// ── Financial Kali Gallery — global state & functions ──────────────────────
+const _kaliGallery = createGallery(0);
+
+// Auto-play state (hoisted so lightbox functions can access it)
+let _kaliAutoPlayTimer = null;
+
+function _startKaliAutoPlay() {
+    _stopKaliAutoPlay();
+    _kaliAutoPlayTimer = setInterval(() => {
+        const lightbox = document.getElementById('kali-lightbox');
+        if (lightbox && !lightbox.classList.contains('hidden')) return;
+        updateKaliGallery(_kaliGallery.next());
+    }, 4000);
+}
+
+function _stopKaliAutoPlay() {
+    if (_kaliAutoPlayTimer) { clearInterval(_kaliAutoPlayTimer); _kaliAutoPlayTimer = null; }
+}
+
+function updateKaliGallery(idx) {
+    const mainImg = document.getElementById('kali-main-img');
+    if (mainImg) {
+        mainImg.src = _kaliGallery.images[idx].src;
+        mainImg.alt = _kaliGallery.images[idx].label;
+    }
+    document.querySelectorAll('.kali-thumb').forEach((thumb, i) => {
+        if (i === idx) {
+            thumb.classList.add('active');
+            thumb.style.opacity = '1';
+            thumb.style.borderColor = 'rgba(255,255,255,0.5)';
+        } else {
+            thumb.classList.remove('active');
+            thumb.style.opacity = '0.35';
+            thumb.style.borderColor = 'transparent';
+        }
+    });
+}
+
+function kaliGalleryNav(dir) {
+    const idx = dir === 'next' ? _kaliGallery.next() : _kaliGallery.prev();
+    updateKaliGallery(idx);
+}
+
+function kaliGallerySet(idx) {
+    // Sync internal index
+    while (_kaliGallery.currentIndex !== idx) {
+        if (idx > _kaliGallery.currentIndex) _kaliGallery.next();
+        else _kaliGallery.prev();
+    }
+    updateKaliGallery(idx);
+}
+
+// ── Financial Kali Lightbox ─────────────────────────────────────────────────
+function _updateLightboxCounter(idx) {
+    const counter = document.getElementById('lightbox-counter');
+    if (counter) counter.textContent = (idx + 1) + ' / ' + _kaliGallery.images.length;
+}
+
+function openKaliLightbox(event, idx) {
+    if (event) event.stopPropagation();
+    const lightbox = document.getElementById('kali-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (!lightbox || !lightboxImg) return;
+    const i = (idx !== undefined) ? idx : _kaliGallery.currentIndex;
+    lightboxImg.src = _kaliGallery.images[i].src;
+    lightboxImg.alt = _kaliGallery.images[i].label;
+    _updateLightboxCounter(i);
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    lightbox.setAttribute('aria-hidden', 'false');
+    lockScroll();
+    // Stop auto-play while lightbox is open
+    if (typeof _stopKaliAutoPlay === 'function') _stopKaliAutoPlay();
+}
+
+function closeKaliLightbox() {
+    const lightbox = document.getElementById('kali-lightbox');
+    if (!lightbox) return;
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    lightbox.setAttribute('aria-hidden', 'true');
+    unlockScroll();
+    // Restart auto-play after closing lightbox
+    if (typeof _startKaliAutoPlay === 'function') _startKaliAutoPlay();
+}
+
+function kaliLightboxNav(dir) {
+    const idx = dir === 'next' ? _kaliGallery.next() : _kaliGallery.prev();
+    updateKaliGallery(idx);
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightboxImg) {
+        lightboxImg.src = _kaliGallery.images[idx].src;
+        lightboxImg.alt = _kaliGallery.images[idx].label;
+    }
+    _updateLightboxCounter(idx);
+}
+
+// Touch/swipe support for lightbox
+(function() {
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+        const lightbox = document.getElementById('kali-lightbox');
+        if (!lightbox || lightbox.classList.contains('hidden')) return;
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+            kaliLightboxNav(diff > 0 ? 'next' : 'prev');
+        }
+    }, { passive: true });
+})();
+
+// Expose to window for inline onclick handlers
+window.kaliGalleryNav = kaliGalleryNav;
+window.kaliGallerySet = kaliGallerySet;
+window.openKaliLightbox = openKaliLightbox;
+window.closeKaliLightbox = closeKaliLightbox;
+window.kaliLightboxNav = kaliLightboxNav;

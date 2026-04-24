@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-redesign",
+  "version": "1.0.0",
+  "description": "Portfolio property tests",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/property-tests.test.js"
+  },
+  "devDependencies": {
+    "fast-check": "^3.22.0"
+  }
+}

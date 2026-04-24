@@ -16,7 +16,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&amp;display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -34,7 +34,7 @@
         <div class="flex justify-between items-start">
             <div>
                 <h1 class="text-4xl font-bold text-black mb-1">Júlio César Camargo Caliberda</h1>
-                <p class="text-xl text-gray-700 font-medium mb-4">Product Owner • Low-Code & AI</p>
+                <p class="text-xl text-gray-700 font-medium mb-4">Product Owner • Low-Code &amp; AI</p>
                 <div class="grid grid-cols-2 gap-x-8 gap-y-1 text-sm text-gray-600">
                     <div class="flex items-center gap-2"><i class="fas fa-envelope"></i> hxt.dll@gmail.com</div>
                     <div class="flex items-center gap-2"><i class="fab fa-whatsapp"></i> (46) 99983-9486</div>
@@ -55,331 +55,253 @@
 
     <nav class="fixed w-full z-50 nav-glass transition-all duration-300 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- LOGO & STATUS -->
+            <div class="flex items-center justify-between h-16">
+                <!-- LOGO -->
                 <div class="flex items-center gap-3">
-                    <div class="relative shrink-0 no-print">
+                    <div class="relative shrink-0">
                         <img src="julio.jpg" alt="Júlio César"
-                            class="w-10 h-10 rounded-full border border-tech-cyan/30 shadow-[0_0_10px_rgba(0,212,255,0.2)] object-cover">
-                        <span
-                            class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 border-2 border-black rounded-full"></span>
+                            class="w-8 h-8 rounded-full border border-white/20 object-cover">
+                        <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 border-2 border-black rounded-full"></span>
                     </div>
-                    <div class="flex flex-col">
-                        <a href="#inicio" class="text-xl font-black tracking-tighter text-white group leading-none">
-                            JÚLIO<span class="text-tech-cyan group-hover:text-tech-blue transition-colors">CÉSAR</span>
-                        </a>
-                        <div class="flex items-center gap-1.5 mt-1 sm:hidden lg:flex">
-                            <span
-                                class="text-[9px] font-bold text-green-400 uppercase tracking-widest leading-none">Disponível</span>
-                        </div>
-                    </div>
+                    <a href="#inicio" class="text-base font-black tracking-tighter text-white leading-none">
+                        JÚLIO<span class="text-tech-cyan">CÉSAR</span>
+                    </a>
                 </div>
 
                 <!-- DESKTOP NAV -->
                 <div class="hidden md:flex items-center gap-8">
                     <div class="flex items-center gap-6 text-sm font-medium">
-                        <a href="#inicio" class="nav-link text-gray-300 hover:text-white transition-colors">Início</a>
-                        <a href="#sobre" class="nav-link text-gray-300 hover:text-white transition-colors">Sobre</a>
-                        <a href="#experiencia"
-                            class="nav-link text-gray-300 hover:text-white transition-colors">Jornada</a>
-                        <a href="#projetos"
-                            class="nav-link text-gray-300 hover:text-white transition-colors">Projetos</a>
+                        <a href="#sobre" class="nav-link text-white/60 hover:text-white transition-colors">Sobre</a>
+                        <a href="#como-trabalho" class="nav-link text-white/60 hover:text-white transition-colors">Processo</a>
+                        <a href="#experiencia" class="nav-link text-white/60 hover:text-white transition-colors">Jornada</a>
+                        <a href="#projetos" class="nav-link text-white/60 hover:text-white transition-colors">Projetos</a>
                     </div>
                     <a href="#contato"
-                        class="px-5 py-2.5 bg-tech-blue/10 border border-tech-blue/30 text-tech-blue text-xs font-bold rounded-xl hover:bg-tech-blue hover:text-white transition-all shadow-lg shadow-tech-blue/10">
-                        CONTATO <i class="fas fa-paper-plane ml-2 text-[10px]"></i>
+                        class="px-4 py-2 bg-white text-black text-xs font-bold rounded-lg hover:bg-white/90 transition-colors">
+                        Contato
                     </a>
                 </div>
 
                 <!-- MOBILE TOGGLE -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn"
-                        class="p-2.5 text-gray-300 hover:text-white focus:outline-none bg-white/5 rounded-xl border border-white/10">
-                        <i class="fas fa-bars text-xl"></i>
+                        class="p-2 text-white/60 hover:text-white focus:outline-none transition-colors"
+                        aria-label="Abrir menu">
+                        <i class="fas fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Menu mobile (fora do nav: fixed à viewport; nav usa backdrop-filter) -->
+    <!-- Menu mobile — simplificado, sem scroll, sem ícones grandes -->
     <div id="mobile-menu-luxury"
         class="mobile-menu-overlay fixed inset-0 z-[100] min-h-[100dvh] hidden flex-col items-center justify-center overflow-hidden px-5 py-8 no-print md:hidden"
         aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegação">
         <div id="mobile-menu-drawer"
-            class="w-full max-w-sm flex flex-col relative z-10 my-auto pointer-events-auto max-h-[min(88dvh,40rem)] overflow-y-auto overscroll-contain rounded-3xl border border-white/[0.07] bg-black/40 px-5 py-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_25px_50px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-            <div class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
-                <div>
-                    <span class="text-[10px] font-mono font-semibold text-tech-cyan/80 uppercase tracking-[0.2em]">Menu</span>
-                    <p class="text-sm text-gray-400 mt-0.5">Escolha uma seção</p>
-                </div>
+            class="w-full max-w-xs flex flex-col relative z-10 pointer-events-auto rounded-2xl border border-white/[0.08] bg-black/60 px-5 py-5 backdrop-blur-xl">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-5">
+                <span class="text-xs font-mono text-white/40 uppercase tracking-widest">Navegação</span>
                 <button id="close-menu-btn" type="button"
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all"
+                    class="w-8 h-8 flex items-center justify-center rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-all"
                     aria-label="Fechar menu">
-                    <i class="fas fa-times text-base"></i>
+                    <i class="fas fa-times text-sm"></i>
                 </button>
             </div>
 
-            <nav class="flex flex-col gap-2.5 w-full" aria-label="Seções">
-                <a href="#inicio"
-                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
-                        <i class="fas fa-home text-sm" aria-hidden="true"></i>
-                    </span>
-                    Início
-                </a>
-                <a href="#sobre"
-                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
-                        <i class="fas fa-user text-sm" aria-hidden="true"></i>
-                    </span>
-                    Sobre
-                </a>
-                <a href="#experiencia"
-                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
-                        <i class="fas fa-briefcase text-sm" aria-hidden="true"></i>
-                    </span>
-                    Jornada
-                </a>
-                <a href="#projetos"
-                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
-                        <i class="fas fa-code text-sm" aria-hidden="true"></i>
-                    </span>
-                    Projetos
-                </a>
-                <a href="#contato"
-                    class="mobile-link group flex items-center gap-3.5 w-full px-4 py-3.5 rounded-xl border border-white/[0.06] bg-white/[0.04] text-left text-base font-semibold tracking-tight text-gray-100 hover:border-tech-cyan/35 hover:bg-tech-blue/[0.08] hover:text-white active:scale-[0.99] transition-all duration-200 no-underline">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-tech-blue/15 text-tech-cyan transition-colors group-hover:bg-tech-blue/25">
-                        <i class="fas fa-envelope text-sm" aria-hidden="true"></i>
-                    </span>
-                    Contato
-                </a>
+            <!-- Links — simples, sem ícones -->
+            <nav class="flex flex-col gap-1 w-full" aria-label="Seções">
+                <a href="#inicio" class="mobile-link px-3 py-3 rounded-lg text-base font-semibold text-white/80 hover:text-white hover:bg-white/[0.06] transition-all">Início</a>
+                <a href="#sobre" class="mobile-link px-3 py-3 rounded-lg text-base font-semibold text-white/80 hover:text-white hover:bg-white/[0.06] transition-all">Sobre</a>
+                <a href="#como-trabalho" class="mobile-link px-3 py-3 rounded-lg text-base font-semibold text-white/80 hover:text-white hover:bg-white/[0.06] transition-all">Processo</a>
+                <a href="#experiencia" class="mobile-link px-3 py-3 rounded-lg text-base font-semibold text-white/80 hover:text-white hover:bg-white/[0.06] transition-all">Jornada</a>
+                <a href="#projetos" class="mobile-link px-3 py-3 rounded-lg text-base font-semibold text-white/80 hover:text-white hover:bg-white/[0.06] transition-all">Projetos</a>
+                <a href="#contato" class="mobile-link mt-1 px-3 py-3 rounded-lg text-base font-semibold text-tech-cyan hover:text-white hover:bg-tech-cyan/[0.08] transition-all">Contato</a>
             </nav>
 
-            <div class="mt-6 pt-5 border-t border-white/[0.06] flex justify-center gap-6">
+            <!-- Redes sociais -->
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex gap-5">
                 <a href="https://linkedin.com/in/hxtdll" target="_blank" rel="noopener noreferrer"
-                    class="mobile-social-link text-gray-500 hover:text-tech-blue transition-colors p-2 rounded-lg hover:bg-white/5"
-                    aria-label="LinkedIn">
-                    <i class="fab fa-linkedin text-xl"></i>
+                    class="mobile-social-link text-white/30 hover:text-white transition-colors" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin text-lg"></i>
                 </a>
                 <a href="https://github.com/cesarkali" target="_blank" rel="noopener noreferrer"
-                    class="mobile-social-link text-gray-500 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
-                    aria-label="GitHub">
-                    <i class="fab fa-github text-xl"></i>
+                    class="mobile-social-link text-white/30 hover:text-white transition-colors" aria-label="GitHub">
+                    <i class="fab fa-github text-lg"></i>
                 </a>
                 <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer"
-                    class="mobile-social-link text-gray-500 hover:text-green-500 transition-colors p-2 rounded-lg hover:bg-white/5"
-                    aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp text-xl"></i>
+                    class="mobile-social-link text-white/30 hover:text-green-400 transition-colors" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp text-lg"></i>
                 </a>
+                <a href="https://www.instagram.com/cesar.kali/" target="_blank" rel="noopener noreferrer"
+                    class="mobile-social-link text-white/30 hover:text-pink-400 transition-colors" aria-label="Instagram">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </div>
 
     <section id="inicio"
-        class="no-print relative min-h-screen flex items-center justify-center bg-gradient-hero pt-20 overflow-hidden print:pt-0 print:min-h-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center relative z-10">
-            <!-- Coluna de Texto -->
-            <div
-                class="md:w-1/2 text-center md:text-left mb-10 md:mb-0 animate-fade-in-up print:w-full print:text-left print:mb-4">
+        class="no-print relative min-h-[100dvh] flex items-center bg-gradient-hero pt-16 pb-12 overflow-hidden print:pt-0 print:min-h-0">
 
-                <!-- Badge Tecnológico -->
-                <div class="reveal-left inline-block mb-6">
-                    <div
-                        class="px-4 py-1.5 text-xs font-mono font-semibold tracking-wider text-tech-accent uppercase bg-tech-blue/10 rounded-full border border-tech-blue/20 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-tech-cyan animate-pulse"></span>
-                        Disponível para novos desafios
-                    </div>
+        <!-- Foto posicionada no canto direito, fora do fluxo -->
+        <div class="hidden lg:block absolute right-0 top-0 bottom-0 w-[42%] print:hidden" aria-hidden="true">
+            <div class="absolute inset-0 bg-gradient-to-r from-tech-black via-transparent to-transparent z-10"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-tech-black to-transparent z-10"></div>
+            <img src="julio.jpg" alt="Júlio César"
+                class="w-full h-full object-cover object-top opacity-30">
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Linha superior: label + foto mobile -->
+            <div class="flex items-center justify-between mb-8">
+                <span class="hero-child block text-[10px] font-mono text-white/40 tracking-[0.4em] uppercase no-print">Product Owner · Pato Branco, PR · 2022–</span>
+                <!-- Foto mobile -->
+                <div class="hero-photo-float lg:hidden w-16 h-16 rounded-full overflow-hidden border border-white/10 shrink-0 no-print">
+                    <img src="julio.jpg" alt="Júlio César" class="w-full h-full object-cover">
                 </div>
+            </div>
 
-                <div
-                    class="mb-12 min-h-[140px] sm:min-h-[180px] md:min-h-[240px] flex flex-col justify-center text-center md:text-left">
-                    <span
-                        class="block uppercase tracking-widest text-xs sm:text-sm mb-4 font-mono text-tech-accent no-print">Olá,
-                        eu me chamo</span>
-                    <h1
-                        class="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-4 text-white opacity-90">
-                        Júlio César
-                    </h1>
-                    <div
-                        class="h-[1.2em] flex items-center justify-center md:justify-start text-2xl sm:text-4xl md:text-5xl font-bold">
-                        <span id="typing-text" class="text-gradient whitespace-nowrap"></span><span
-                            class="text-tech-cyan animate-pulse">|</span>
-                    </div>
+            <!-- Nome principal — tipografia editorial agressiva -->
+            <div class="hero-child mb-6">
+                <h1 class="font-black tracking-tighter leading-[0.88] text-white uppercase"
+                    style="font-size: clamp(3.5rem, 12vw, 9rem);">
+                    Júlio<br>César
+                </h1>
+            </div>
+
+            <!-- Linha divisória com typing effect -->
+            <div class="hero-child flex items-center gap-4 mb-8 no-print">
+                <div class="h-px bg-white/10 flex-1 max-w-[60px]"></div>
+                <div class="flex items-center text-lg sm:text-xl md:text-2xl font-light text-white/70">
+                    <span id="typing-text" class="whitespace-nowrap"></span><span class="text-tech-cyan animate-pulse ml-0.5">|</span>
                 </div>
+            </div>
 
-
-                <p
-                    class="text-xl text-tech-muted mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed print:text-black print:text-base print:mb-4">
-                    Transformo necessidades complexas em soluções digitais eficientes. Com histórico de promoções
-                    consecutivas, atuo na gestão de produtos e qualidade de software.
+            <!-- Tagline + parágrafo + CTAs -->
+            <div class="hero-child max-w-2xl">
+                <p class="text-base text-white/50 leading-relaxed mb-8 max-w-md print:text-black print:text-base">
+                    Sou Product Owner com background em QA. Uso IA e LowCode para entregar mais rápido — sem substituir devs, mas trabalhando melhor com eles.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start no-print">
-                    <a href="#experiencia"
-                        class="px-8 py-3 rounded-lg bg-white text-tech-black font-bold hover:bg-gray-200 transition-all hover:scale-105 flex items-center justify-center gap-2">
-                        Ver Experiência <i class="fas fa-arrow-right"></i>
+                <div class="flex items-center gap-5 no-print">
+                    <a href="#projetos"
+                        class="px-6 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-white/90 transition-colors">
+                        Ver Projetos
                     </a>
-                    <!-- Botão de Imprimir -->
-                    <button onclick="window.print()"
-                        class="px-8 py-3 rounded-lg border border-gray-700 hover:border-tech-blue hover:text-tech-blue transition-all hover:scale-105 flex items-center justify-center gap-2 text-white">
-                        <i class="fas fa-print"></i> Imprimir / PDF
-                    </button>
+                    <a href="#sobre"
+                        class="text-sm text-white/40 hover:text-white transition-colors flex items-center gap-1.5">
+                        Sobre mim <span aria-hidden="true">↓</span>
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <!-- Coluna da Imagem Desktop -->
-            <div class="hidden md:flex md:w-1/2 justify-center relative animate-fade-in-up delay-200 print:hidden">
-                <div
-                    class="absolute w-72 h-72 md:w-96 md:h-96 bg-tech-blue rounded-full filter blur-[100px] opacity-20 animate-pulse-slow">
-                </div>
-                <div
-                    class="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-tr from-tech-blue to-tech-cyan shadow-2xl hover:scale-105 transition-transform duration-500">
-                    <div class="w-full h-full rounded-full bg-tech-black overflow-hidden relative">
-                        <img src="julio.jpg" alt="Júlio César"
-                            class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Imagem específica para Impressão -->
-            <div class="hidden print:block print:absolute print:top-0 print:right-0">
-                <img src="julio.jpg" alt="Júlio César"
-                    class="w-32 h-32 rounded-full border border-gray-300 object-cover">
-            </div>
+        <!-- Imagem específica para Impressão -->
+        <div class="hidden print:block print:absolute print:top-0 print:right-0">
+            <img src="julio.jpg" alt="Júlio César"
+                class="w-32 h-32 rounded-full border border-gray-300 object-cover">
         </div>
     </section>
 
-    <section id="sobre" class="py-20 bg-tech-dark print:bg-white print:py-4">
+    <section id="sobre" class="py-24 bg-tech-dark print:bg-white print:py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Números de impacto — linha editorial -->
+            <div class="reveal flex flex-wrap gap-12 mb-16 pb-16 border-b border-white/[0.06] no-print">
+                <div>
+                    <div class="text-6xl font-black text-white leading-none">3+</div>
+                    <div class="text-xs text-white/40 uppercase tracking-widest mt-2">Anos como Product Owner</div>
+                </div>
+                <div>
+                    <div class="text-6xl font-black text-white leading-none">2</div>
+                    <div class="text-xs text-white/40 uppercase tracking-widest mt-2">Plataformas entregues</div>
+                </div>
+                <div>
+                    <div class="text-6xl font-black text-white leading-none">∞</div>
+                    <div class="text-xs text-white/40 uppercase tracking-widest mt-2">Bugs investigados</div>
+                </div>
+                <div>
+                    <div class="text-6xl font-black text-white leading-none">1</div>
+                    <div class="text-xs text-white/40 uppercase tracking-widest mt-2">App no ar (Financial Kali)</div>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 print:block">
                 <div class="reveal print:mb-6">
-                    <h2
-                        class="text-3xl font-bold mb-6 border-l-4 border-tech-blue pl-4 print:border-black print:text-2xl print:mb-2">
-                        Sobre Mim</h2>
-                    <p class="text-tech-muted mb-4 leading-relaxed print:text-black">
+                    <p class="text-xs font-mono text-tech-cyan/60 tracking-[0.3em] uppercase mb-2 print:hidden">Sobre</p>
+                    <h2 class="text-3xl font-bold mb-6 print:text-2xl print:mb-2 tracking-tight">Quem sou eu</h2>
+                    <p class="text-white/65 mb-4 leading-relaxed print:text-black">
                         Sou um profissional movido pela curiosidade prática e pela rápida adaptação a novos cenários.
                         Minha trajetória é marcada pelo autodidatismo e pela facilidade em aprender ferramentas do zero
                         para resolver problemas reais. Tenho forte atuação na investigação de bugs, criação de ambientes
                         de teste e desenvolvimento de melhorias utilizando plataformas low-code.
                     </p>
-                    <p class="text-tech-muted mb-6 print:text-black">
+                    <p class="text-white/65 mb-6 print:text-black">
                         Acredito que a tecnologia deve facilitar processos e, por isso, combino meu perfil analítico com
                         uma excelente comunicação para atuar como um elo entre as necessidades do dia a dia e as
-                        soluções técnicas. Atuo como facilitador e <span class="text-tech-blue font-semibold">referência
+                        soluções técnicas. Atuo como facilitador e <span class="text-white font-medium">referência
                             técnica</span> para a equipe, garantindo a integridade do sistema através de práticas
                         rigorosas de teste e gestão de riscos.
                     </p>
 
-                    <div class="flex gap-4 text-tech-muted text-sm no-print">
+                    <div class="flex gap-4 text-white/30 text-sm no-print">
                         <button type="button" id="location-trigger-btn"
-                            class="flex items-center gap-2 hover:text-tech-cyan transition-colors text-left cursor-pointer bg-transparent border-0 p-0 text-inherit text-sm">
-                            <i class="fas fa-map-marker-alt text-tech-blue" aria-hidden="true"></i>
+                            class="flex items-center gap-2 hover:text-white/60 transition-colors text-left cursor-pointer bg-transparent border-0 p-0 text-inherit text-sm">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <span id="location-selected-label" class="text-inherit" aria-live="polite">Pato Branco, PR</span>
                         </button>
-                        <span class="flex items-center gap-2 hover:text-tech-cyan transition-colors"><i
-                                class="fas fa-envelope text-tech-blue"></i> hxt.dll@gmail.com</span>
+                        <span class="flex items-center gap-2 hover:text-white/60 transition-colors">
+                            <i class="fas fa-envelope"></i> hxt.dll@gmail.com
+                        </span>
                     </div>
                 </div>
 
                 <div class="reveal delay-200 print:mb-6">
-                    <h2
-                        class="text-3xl font-bold mb-6 border-l-4 border-tech-cyan pl-4 print:border-black print:text-2xl print:mb-2">
-                        Expertise Técnica</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 print:grid-cols-2">
-                        <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
-                            <div class="flex items-center gap-4 mb-3">
-                                <div
-                                    class="w-10 h-10 rounded-lg bg-tech-blue/10 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors no-print">
-                                    <i class="fas fa-layer-group text-xl text-tech-blue"></i>
-                                </div>
-                                <h3 class="font-bold text-white print:text-black print:text-sm">Desenvolvimento Low-Code
-                                </h3>
+                    <p class="text-xs font-mono text-tech-cyan/60 tracking-[0.3em] uppercase mb-2 print:hidden">Expertise</p>
+                    <h2 class="text-3xl font-bold mb-6 print:text-2xl print:mb-2 tracking-tight">O que faço bem</h2>
+                    <div class="space-y-0 print:grid print:grid-cols-2 print:gap-2">
+                        <div class="expertise-item py-4 border-b border-white/[0.08] group cursor-default print:border print:border-gray-200 print:p-2 print:rounded">
+                            <div class="flex items-center justify-between">
+                                <span class="font-medium text-white text-sm print:text-black">Desenvolvimento Low-Code</span>
+                                <span class="expertise-arrow text-xs no-print">→</span>
                             </div>
-                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Criação de soluções,
-                                automações e melhorias de sistemas com foco em eficiência operacional.</p>
+                            <p class="text-xs text-white/55 mt-1 print:text-black">Criação de soluções, automações e melhorias de sistemas.</p>
                         </div>
-
-                        <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
-                            <div class="flex items-center gap-4 mb-3">
-                                <div
-                                    class="w-10 h-10 rounded-lg bg-tech-cyan/10 flex items-center justify-center group-hover:bg-tech-cyan/20 transition-colors no-print">
-                                    <i class="fas fa-check-double text-xl text-tech-cyan"></i>
-                                </div>
-                                <h3 class="font-bold text-white print:text-black print:text-sm">Quality Assurance (QA)
-                                </h3>
+                        <div class="expertise-item py-4 border-b border-white/[0.08] group cursor-default print:border print:border-gray-200 print:p-2 print:rounded">
+                            <div class="flex items-center justify-between">
+                                <span class="font-medium text-white text-sm print:text-black">Quality Assurance (QA)</span>
+                                <span class="expertise-arrow text-xs no-print">→</span>
                             </div>
-                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Cenários de teste,
-                                homologação de bugs e validação em ambientes sandbox/bancos de teste.</p>
+                            <p class="text-xs text-white/55 mt-1 print:text-black">Cenários de teste, homologação de bugs e validação em ambientes sandbox.</p>
                         </div>
-
-                        <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
-                            <div class="flex items-center gap-4 mb-3">
-                                <div
-                                    class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition-colors no-print">
-                                    <i class="fas fa-tools text-xl text-purple-400"></i>
-                                </div>
-                                <h3 class="font-bold text-white print:text-black print:text-sm">Troubleshooting</h3>
+                        <div class="expertise-item py-4 border-b border-white/[0.08] group cursor-default print:border print:border-gray-200 print:p-2 print:rounded">
+                            <div class="flex items-center justify-between">
+                                <span class="font-medium text-white text-sm print:text-black">Troubleshooting</span>
+                                <span class="expertise-arrow text-xs no-print">→</span>
                             </div>
-                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Diagnóstico e correção
-                                autônoma de bugs complexos e configurações críticas de sistema.</p>
+                            <p class="text-xs text-white/55 mt-1 print:text-black">Diagnóstico e correção autônoma de bugs complexos e configurações críticas.</p>
                         </div>
-
-                        <div
-                            class="glass interactive-card p-6 rounded-2xl flex flex-col group print:border print:border-gray-200 print:p-2">
-                            <div class="flex items-center gap-4 mb-3">
-                                <div
-                                    class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors no-print">
-                                    <i class="fas fa-project-diagram text-xl text-green-400"></i>
-                                </div>
-                                <h3 class="font-bold text-white print:text-black print:text-sm">Análise de Viabilidade
-                                </h3>
+                        <div class="expertise-item py-4 group cursor-default print:border print:border-gray-200 print:p-2 print:rounded">
+                            <div class="flex items-center justify-between">
+                                <span class="font-medium text-white text-sm print:text-black">Análise de Viabilidade</span>
+                                <span class="expertise-arrow text-xs no-print">→</span>
                             </div>
-                            <p class="text-xs text-tech-muted leading-relaxed print:text-black">Mapeamento de processos
-                                e avaliação lógica/logística antes da execução de projetos.</p>
+                            <p class="text-xs text-white/55 mt-1 print:text-black">Mapeamento de processos e avaliação lógica/logística antes da execução.</p>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- DIFERENCIAIS COMPORTAMENTAIS (Soft Skills) -->
-            <div class="mt-16 reveal delay-300">
-                <div class="glass p-8 rounded-3xl border border-tech-blue/20">
-                    <h3 class="text-xl font-bold mb-6 text-tech-accent flex items-center gap-3">
-                        <i class="fas fa-brain text-tech-blue"></i> Diferenciais Comportamentais
-                    </h3>
-                    <div class="flex flex-wrap gap-4">
-                        <div
-                            class="px-4 py-2 rounded-xl bg-tech-blue/5 border border-tech-blue/10 flex items-center gap-3 group hover:border-tech-blue/30 transition-all">
-                            <span class="w-2 h-2 rounded-full bg-tech-blue"></span>
-                            <span
-                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Pensamento
-                                Analítico e Investigativo</span>
-                        </div>
-                        <div
-                            class="px-4 py-2 rounded-xl bg-tech-cyan/5 border border-tech-cyan/10 flex items-center gap-3 group hover:border-tech-cyan/30 transition-all">
-                            <span class="w-2 h-2 rounded-full bg-tech-cyan"></span>
-                            <span
-                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Hiperfoco
-                                e Autodidatismo</span>
-                        </div>
-                        <div
-                            class="px-4 py-2 rounded-xl bg-purple-500/5 border border-purple-500/10 flex items-center gap-3 group hover:border-purple-500/30 transition-all">
-                            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-                            <span
-                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Mentoria
-                                e Facilitação Técnica</span>
-                        </div>
-                        <div
-                            class="px-4 py-2 rounded-xl bg-green-500/5 border border-green-500/10 flex items-center gap-3 group hover:border-green-500/30 transition-all">
-                            <span class="w-2 h-2 rounded-full bg-green-400"></span>
-                            <span
-                                class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">Gestão
-                                de Risco e Integridade</span>
+                    <!-- Soft Skills inline -->
+                    <div class="mt-8 reveal delay-300">
+                        <p class="text-[10px] font-mono text-white/40 tracking-[0.3em] uppercase mb-3 print:hidden">Soft Skills</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-white/70 px-3 py-1.5 border border-white/[0.15] rounded-full hover:border-white/40 hover:text-white transition-all cursor-default print:bg-gray-100 print:border-gray-300 print:text-black">Pensamento Analítico</span>
+                            <span class="text-xs text-white/70 px-3 py-1.5 border border-white/[0.15] rounded-full hover:border-white/40 hover:text-white transition-all cursor-default print:bg-gray-100 print:border-gray-300 print:text-black">Hiperfoco</span>
+                            <span class="text-xs text-white/70 px-3 py-1.5 border border-white/[0.15] rounded-full hover:border-white/40 hover:text-white transition-all cursor-default print:bg-gray-100 print:border-gray-300 print:text-black">Mentoria Técnica</span>
+                            <span class="text-xs text-white/70 px-3 py-1.5 border border-white/[0.15] rounded-full hover:border-white/40 hover:text-white transition-all cursor-default print:bg-gray-100 print:border-gray-300 print:text-black">Gestão de Risco</span>
                         </div>
                     </div>
                 </div>
@@ -387,314 +309,441 @@
         </div>
     </section>
 
-    <section id="experiencia" class="py-20 print:py-4">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal print:mb-6 print:text-left">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 print:text-2xl">Minha Jornada Profissional</h2>
-                <p class="text-tech-muted print:hidden">Uma evolução constante de funções operacionais para liderança
-                    técnica.</p>
-            </div>
-
-            <div
-                class="relative border-l border-gray-700 ml-4 md:ml-0 md:pl-0 space-y-12 print:space-y-6 print:border-l-2 print:border-gray-300">
-
-                <div class="relative pl-8 md:pl-0 reveal delay-100">
-                    <div
-                        class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-tech-blue rounded-full z-10 experience-dot print:bg-black print:border-none">
-                    </div>
-
-                    <div class="md:flex items-start justify-between group print:block">
-                        <div class="md:w-1/3 mb-2 md:mb-0 md:text-right md:pr-8 print:text-left print:mb-1">
-                            <h3 class="text-tech-blue font-bold text-lg print:text-black">Bitz Softwares</h3>
-                            <span class="text-sm text-gray-400 print:text-gray-600">Nov 2022 - Atualmente</span>
-                            <div class="mt-2 text-xs text-gray-500 uppercase tracking-wide print:hidden">Pato Branco, PR
-                            </div>
-                        </div>
-                        <div
-                            class="md:w-2/3 glass interactive-card p-8 rounded-2xl print:p-0 print:border-none print:bg-transparent">
-                            <h4 class="text-2xl font-bold text-white mb-2 print:text-black print:text-lg">Product Owner
-                            </h4>
-                            <p class="text-tech-accent text-sm mb-4 font-mono font-medium print:text-black">
-                                <em>Promoção interna: Suporte > QA > Product Owner</em>
-                            </p>
-                            <ul
-                                class="list-disc list-inside text-gray-300 space-y-3 text-sm print:text-black leading-relaxed">
-                                <li>Gestão estratégica do backlog e priorização de features com foco em <span
-                                        class="text-tech-blue">viabilidade lógica</span>.</li>
-                                <li>Ponte direta entre stakeholders e time de desenvolvimento, mapeando processos
-                                    complexos.</li>
-                                <li>Garantia da qualidade e homologação técnica rigorosa em ambientes sandbox.</li>
-                                <li>Análise avançada de dados SQL para suporte à tomada de decisão.</li>
-                                <li><strong class="text-white">Implementação de melhorias via Low-Code e automações
-                                        focadas na integridade do sistema.</strong></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative pl-8 md:pl-0 reveal delay-200 experience-item">
-                    <div
-                        class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-gray-600 rounded-full z-10 experience-dot print:bg-gray-400">
-                    </div>
-                    <div class="md:flex items-start justify-between group print:block">
-                        <div class="md:w-1/3 mb-2 md:mb-0 md:text-right md:pr-8 print:text-left print:mb-1">
-                            <h3 class="text-white font-bold text-lg print:text-black">Faculdade Unise</h3>
-                            <span class="text-sm text-gray-400 print:text-gray-600">Fev 2022 - Nov 2022</span>
-                        </div>
-                        <div
-                            class="md:w-2/3 glass p-6 rounded-xl border border-transparent hover:border-gray-600 transition-colors print:p-0 print:border-none print:bg-transparent">
-                            <h4 class="text-xl font-bold text-white mb-2 print:text-black print:text-lg">Técnico em TI &
-                                Suporte</h4>
-                            <p class="text-gray-300 text-sm mb-2 print:text-black">
-                                Atuação híbrida como Técnico em Manutenção, Suporte Administrativo e Coordenação EAD.
-                            </p>
-                            <p class="text-gray-400 text-sm print:text-black">
-                                Gestão de sistemas acadêmicos (SWA JACAD) e plataforma Brightspace (D2L). Suporte
-                                presencial e remoto a usuários.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative pl-8 md:pl-0 reveal delay-300 experience-item">
-                    <div
-                        class="absolute -left-[6px] top-1 w-4 h-4 bg-tech-black border-2 border-gray-600 rounded-full z-10 experience-dot print:bg-gray-400">
-                    </div>
-                    <div class="md:flex items-start justify-between group print:block">
-                        <div class="md:w-1/3 mb-2 md:mb-0 md:text-right md:pr-8 print:text-left print:mb-1">
-                            <h3 class="text-white font-bold text-lg print:text-black">Supermercado Condor</h3>
-                            <span class="text-sm text-gray-400 print:text-gray-600">Mar 2020 - Ago 2021</span>
-                        </div>
-                        <div
-                            class="md:w-2/3 glass p-6 rounded-xl border border-transparent hover:border-gray-600 transition-colors print:p-0 print:border-none print:bg-transparent">
-                            <h4 class="text-xl font-bold text-white mb-2 print:text-black print:text-lg">Líder de
-                                Delivery</h4>
-                            <p class="text-gray-300 text-sm print:text-black">
-                                Liderança de equipe, operação de frente de caixa e participação ativa na CIPA.
-                                Desenvolvimento de soft skills de liderança e comunicação.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative pl-8 md:pl-0 reveal">
-                    <div class="absolute -left-[5px] top-0 w-3 h-3 bg-gray-800 rounded-full print:bg-gray-400"></div>
-                    <div class="md:flex items-start justify-between print:block">
-                        <div class="md:w-1/3 mb-2 md:mb-0 md:text-right md:pr-8 print:text-left print:mb-1">
-                            <h3 class="text-gray-400 font-bold text-lg print:text-gray-600">Experiências Anteriores</h3>
-                            <span class="text-sm text-gray-500 print:text-gray-500">2013 - 2021</span>
-                        </div>
-                        <div class="md:w-2/3 p-4 border-l border-gray-800 print:border-none print:p-0">
-                            <ul class="text-sm text-gray-500 space-y-1 print:text-black">
-                                <li>• <strong>Verzani e Sandrini:</strong> Agente de Conservação (Curitiba, PR).</li>
-                                <li>• <strong>Pousada Tambaú:</strong> Recepcionista (São Luís, MA).</li>
-                                <li>• <strong>Super União:</strong> Jovem Aprendiz Administrativo (Palmas, PR).</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-tech-dark print:py-4 print:bg-white">
+    <!-- SEÇÃO: COMO TRABALHO -->
+    <section id="como-trabalho" class="py-24 print:hidden" style="background:#050505;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold mb-10 text-center reveal print:text-left print:text-2xl print:mb-4">Formação
-                Acadêmica</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 print:grid-cols-2">
-                <!-- Wrapper Reveal separado do Card Interno para não travar o hover -->
-                <div class="reveal delay-100">
-                    <div
-                        class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div
-                            class="text-tech-cyan text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
-                            <i class="fas fa-laptop-code"></i></div>
-                        <h3 class="font-bold text-xl mb-2 print:text-black">Técnico em Informática</h3>
-                        <p class="text-tech-muted text-base print:text-black">SENAI/PR</p>
-                        <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">1.200 horas | 2021</p>
-                    </div>
+            <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16 pb-8 border-b border-white/[0.08]">
+                <div>
+                    <p class="text-[10px] font-mono text-tech-cyan/60 tracking-[0.4em] uppercase mb-3">Processo</p>
+                    <h2 class="text-4xl md:text-6xl font-black tracking-tighter text-white leading-none">Como<br>trabalho</h2>
                 </div>
+                <p class="text-sm text-white/50 max-w-xs md:text-right">Do problema ao produto — como eu penso e executo.</p>
+            </div>
 
-                <div class="reveal delay-200">
-                    <div
-                        class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div
-                            class="text-tech-blue text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
-                            <i class="fas fa-user-tie"></i></div>
-                        <h3 class="font-bold text-xl mb-2 print:text-black">Auxiliar Administrativo</h3>
-                        <p class="text-tech-muted text-base print:text-black">SENAC/PR</p>
-                        <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">576 horas | 2018</p>
-                    </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
+                <div class="reveal delay-100 p-8 group hover:bg-white/[0.03] transition-colors">
+                    <div class="text-[4.5rem] font-black leading-none mb-5 select-none" style="color:rgba(255,255,255,0.35)">01</div>
+                    <h3 class="font-bold text-white text-base mb-3">Entender o Problema</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Mergulho no contexto real antes de qualquer prompt ou ferramenta.</p>
                 </div>
-
-                <div class="reveal delay-300">
-                    <div
-                        class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div
-                            class="text-green-500 text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
-                            <i class="fas fa-code"></i></div>
-                        <h3 class="font-bold text-xl mb-2 print:text-black">Desenvolvimento</h3>
-                        <p class="text-tech-muted text-base print:text-black">Udemy (Online)</p>
-                        <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">Java (Android) e Python</p>
-                    </div>
+                <div class="reveal delay-200 p-8 group hover:bg-white/[0.03] transition-colors">
+                    <div class="text-[4.5rem] font-black leading-none mb-5 select-none" style="color:rgba(255,255,255,0.35)">02</div>
+                    <h3 class="font-bold text-white text-base mb-3">Prototipar com IA</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Uso IA para validar ideias, gerar estruturas e acelerar decisões.</p>
                 </div>
-
-                <div class="reveal delay-100">
-                    <div
-                        class="h-full glass interactive-card p-8 rounded-2xl group print:bg-white print:border-gray-300 print:shadow-none">
-                        <div
-                            class="text-purple-500 text-5xl mb-6 group-hover:scale-110 transition-transform print:hidden">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="font-bold text-xl mb-2 print:text-black">Ensino Médio</h3>
-                        <p class="text-tech-muted text-base print:text-black">SESI/PR</p>
-                        <p class="text-sm font-mono text-tech-blue mt-4 print:text-gray-600">Concluído</p>
-                    </div>
+                <div class="reveal delay-300 p-8 group hover:bg-white/[0.03] transition-colors">
+                    <div class="text-[4.5rem] font-black leading-none mb-5 select-none" style="color:rgba(255,255,255,0.35)">03</div>
+                    <h3 class="font-bold text-white text-base mb-3">Construir com LowCode</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Ferramentas LowCode transformam protótipos em produtos funcionais.</p>
+                </div>
+                <div class="reveal delay-400 p-8 group hover:bg-white/[0.03] transition-colors">
+                    <div class="text-[4.5rem] font-black leading-none mb-5 select-none" style="color:rgba(255,255,255,0.35)">04</div>
+                    <h3 class="font-bold text-white text-base mb-3">Entregar e Iterar</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Ciclos curtos, feedback real e melhoria contínua.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Ocultando Projetos na impressão para economizar espaço e foco em CV, ou pode manter simplificado se preferir -->
-    <section id="projetos" class="py-20 print:block print:py-4">
+    <section id="experiencia" class="py-24 print:py-0 print:mt-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center reveal">Trabalhos & Projetos</h2>
+            <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16 pb-8 border-b border-white/[0.05] print:mb-6 print:border-gray-200">
+                <div>
+                    <p class="text-[10px] font-mono text-tech-cyan/60 tracking-[0.4em] uppercase mb-3 print:hidden">Jornada</p>
+                    <h2 class="text-4xl md:text-6xl font-black tracking-tighter text-white leading-none print:text-2xl print:font-bold">Experiência<br class="hidden md:block"> Profissional</h2>
+                </div>
+                <p class="text-sm text-white/50 max-w-xs print:hidden">Uma evolução constante — de suporte a liderança de produto.</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Wrapper Reveal separado do Card Interno -->
-                <div class="reveal delay-100">
-                    <div class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
-                        <div
-                            class="h-48 bg-tech-black/40 flex items-center justify-center relative overflow-hidden shrink-0 no-print">
-                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
-                            </div>
-                            <i
-                                class="fas fa-mobile-alt text-6xl text-tech-blue/30 group-hover:text-tech-blue transition-colors z-0 transform group-hover:scale-110 duration-700"></i>
+            <div class="divide-y divide-white/[0.04] print:space-y-6 print:divide-none">
+
+                <div class="reveal delay-100 py-10 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-4 group">
+                    <div class="mb-4 md:mb-0 print:mb-1">
+                        <h3 class="text-white font-semibold text-base print:text-black">Bitz Softwares</h3>
+                        <span class="text-xs text-white/50 print:text-gray-600 block mt-1">Nov 2022 – Atualmente</span>
+                        <span class="text-xs text-white/30 uppercase tracking-widest print:hidden block mt-1">Pato Branco, PR</span>
+                    </div>
+                    <div class="print:p-0">
+                        <div class="flex items-start justify-between mb-3">
+                            <h4 class="text-xl font-bold text-white print:text-black print:text-lg">Product Owner</h4>
+                            <span class="text-[10px] text-tech-cyan/60 font-mono uppercase tracking-widest hidden md:block print:hidden">Atual</span>
                         </div>
-                        <div class="p-8 relative z-20 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold mb-3 text-white">Unise Digital App</h3>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                                Aplicativo Android desenvolvido para a instituição. Representou um
-                                marco na aplicação de conhecimentos Java e Mobile.
-                            </p>
-                            <div class="flex gap-2 flex-wrap">
-                                <span
-                                    class="px-3 py-1 bg-tech-blue/10 border border-tech-blue/20 text-[10px] font-mono rounded-full text-tech-cyan uppercase">Java</span>
-                                <span
-                                    class="px-3 py-1 bg-tech-blue/10 border border-tech-blue/20 text-[10px] font-mono rounded-full text-tech-cyan uppercase">Android</span>
-                            </div>
-                        </div>
+                        <p class="text-xs text-white/40 mb-4 font-mono print:text-black">
+                            Promoção interna: Suporte → QA → Product Owner
+                        </p>
+                        <ul class="space-y-2 text-sm text-white/65 print:text-black leading-relaxed">
+                            <li class="flex gap-2"><span class="text-white/30 shrink-0">—</span>Gestão estratégica do backlog e priorização de features com foco em viabilidade lógica.</li>
+                            <li class="flex gap-2"><span class="text-white/30 shrink-0">—</span>Ponte direta entre stakeholders e time de desenvolvimento, mapeando processos complexos.</li>
+                            <li class="flex gap-2"><span class="text-white/30 shrink-0">—</span>Garantia da qualidade e homologação técnica rigorosa em ambientes sandbox.</li>
+                            <li class="flex gap-2"><span class="text-white/30 shrink-0">—</span>Análise avançada de dados SQL para suporte à tomada de decisão.</li>
+                            <li class="flex gap-2"><span class="text-white/30 shrink-0">—</span><span class="text-white/80">Implementação de melhorias via Low-Code e automações focadas na integridade do sistema.</span></li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="reveal delay-200">
-                    <div class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
-                        <div
-                            class="h-48 bg-tech-black/40 flex items-center justify-center relative overflow-hidden shrink-0 no-print">
-                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
-                            </div>
-                            <i
-                                class="fas fa-comments text-6xl text-tech-cyan/30 group-hover:text-tech-cyan transition-colors z-0 transform group-hover:scale-110 duration-700"></i>
-                        </div>
-                        <div class="p-8 relative z-20 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold mb-3 text-white">Suporte Online Chat</h3>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                                Implementação de sistemas de chat para atendimento ágil. Foco na redução do tempo de
-                                resposta e melhoria da UX do cliente.
-                            </p>
-                            <div class="flex gap-2 flex-wrap">
-                                <span
-                                    class="px-3 py-1 bg-tech-cyan/10 border border-tech-cyan/20 text-[10px] font-mono rounded-full text-tech-accent uppercase">UX
-                                    Design</span>
-                                <span
-                                    class="px-3 py-1 bg-tech-cyan/10 border border-tech-cyan/20 text-[10px] font-mono rounded-full text-tech-accent uppercase">CSAT</span>
-                            </div>
-                        </div>
+                <div class="reveal delay-200 py-10 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-4 experience-item group">
+                    <div class="mb-4 md:mb-0 print:mb-1">
+                        <h3 class="text-white/80 font-semibold text-base print:text-black">Faculdade Unise</h3>
+                        <span class="text-xs text-white/50 print:text-gray-600 block mt-1">Fev 2022 – Nov 2022</span>
+                    </div>
+                    <div class="print:p-0">
+                        <h4 class="text-xl font-bold text-white mb-3 print:text-black print:text-lg">Técnico em TI &amp; Suporte</h4>
+                        <p class="text-sm text-white/60 mb-2 print:text-black leading-relaxed">
+                            Atuação híbrida como Técnico em Manutenção, Suporte Administrativo e Coordenação EAD.
+                        </p>
+                        <p class="text-sm text-white/50 print:text-black leading-relaxed">
+                            Gestão de sistemas acadêmicos (SWA JACAD) e plataforma Brightspace (D2L). Suporte presencial e remoto a usuários.
+                        </p>
                     </div>
                 </div>
 
-                <div class="reveal delay-300">
-                    <div class="h-full group relative overflow-hidden rounded-2xl glass interactive-card flex flex-col">
-                        <div
-                            class="h-48 bg-tech-black/40 flex items-center justify-center relative overflow-hidden shrink-0 no-print">
-                            <div class="absolute inset-0 bg-gradient-to-t from-tech-card/80 to-transparent z-10">
-                            </div>
-                            <i
-                                class="fas fa-columns text-6xl text-green-500/30 group-hover:text-green-400 transition-colors z-0 transform group-hover:scale-110 duration-700"></i>
-                        </div>
-                        <div class="p-8 relative z-20 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold mb-3 text-white">Landing Pages</h3>
-                            <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-                                Criação de páginas de aterrissagem focadas em conversão, utilizando as melhores práticas
-                                de SEO e acessibilidade.
-                            </p>
-                            <div class="flex gap-2 flex-wrap">
-                                <span
-                                    class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-[10px] font-mono rounded-full text-green-400 uppercase">Frontend</span>
-                                <span
-                                    class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-[10px] font-mono rounded-full text-green-400 uppercase">SEO</span>
-                            </div>
-                        </div>
+                <div class="reveal delay-300 py-10 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-4 experience-item group">
+                    <div class="mb-4 md:mb-0 print:mb-1">
+                        <h3 class="text-white/80 font-semibold text-base print:text-black">Supermercado Condor</h3>
+                        <span class="text-xs text-white/50 print:text-gray-600 block mt-1">Mar 2020 – Ago 2021</span>
+                    </div>
+                    <div class="print:p-0">
+                        <h4 class="text-xl font-bold text-white mb-3 print:text-black print:text-lg">Líder de Delivery</h4>
+                        <p class="text-sm text-white/60 print:text-black leading-relaxed">
+                            Liderança de equipe, operação de frente de caixa e participação ativa na CIPA. Desenvolvimento de soft skills de liderança e comunicação.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reveal py-10 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-4">
+                    <div class="mb-4 md:mb-0 print:mb-1">
+                        <h3 class="text-white/40 font-semibold text-base print:text-gray-600">Experiências Anteriores</h3>
+                        <span class="text-xs text-white/30 print:text-gray-500 block mt-1">2013 – 2021</span>
+                    </div>
+                    <div class="print:p-0">
+                        <ul class="space-y-1.5 text-sm text-white/50 print:text-black">
+                            <li><span class="text-white/70 font-medium">Verzani e Sandrini</span> — Agente de Conservação, Curitiba, PR</li>
+                            <li><span class="text-white/70 font-medium">Pousada Tambaú</span> — Recepcionista, São Luís, MA</li>
+                            <li><span class="text-white/70 font-medium">Super União</span> — Jovem Aprendiz Administrativo, Palmas, PR</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-tech-dark print:py-0 print:bg-white print:mt-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal mb-12 pb-8 border-b border-white/[0.08] print:mb-6 print:border-gray-200">
+                <p class="text-[10px] font-mono text-tech-cyan/60 tracking-[0.4em] uppercase mb-3 print:hidden">Formação</p>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-white leading-none print:text-2xl print:font-bold">Educação</h2>
+            </div>
+            <div class="divide-y divide-white/[0.06] print:space-y-4 print:divide-none">
+                <div class="reveal delay-100 py-6 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-3 group hover:bg-white/[0.015] transition-colors -mx-4 px-4 rounded-lg">
+                    <div class="mb-2 md:mb-0 print:mb-1">
+                        <span class="text-xs text-white/40 font-mono uppercase tracking-widest print:text-gray-500">SENAI/PR · 2021</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-base print:text-black">Técnico em Informática</h3>
+                        <p class="text-sm text-white/50 mt-1 print:text-gray-600">1.200 horas · Formação técnica em hardware, redes e desenvolvimento.</p>
+                    </div>
+                </div>
+                <div class="reveal delay-200 py-6 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-3 group hover:bg-white/[0.015] transition-colors -mx-4 px-4 rounded-lg">
+                    <div class="mb-2 md:mb-0 print:mb-1">
+                        <span class="text-xs text-white/40 font-mono uppercase tracking-widest print:text-gray-500">SENAC/PR · 2018</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-base print:text-black">Auxiliar Administrativo</h3>
+                        <p class="text-sm text-white/50 mt-1 print:text-gray-600">576 horas · Processos administrativos, atendimento e gestão.</p>
+                    </div>
+                </div>
+                <div class="reveal delay-300 py-6 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-3 group hover:bg-white/[0.015] transition-colors -mx-4 px-4 rounded-lg">
+                    <div class="mb-2 md:mb-0 print:mb-1">
+                        <span class="text-xs text-white/40 font-mono uppercase tracking-widest print:text-gray-500">Udemy · Online</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-base print:text-black">Desenvolvimento</h3>
+                        <p class="text-sm text-white/50 mt-1 print:text-gray-600">Java (Android) e Python — base em lógica de programação e mobile.</p>
+                    </div>
+                </div>
+                <div class="reveal delay-400 py-6 md:grid md:grid-cols-[200px_1fr] md:gap-16 print:block print:py-3 group hover:bg-white/[0.015] transition-colors -mx-4 px-4 rounded-lg">
+                    <div class="mb-2 md:mb-0 print:mb-1">
+                        <span class="text-xs text-white/40 font-mono uppercase tracking-widest print:text-gray-500">SESI/PR</span>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white text-base print:text-black">Ensino Médio</h3>
+                        <p class="text-sm text-white/50 mt-1 print:text-gray-600">Concluído.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="projetos" class="py-24 print:block print:py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal mb-16 pb-8 border-b border-white/[0.05] print:mb-6 print:border-gray-200">
+                <p class="text-[10px] font-mono text-tech-cyan/60 tracking-[0.3em] uppercase mb-2 print:hidden">Projetos</p>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter text-white leading-none">Trabalhos</h2>
+            </div>
+
+            <!-- Financial Kali — layout editorial full-width, com destaque -->
+            <div class="reveal mb-12">
+                <div class="financial-kali-card rounded-xl overflow-hidden border border-tech-cyan/25 print:block" style="background: rgba(0,212,255,0.03);">
+
+                    <!-- Header do projeto: título + meta em linha -->
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 pt-6 pb-4 border-b border-white/[0.07]">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[10px] font-mono text-tech-cyan/70 uppercase tracking-widest">Projeto em destaque</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Financial Kali <span class="text-white/30 font-light text-lg">v3.0.2</span></h3>
+                            <div class="flex items-center gap-3 mt-1">
+                                <span class="text-[10px] text-white/40 font-mono uppercase tracking-widest">Open Source · Web + Android</span>
+                                <span class="w-1 h-1 rounded-full bg-white/20"></span>
+                                <a href="https://github.com/cesarkali/Financial-Pro/releases" target="_blank" rel="noopener noreferrer"
+                                   class="text-[10px] text-[#3DDC84]/70 hover:text-[#3DDC84] transition-colors font-mono uppercase tracking-widest flex items-center gap-1">
+                                    <i class="fab fa-android"></i> APK disponível
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 no-print">
+                            <a href="https://cesarkali.github.io/Financial-Pro/" target="_blank" rel="noopener noreferrer"
+                               class="text-xs text-white/60 hover:text-white transition-colors px-3 py-1.5 border border-white/[0.12] rounded hover:border-white/30">
+                                Web ↗
+                            </a>
+                            <a href="https://github.com/cesarkali/Financial-Pro" target="_blank" rel="noopener noreferrer"
+                               class="text-xs text-white/60 hover:text-white transition-colors px-3 py-1.5 border border-white/[0.12] rounded hover:border-white/30">
+                                GitHub ↗
+                            </a>
+                            <a href="https://github.com/cesarkali/Financial-Pro/releases" target="_blank" rel="noopener noreferrer"
+                               class="text-xs text-[#3DDC84]/70 hover:text-[#3DDC84] transition-colors px-3 py-1.5 border border-[#3DDC84]/25 rounded hover:border-[#3DDC84]/50">
+                                APK ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Body: galeria + texto -->
+                    <div class="flex flex-col lg:flex-row">
+
+                        <!-- Gallery Area — ocupa mais espaço, sem padding excessivo -->
+                        <div class="lg:w-[55%] flex flex-col gap-0 no-print">
+                            <div class="relative overflow-hidden bg-black cursor-pointer group aspect-video"
+                                 onclick="openKaliLightbox(event)">
+                                <img id="kali-main-img"
+                                     src="assets/1web.png"
+                                     alt="Financial Kali — Web Dashboard"
+                                     class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 opacity-90 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                                <div class="absolute bottom-3 right-3 text-[10px] text-white/40 font-mono pointer-events-none">clique para ampliar</div>
+                            </div>
+                            <!-- Thumbnails + nav -->
+                            <div class="flex items-center gap-2 px-4 py-3 border-t border-white/[0.05]">
+                                <button id="kali-prev" aria-label="Imagem anterior" onclick="kaliGalleryNav('prev')"
+                                        class="shrink-0 w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors rounded-lg hover:bg-white/[0.06]">
+                                    <i class="fas fa-chevron-left text-xs"></i>
+                                </button>
+                                <div class="flex gap-2 overflow-x-auto flex-1 scrollbar-hide py-1">
+                                    <img class="kali-thumb active shrink-0 w-16 h-11 sm:w-20 sm:h-14 object-cover rounded-md cursor-pointer border border-white/40 opacity-100 transition-all hover:opacity-100" src="assets/1web.png" alt="Web — Dashboard" data-idx="0" onclick="kaliGallerySet(0)">
+                                    <img class="kali-thumb shrink-0 w-16 h-11 sm:w-20 sm:h-14 object-cover rounded-md cursor-pointer border border-transparent opacity-45 hover:opacity-80 transition-all" src="assets/2web.png" alt="Web — Transações" data-idx="1" onclick="kaliGallerySet(1)">
+                                    <img class="kali-thumb shrink-0 w-16 h-11 sm:w-20 sm:h-14 object-cover rounded-md cursor-pointer border border-transparent opacity-45 hover:opacity-80 transition-all" src="assets/3web.png" alt="Web — Relatórios" data-idx="2" onclick="kaliGallerySet(2)">
+                                    <img class="kali-thumb shrink-0 w-16 h-11 sm:w-20 sm:h-14 object-contain bg-black/40 rounded-md cursor-pointer border border-transparent opacity-45 hover:opacity-80 transition-all" src="assets/1app.jpg" alt="Android — Home" data-idx="3" onclick="kaliGallerySet(3)">
+                                    <img class="kali-thumb shrink-0 w-16 h-11 sm:w-20 sm:h-14 object-contain bg-black/40 rounded-md cursor-pointer border border-transparent opacity-45 hover:opacity-80 transition-all" src="assets/2app.jpg" alt="Android — Finn IA" data-idx="4" onclick="kaliGallerySet(4)">
+                                    <img class="kali-thumb shrink-0 w-16 h-11 sm:w-20 sm:h-14 object-contain bg-black/40 rounded-md cursor-pointer border border-transparent opacity-45 hover:opacity-80 transition-all" src="assets/3app.jpg" alt="Android — Contas" data-idx="5" onclick="kaliGallerySet(5)">
+                                </div>
+                                <button id="kali-next" aria-label="Próxima imagem" onclick="kaliGalleryNav('next')"
+                                        class="shrink-0 w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition-colors rounded-lg hover:bg-white/[0.06]">
+                                    <i class="fas fa-chevron-right text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Texto — mais limpo, sem badges coloridos excessivos -->
+                        <div class="lg:w-[45%] flex flex-col gap-5 p-6 border-t lg:border-t-0 lg:border-l border-white/[0.05]">
+                            <p class="text-sm text-white/65 leading-relaxed">
+                                App e sistema open source de gestão financeira pessoal com múltiplas contas, criado por necessidade real. Web app + Android nativo, construído com IA e LowCode do zero.
+                            </p>
+
+                            <div>
+                                <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest mb-2">Features</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">multi-empresa</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">modo stealth</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">Finn IA (voz + visão)</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">dashboards BI</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">Android nativo</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-[10px] font-mono text-white/40 uppercase tracking-widest mb-2">Stack</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">React 19 + Vite</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">React Native + Expo 54</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">Firebase</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">Groq IA</span>
+                                    <span class="text-[10px] text-white/60 px-2 py-0.5 border border-white/[0.12] rounded font-mono">Gemini 1.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Print-only simplified layout -->
+                    <div class="hidden print:block px-6 pb-6">
+                        <p class="text-gray-700 text-sm mb-2">App open source de gestão financeira pessoal — web + Android nativo. Stack: React 19, React Native + Expo SDK 54, Firebase, Groq IA, Gemini 1.5 Flash.</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span>🌐 <a href="https://cesarkali.github.io/Financial-Pro/" class="text-blue-700">cesarkali.github.io/Financial-Pro</a></span>
+                            <span>📦 <a href="https://github.com/cesarkali/Financial-Pro" class="text-blue-700">github.com/cesarkali/Financial-Pro</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outros projetos — lista editorial com hover -->
+            <div class="divide-y divide-white/[0.06] print:space-y-4 print:divide-none">
+                <a href="#" class="reveal delay-100 py-6 md:grid md:grid-cols-[1fr_auto] md:gap-8 items-center group hover:bg-white/[0.02] transition-all -mx-4 px-4 rounded-lg cursor-default block print:py-3">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-semibold text-white text-base group-hover:text-white transition-colors print:text-black">Unise Digital App</h3>
+                                <span class="text-[10px] font-mono text-white/25 uppercase tracking-widest hidden md:block">Android · Java</span>
+                            </div>
+                            <p class="text-sm text-white/50 leading-relaxed print:text-black">Aplicativo Android desenvolvido para a instituição. Marco na aplicação de Java e Mobile.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 md:mt-0 flex-wrap">
+                        <span class="text-[10px] text-white/40 px-2 py-0.5 border border-white/[0.1] rounded font-mono uppercase group-hover:border-white/20 transition-colors print:border-gray-300 print:text-gray-600">Java</span>
+                        <span class="text-[10px] text-white/40 px-2 py-0.5 border border-white/[0.1] rounded font-mono uppercase group-hover:border-white/20 transition-colors print:border-gray-300 print:text-gray-600">Android</span>
+                    </div>
+                </a>
+                <div class="reveal delay-200 py-6 md:grid md:grid-cols-[1fr_auto] md:gap-8 items-center group hover:bg-white/[0.02] transition-all -mx-4 px-4 rounded-lg print:py-3">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-semibold text-white text-base print:text-black">Suporte Online Chat</h3>
+                                <span class="text-[10px] font-mono text-white/25 uppercase tracking-widest hidden md:block">UX · Atendimento</span>
+                            </div>
+                            <p class="text-sm text-white/50 leading-relaxed print:text-black">Implementação de sistemas de chat para atendimento ágil. Foco na redução do tempo de resposta e melhoria da UX.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 md:mt-0 flex-wrap">
+                        <span class="text-[10px] text-white/40 px-2 py-0.5 border border-white/[0.1] rounded font-mono uppercase group-hover:border-white/20 transition-colors print:border-gray-300 print:text-gray-600">UX Design</span>
+                        <span class="text-[10px] text-white/40 px-2 py-0.5 border border-white/[0.1] rounded font-mono uppercase group-hover:border-white/20 transition-colors print:border-gray-300 print:text-gray-600">CSAT</span>
+                    </div>
+                </div>
+                <div class="reveal delay-300 py-6 md:grid md:grid-cols-[1fr_auto] md:gap-8 items-center group hover:bg-white/[0.02] transition-all -mx-4 px-4 rounded-lg print:py-3">
+                    <div class="flex flex-col md:flex-row md:items-center gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-semibold text-white text-base print:text-black">Landing Pages</h3>
+                                <span class="text-[10px] font-mono text-white/25 uppercase tracking-widest hidden md:block">Frontend · SEO</span>
+                            </div>
+                            <p class="text-sm text-white/50 leading-relaxed print:text-black">Criação de páginas de aterrissagem focadas em conversão, utilizando as melhores práticas de SEO e acessibilidade.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 md:mt-0 flex-wrap">
+                        <span class="text-[10px] text-white/40 px-2 py-0.5 border border-white/[0.1] rounded font-mono uppercase group-hover:border-white/20 transition-colors print:border-gray-300 print:text-gray-600">Frontend</span>
+                        <span class="text-[10px] text-white/40 px-2 py-0.5 border border-white/[0.1] rounded font-mono uppercase group-hover:border-white/20 transition-colors print:border-gray-300 print:text-gray-600">SEO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox: Financial Kali -->
+    <div id="kali-lightbox"
+         class="fixed inset-0 z-[120] hidden items-center justify-center no-print"
+         aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualizar imagem do Financial Kali">
+        <!-- Backdrop -->
+        <div id="kali-lightbox-backdrop"
+             class="absolute inset-0 bg-black/92 backdrop-blur-sm"
+             onclick="closeKaliLightbox()"></div>
+        <!-- Content -->
+        <div class="relative z-10 flex flex-col items-center w-full h-full p-4 md:p-8">
+            <!-- Close button top-right -->
+            <button onclick="closeKaliLightbox()"
+                    aria-label="Fechar"
+                    class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-20">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+            <!-- Image container — full height, object-contain -->
+            <div class="flex items-center justify-center w-full h-full gap-4">
+                <!-- Prev -->
+                <button onclick="kaliLightboxNav('prev')"
+                        aria-label="Imagem anterior"
+                        class="shrink-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <!-- Image -->
+                <div class="flex-1 flex items-center justify-center max-h-[85vh]">
+                    <img id="lightbox-img"
+                         src="" alt="Financial Kali"
+                         class="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-lg shadow-2xl">
+                </div>
+                <!-- Next -->
+                <button onclick="kaliLightboxNav('next')"
+                        aria-label="Próxima imagem"
+                        class="shrink-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+            <!-- Counter -->
+            <div id="lightbox-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-white/30 font-mono"></div>
+        </div>
+    </div>
 
     <footer id="contato"
-        class="bg-black py-16 border-t border-gray-900 reveal print:py-4 print:bg-white print:border-none">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center print:text-left relative z-10">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8 no-print text-white">Vamos <span
-                    class="text-gradient">construir</span> algo novo?</h2>
-            <p class="text-tech-muted mb-12 max-w-2xl mx-auto no-print text-lg">
-                Se você busca alguém para gerenciar produtos com <span class="text-white">visão técnica</span> e foco em
-                <span class="text-white">resultados mensuráveis</span>, estou pronto para uma conversa.
-            </p>
+        class="bg-black py-24 border-t border-white/[0.06] reveal print:py-4 print:bg-white print:border-none">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 print:text-left relative z-10">
 
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-16 print:hidden">
-                <a href="mailto:hxt.dll@gmail.com"
-                    class="glass interactive-card flex items-center justify-center gap-4 px-8 py-5 rounded-2xl group">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-tech-blue/10 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors">
-                        <i
-                            class="fas fa-envelope text-tech-blue text-2xl group-hover:rotate-12 transition-transform"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-xs text-tech-muted uppercase font-mono">Direto</div>
-                        <div class="font-bold text-white text-lg">hxt.dll@gmail.com</div>
-                    </div>
-                </a>
-                <a href="https://wa.me/5546999839486" target="_blank"
-                    class="glass interactive-card flex items-center justify-center gap-4 px-8 py-5 rounded-2xl group">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
-                        <i
-                            class="fab fa-whatsapp text-green-500 text-2xl group-hover:rotate-12 transition-transform"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-xs text-tech-muted uppercase font-mono">Rápido</div>
-                        <div class="font-bold text-white text-lg">(46) 99983-9486</div>
-                    </div>
-                </a>
+            <!-- Heading editorial — máximo impacto -->
+            <div class="mb-14 no-print">
+                <p class="text-[10px] font-mono text-tech-cyan/60 tracking-[0.4em] uppercase mb-6">Contato</p>
+                <h2 class="font-black tracking-tighter leading-none mb-8" style="font-size: clamp(3.5rem, 10vw, 7.5rem);">
+                    <span class="text-white block">Vamos</span>
+                    <span class="block" style="color:rgba(255,255,255,0.22)">conversar?</span>
+                </h2>
+                <p class="text-base text-white/60 max-w-lg leading-relaxed">
+                    Aberto a conversas sobre produto, processos e como IA pode ajudar times a entregar mais rápido. Sem enrolação.
+                </p>
+            </div>
+
+            <!-- Links de contato — dois grupos: direto + redes -->
+            <div class="no-print mb-12">
+                <p class="text-[10px] font-mono text-white/30 tracking-[0.3em] uppercase mb-4">Fale comigo</p>
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <a href="mailto:hxt.dll@gmail.com"
+                        class="group flex items-center gap-2 px-5 py-3 bg-white text-black font-semibold text-sm rounded-lg hover:bg-white/90 transition-colors">
+                        hxt.dll@gmail.com
+                    </a>
+                    <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-5 py-3 border border-white/[0.2] rounded-lg hover:border-white/40 hover:bg-white/[0.04] transition-all">
+                        <span class="text-sm text-white/80 group-hover:text-white transition-colors">(46) 99983-9486</span>
+                    </a>
+                </div>
+                <p class="text-[10px] font-mono text-white/30 tracking-[0.3em] uppercase mb-4">Redes</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://www.linkedin.com/in/hxtdll/" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-2.5 border border-white/[0.15] rounded-lg hover:border-white/30 hover:bg-white/[0.03] transition-all">
+                        <i class="fab fa-linkedin text-white/50 group-hover:text-white transition-colors text-sm"></i>
+                        <span class="text-sm text-white/60 group-hover:text-white transition-colors">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/cesarkali/" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-2.5 border border-white/[0.15] rounded-lg hover:border-white/30 hover:bg-white/[0.03] transition-all">
+                        <i class="fab fa-github text-white/50 group-hover:text-white transition-colors text-sm"></i>
+                        <span class="text-sm text-white/60 group-hover:text-white transition-colors">GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/cesar.kali/" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-2 px-4 py-2.5 border border-white/[0.15] rounded-lg hover:border-white/30 hover:bg-white/[0.03] transition-all">
+                        <i class="fab fa-instagram text-white/50 group-hover:text-white transition-colors text-sm"></i>
+                        <span class="text-sm text-white/60 group-hover:text-white transition-colors">Instagram</span>
+                    </a>
+                </div>
             </div>
 
             <!-- Footer simplificado para impressão -->
-            <div class="hidden print:block print:text-sm print:text-black border-t pt-4">
-                <p><strong>Contato:</strong> hxt.dll@gmail.com | (46) 99983-9486 | LinkedIn: /in/hxtdll</p>
+            <div class="hidden print:block print:text-sm print:text-black border-t border-gray-200 pt-4 mb-4">
+                <p><strong>Contato:</strong> hxt.dll@gmail.com | (46) 99983-9486 | LinkedIn: linkedin.com/in/hxtdll | GitHub: github.com/cesarkali</p>
             </div>
 
-            <div class="flex justify-center space-x-6 text-2xl text-gray-500 no-print">
-                <a href="https://www.linkedin.com/in/hxtdll/" target="_blank"
-                    class="hover:text-tech-blue transition-all hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/cesarkali/" target="_blank"
-                    class="hover:text-white transition-all hover:scale-110"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/cesar.kali/" target="_blank"
-                    class="hover:text-pink-500 transition-all hover:scale-110"><i class="fab fa-instagram"></i></a>
-            </div>
-
-            <div class="mt-12 text-sm text-gray-600 no-print">
-                &copy; 2026 Júlio César Camargo Caliberda. Todos os direitos reservados.
+            <div class="flex items-center justify-between no-print border-t border-white/[0.05] pt-6">
+                <span class="text-xs text-white/25 font-mono">© 2026 Júlio César Camargo Caliberda</span>
+                <span class="text-xs text-white/25 font-mono">Pato Branco, PR</span>
             </div>
         </div>
     </footer>
@@ -764,25 +813,22 @@
 
 
     <!-- Botões Flutuantes (WhatsApp e PDF) -->
-    <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-[9999] no-print">
-        <a href="https://wa.me/5546999839486" target="_blank"
-            class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform group relative"
-            title="Chamar no WhatsApp">
-            <i class="fab fa-whatsapp text-2xl"></i>
-            <span
-                class="absolute right-16 bg-tech-card px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-800">WhatsApp</span>
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[9999] no-print">
+        <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer"
+            class="w-12 h-12 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_4px_28px_rgba(37,211,102,0.55)] hover:scale-110 transition-all group relative"
+            aria-label="Chamar no WhatsApp">
+            <i class="fab fa-whatsapp text-xl"></i>
+            <span class="absolute right-14 bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">WhatsApp</span>
         </a>
         <button onclick="window.print()"
-            class="w-14 h-14 bg-tech-blue rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform group relative"
-            title="Salvar PDF/Imprimir">
-            <i class="fas fa-file-pdf text-2xl"></i>
-            <span
-                class="absolute right-16 bg-tech-card px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-gray-800">Gerar
-                PDF</span>
+            class="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 hover:scale-110 transition-all group relative"
+            aria-label="Gerar PDF">
+            <i class="fas fa-file-pdf text-lg"></i>
+            <span class="absolute right-14 bg-black/80 backdrop-blur-sm px-2.5 py-1 rounded-lg text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 pointer-events-none">Gerar PDF</span>
         </button>
     </div>
 
-    <script src="./js/script.js"></script>
+    <script src="./js/script.js" type="module"></script>
 </body>
 
 </html>
