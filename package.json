@@ -4,7 +4,13 @@
   "description": "Portfolio property tests",
   "type": "module",
   "scripts": {
-    "test": "node --test tests/property-tests.test.js"
+    "test": "node --test tests/property-tests.test.js",
+    "test:about": "node --test tests/about-section.test.js",
+    "test:skills": "node --test tests/skills-pillar.test.js",
+    "test:hero": "node --test tests/hero-section.test.js",
+    "test:cta": "node --test tests/cta-section.test.js",
+    "test:projects": "node --test tests/projects-section.test.js",
+    "test:all": "node --test tests/*.test.js"
   },
   "devDependencies": {
     "fast-check": "^3.22.0",

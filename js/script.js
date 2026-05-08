@@ -70,7 +70,7 @@ function unlockScroll() {
 
 // EFEITO DE TYPING (DIGITAÇÃO) NO HERO
 const typingElement = document.getElementById('typing-text');
-const texts = ['Product Owner', 'LowCode Builder', '100% IA', 'QA Engineer'];
+const texts = ['Product Manager', 'Product Owner', 'Estrategista de Produtos', 'Tech & IA'];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
