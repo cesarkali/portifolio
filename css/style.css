@@ -3,7 +3,66 @@ body {
     background-color: #030303;
     color: #fdfdfd;
     overflow-x: hidden;
-    cursor: url('../cursorsite.png'), auto;
+    position: relative;
+}
+
+/* PULSING ATMOSPHERIC GLOWS - Profundidade e Sofisticação (eatz.digital style) */
+body::before {
+    content: '';
+    position: fixed;
+    top: -30%;
+    left: -20%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at center, rgba(0, 112, 243, 0.25) 0%, rgba(0, 112, 243, 0.1) 40%, transparent 70%);
+    animation: pulseGlow1 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -30%;
+    right: -20%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(121, 40, 202, 0.15) 40%, transparent 70%);
+    animation: pulseGlow2 25s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+}
+
+@keyframes pulseGlow1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
+    }
+    33% {
+        transform: translate(15%, 10%) scale(1.2);
+        opacity: 0.9;
+    }
+    66% {
+        transform: translate(-10%, 15%) scale(0.9);
+        opacity: 0.6;
+    }
+}
+
+@keyframes pulseGlow2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    33% {
+        transform: translate(-15%, -10%) scale(1.15);
+        opacity: 0.8;
+    }
+    66% {
+        transform: translate(10%, -15%) scale(0.95);
+        opacity: 0.5;
+    }
 }
 
 /* BACKGROUND DINÂMICO PREMIUM */
@@ -15,6 +74,27 @@ body {
         radial-gradient(at 100% 0%, rgba(255, 0, 128, 0.05) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(0, 212, 255, 0.05) 0px, transparent 50%);
     background-attachment: fixed;
+}
+
+/* Ensure all content is above the pulsing glows */
+nav, section, footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* Fixed elements need higher z-index */
+.fixed {
+    z-index: 50;
+}
+
+/* Progress bar on top */
+#progress-bar {
+    z-index: 100;
+}
+
+/* Nav on top of everything except modals */
+nav.fixed {
+    z-index: 50;
 }
 
 .noise-overlay {
@@ -61,18 +141,23 @@ section {
     scroll-margin-top: 80px;
 }
 
-/* SCROLLBAR PERSONALIZADA TECH */
+/* SCROLLBAR PERSONALIZADA TECH - Versão sutil compatível com Lenis */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #030303;
+    background: rgba(3, 3, 3, 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #0070f3, #00d4ff);
+    background: linear-gradient(to bottom, rgba(0, 112, 243, 0.4), rgba(0, 212, 255, 0.4));
     border-radius: 10px;
+    border: 2px solid rgba(3, 3, 3, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, rgba(0, 112, 243, 0.6), rgba(0, 212, 255, 0.6));
 }
 
 nav a.nav-link {
@@ -164,11 +249,12 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     border-color: var(--tech-cyan);
 }
 
-/* ANIMAÇÕES DE REVEAL REFINADAS */
+/* ANIMAÇÕES DE REVEAL REFINADAS - Estilo eatz.digital */
 .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(60px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
 }
 
 .reveal.active {
@@ -176,10 +262,27 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     transform: translateY(0);
 }
 
+/* Delays escalonados para efeito cascata */
+.reveal.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.reveal.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.reveal.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.reveal.delay-400 {
+    transition-delay: 0.4s;
+}
+
 /* Reveal fade-only variant */
 .reveal-fade {
     opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-fade.active {
@@ -188,8 +291,8 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 
 .reveal-left {
     opacity: 0;
-    transform: translateX(-30px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-60px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-left.active {
@@ -197,15 +300,63 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     transform: translateX(0);
 }
 
-/* EFEITOS DE CARD E INTERATIVIDADE */
+/* EFEITOS DE CARD E INTERATIVIDADE - Micro-interações Premium */
 .interactive-card {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .interactive-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(0, 112, 243, 0.4);
-    box-shadow: 0 12px 32px rgba(0, 112, 243, 0.12);
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(0, 112, 243, 0.5);
+    box-shadow: 0 12px 40px rgba(0, 112, 243, 0.2), 0 0 0 1px rgba(0, 212, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Enhanced hover for project and experience cards - eatz.digital style */
+#projetos .divide-y > div,
+#experiencia .divide-y > div {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    will-change: transform, background, box-shadow;
+}
+
+#projetos .divide-y > div:hover,
+#experiencia .divide-y > div:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 20px 60px rgba(0, 112, 243, 0.2), 0 0 0 1px rgba(0, 212, 255, 0.3) !important;
+    border-radius: 16px !important;
+}
+
+/* Gradient border glow effect on hover - more prominent */
+#projetos .divide-y > div::before,
+#experiencia .divide-y > div::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(0, 112, 243, 0.5), rgba(0, 212, 255, 0.5), rgba(121, 40, 202, 0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.6s ease !important;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#projetos .divide-y > div:hover::before,
+#experiencia .divide-y > div:hover::before {
+    opacity: 1 !important;
 }
 
 .experience-dot {
@@ -284,6 +435,13 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         box-shadow: none !important;
     }
 
+    /* Remove pulsing glows and background effects for PDF */
+    body::before,
+    body::after {
+        display: none !important;
+        content: none !important;
+    }
+
     html, body {
         background: white !important;
         background-image: none !important;
@@ -294,6 +452,16 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         overflow: visible !important;
         margin: 0 !important;
         padding: 0 !important;
+    }
+    
+    /* Remove all background effects */
+    .bg-mesh-dynamic {
+        background: white !important;
+        background-image: none !important;
+    }
+    
+    .noise-overlay {
+        display: none !important;
     }
 
     @page {
@@ -410,12 +578,20 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         margin-bottom: 0.6rem !important;
     }
     #experiencia .divide-y > div {
-        display: grid !important;
-        grid-template-columns: 130px 1fr !important;
-        gap: 0.5rem !important;
-        padding: 0.3rem 0 !important;
+        display: block !important;
+        padding: 0.4rem 0 !important;
         border-bottom: 1px solid #eee !important;
         page-break-inside: avoid !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        min-height: 0 !important;
+    }
+    #experiencia .divide-y > div > div {
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        min-height: 0 !important;
     }
     #experiencia ul {
         list-style: none !important;
@@ -430,25 +606,60 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     }
     #experiencia ul li span { display: none !important; }
 
-    /* ── Formação ── */
+    /* ── Formação/Educação ── */
     #experiencia + section {
         margin-bottom: 0.6rem !important;
         padding: 0 !important;
         min-height: 0 !important;
     }
-    #experiencia + section .divide-y > div {
-        display: grid !important;
-        grid-template-columns: 130px 1fr !important;
-        gap: 0.4rem !important;
-        padding: 0.25rem 0 !important;
+    #experiencia + section .grid {
+        display: block !important;
+        gap: 0 !important;
+    }
+    #experiencia + section .grid > div {
+        display: block !important;
+        padding: 0.3rem 0 !important;
         border-bottom: 1px solid #eee !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        min-height: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    #experiencia + section .grid > div > div {
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        min-height: 0 !important;
+    }
+    #experiencia + section .grid > div:last-child {
+        border-bottom: none !important;
+    }
+    #experiencia + section h3 {
+        font-size: 9.5pt !important;
+        margin: 0 0 2px 0 !important;
+    }
+    #experiencia + section p {
+        font-size: 8.5pt !important;
+        margin: 0 !important;
+    }
+    #experiencia + section .flex {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-bottom: 3px !important;
+    }
+    #experiencia + section span {
+        font-size: 8pt !important;
     }
 
     /* ── Projetos ── */
     section#projetos {
-        page-break-before: auto !important;
-        break-before: auto !important;
+        page-break-before: always !important;
+        break-before: page !important;
         margin-top: 0 !important;
+    }
+    section#projetos .reveal {
+        page-break-inside: avoid !important;
     }
     .financial-kali-card {
         border: 1px solid #ddd !important;
@@ -500,12 +711,7 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 }
 
 /* ── Experience rows ────────────────────────────────────────────────────── */
-#experiencia .divide-y > div {
-    transition: background 0.2s ease;
-}
-#experiencia .divide-y > div:hover {
-    background: rgba(255,255,255,0.015);
-}
+/* Transition handled by enhanced hover effects above */
 
 /* ── Lightbox image transition ──────────────────────────────────────────── */
 #lightbox-img {
@@ -577,4 +783,43 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 .expertise-arrow {
     transition: all 0.2s ease;
     color: rgba(255,255,255,0.12);
+}
+
+/* ── Mobile Responsiveness Enhancements ─────────────────────────────────── */
+@media (max-width: 767px) {
+    /* Projetos section - more breathing room */
+    #projetos .divide-y > div {
+        padding: 2rem 1rem !important;
+    }
+    
+    #projetos .max-w-7xl {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    
+    /* Expertise section - better spacing */
+    #sobre .space-y-6 {
+        gap: 2rem;
+    }
+    
+    #sobre .pillar-group {
+        padding: 1rem 0;
+    }
+    
+    /* Typography adjustments for mobile */
+    #sobre p,
+    #projetos p {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+    }
+    
+    /* Card content spacing */
+    .text-sm.leading-relaxed {
+        line-height: 1.65;
+    }
+    
+    /* Ensure cards don't feel cramped */
+    #experiencia .divide-y > div {
+        padding: 2rem 0 !important;
+    }
 }

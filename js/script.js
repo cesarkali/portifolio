@@ -33,13 +33,19 @@ function createGallery(startIdx = 0) {
     };
 }
 
-// Bloqueio de scroll reutilizável (html + body + iOS)
+// Bloqueio de scroll reutilizável (html + body + iOS) - Compatível com Lenis
 let scrollLockCount = 0;
 let savedScrollY = 0;
 
 function lockScroll() {
     if (scrollLockCount === 0) {
         savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+        
+        // Stop Lenis if available
+        if (window.lenis) {
+            window.lenis.stop();
+        }
+        
         document.documentElement.style.overflow = 'hidden';
         document.documentElement.style.overscrollBehavior = 'none';
         document.body.style.overflow = 'hidden';
@@ -62,6 +68,12 @@ function unlockScroll() {
     document.documentElement.style.overscrollBehavior = '';
     document.body.style.overflow = '';
     document.body.style.overscrollBehavior = '';
+    
+    // Restart Lenis if available
+    if (window.lenis) {
+        window.lenis.start();
+    }
+    
     // Use requestAnimationFrame to avoid visual jump
     requestAnimationFrame(() => {
         window.scrollTo({ top: scrollY, behavior: 'instant' });
@@ -105,11 +117,14 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
+        } else {
+            // Remove active class when element leaves viewport (infinite scroll effect)
+            entry.target.classList.remove('active');
         }
     });
 }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -10% 0px'
 });
 
 function openLocationModal() {
@@ -133,13 +148,48 @@ function closeLocationModal() {
 document.addEventListener('DOMContentLoaded', () => {
     if (typingElement) type();
 
-    const reveals = document.querySelectorAll('.reveal, .reveal-left');
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-fade');
     reveals.forEach(el => revealObserver.observe(el));
+
+    // Parallax effect for sections (eatz.digital style)
+    const parallaxSections = document.querySelectorAll('section');
+    
+    const handleParallax = () => {
+        const scrolled = window.scrollY;
+        
+        parallaxSections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top + scrolled;
+            const sectionHeight = rect.height;
+            const windowHeight = window.innerHeight;
+            
+            // Only apply parallax when section is in viewport
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                const progress = (scrolled - sectionTop + windowHeight) / (sectionHeight + windowHeight);
+                const translateY = (progress - 0.5) * 30; // Subtle parallax
+                
+                // Apply subtle transform
+                if (index % 2 === 0) {
+                    section.style.transform = `translateY(${translateY}px)`;
+                } else {
+                    section.style.transform = `translateY(${-translateY}px)`;
+                }
+            }
+        });
+    };
+
+    // Use Lenis scroll event for parallax
+    if (window.lenis) {
+        window.lenis.on('scroll', handleParallax);
+    } else {
+        window.addEventListener('scroll', handleParallax);
+    }
 
     const nav = document.querySelector('nav');
     const progressBar = document.getElementById('progress-bar');
 
-    window.addEventListener('scroll', () => {
+    // Use Lenis scroll event if available, otherwise fallback to window scroll
+    const updateScrollEffects = () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
@@ -150,7 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             nav.classList.remove('nav-scrolled');
         }
-    });
+    };
+
+    // Listen to Lenis scroll if available
+    if (window.lenis) {
+        window.lenis.on('scroll', updateScrollEffects);
+    } else {
+        window.addEventListener('scroll', updateScrollEffects);
+    }
 
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const closeBtn = document.getElementById('close-menu-btn');
@@ -187,8 +244,15 @@ document.addEventListener('DOMContentLoaded', () => {
             closeLuxuryMenu();
 
             requestAnimationFrame(() => {
-                const y = window.scrollY + target.getBoundingClientRect().top - NAV_OFFSET;
-                window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                const y = target.offsetTop - NAV_OFFSET;
+                
+                // Use Lenis scrollTo if available
+                if (window.lenis) {
+                    window.lenis.scrollTo(y, { duration: 1.5 });
+                } else {
+                    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                }
+                
                 history.replaceState(null, '', href);
             });
         });
@@ -207,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
 
-    window.addEventListener('scroll', () => {
+    const updateActiveNav = () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -221,6 +285,77 @@ document.addEventListener('DOMContentLoaded', () => {
             if (link.getAttribute('href').includes(current)) {
                 link.classList.add('text-tech-cyan', 'font-bold');
             }
+        });
+    };
+
+    // Listen to Lenis scroll if available
+    if (window.lenis) {
+        window.lenis.on('scroll', updateActiveNav);
+    } else {
+        window.addEventListener('scroll', updateActiveNav);
+    }
+
+    // Add smooth scroll to desktop nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            const y = target.offsetTop - NAV_OFFSET;
+            
+            // Use Lenis scrollTo if available
+            if (window.lenis) {
+                window.lenis.scrollTo(y, { duration: 1.5 });
+            } else {
+                window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+            }
+            
+            history.replaceState(null, '', href);
+        });
+    });
+
+    // Add smooth scroll to logo link (Júlio César)
+    const logoLink = document.querySelector('nav a[href="#inicio"]');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector('#inicio');
+            if (!target) return;
+
+            // Scroll to top (hero section)
+            if (window.lenis) {
+                window.lenis.scrollTo(0, { duration: 1.5 });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            history.replaceState(null, '', '#inicio');
+        });
+    }
+
+    // Add smooth scroll to Hero CTA buttons
+    const heroCtaButtons = document.querySelectorAll('.hero-cta-btn');
+    heroCtaButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const href = btn.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            const y = target.offsetTop - NAV_OFFSET;
+            
+            // Use Lenis scrollTo if available
+            if (window.lenis) {
+                window.lenis.scrollTo(y, { duration: 1.5, easing: (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t });
+            } else {
+                window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+            }
+            
+            history.replaceState(null, '', href);
         });
     });
 
