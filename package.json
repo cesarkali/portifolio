@@ -15,5 +15,8 @@
   "devDependencies": {
     "fast-check": "^3.22.0",
     "jsdom": "^29.0.2"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
   }
 }
