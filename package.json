@@ -15,5 +15,8 @@
   "devDependencies": {
     "fast-check": "^3.22.0",
     "jsdom": "^29.0.2"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }
