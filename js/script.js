@@ -238,19 +238,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = link.getAttribute('href');
             if (!href || !href.startsWith('#')) return;
             e.preventDefault();
-            const target = document.querySelector(href);
-            if (!target) return;
 
             closeLuxuryMenu();
 
             requestAnimationFrame(() => {
-                const y = target.offsetTop - NAV_OFFSET;
-                
-                // Use Lenis scrollTo if available
-                if (window.lenis) {
-                    window.lenis.scrollTo(y, { duration: 1.5 });
+                // Special handling for #inicio - scroll to top
+                if (href === '#inicio') {
+                    if (window.lenis) {
+                        window.lenis.scrollTo(0, { duration: 1.5 });
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 } else {
-                    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                    const target = document.querySelector(href);
+                    if (!target) return;
+                    
+                    const y = target.offsetTop - NAV_OFFSET;
+                    
+                    // Use Lenis scrollTo if available
+                    if (window.lenis) {
+                        window.lenis.scrollTo(y, { duration: 1.5 });
+                    } else {
+                        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                    }
                 }
                 
                 history.replaceState(null, '', href);
@@ -269,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], footer[id]');
 
     const updateActiveNav = () => {
         let current = '';
@@ -282,7 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.classList.remove('text-tech-cyan', 'font-bold');
-            if (link.getAttribute('href').includes(current)) {
+            const href = link.getAttribute('href');
+            if (href && current && href.includes(current)) {
                 link.classList.add('text-tech-cyan', 'font-bold');
             }
         });
@@ -295,62 +306,55 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', updateActiveNav);
     }
 
-    // Add smooth scroll to desktop nav links
-    navLinks.forEach(link => {
+    // Add smooth scroll to ALL navigation links (desktop nav + contact button)
+    const allNavLinks = document.querySelectorAll('.nav-link, nav a[href^="#"]');
+    allNavLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (!href || !href.startsWith('#')) return;
             e.preventDefault();
-            const target = document.querySelector(href);
-            if (!target) return;
 
-            const y = target.offsetTop - NAV_OFFSET;
-            
-            // Use Lenis scrollTo if available
-            if (window.lenis) {
-                window.lenis.scrollTo(y, { duration: 1.5 });
+            // Special handling for #inicio - scroll to top
+            if (href === '#inicio') {
+                if (window.lenis) {
+                    window.lenis.scrollTo(0, { duration: 1.5 });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             } else {
-                window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                const target = document.querySelector(href);
+                if (!target) return;
+                
+                const y = target.offsetTop - NAV_OFFSET;
+                
+                // Use Lenis scrollTo if available
+                if (window.lenis) {
+                    window.lenis.scrollTo(y, { duration: 1.5 });
+                } else {
+                    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+                }
             }
             
             history.replaceState(null, '', href);
         });
     });
 
-    // Add smooth scroll to logo link (Júlio César)
-    const logoLink = document.querySelector('nav a[href="#inicio"]');
-    if (logoLink) {
-        logoLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = document.querySelector('#inicio');
-            if (!target) return;
-
-            // Scroll to top (hero section)
-            if (window.lenis) {
-                window.lenis.scrollTo(0, { duration: 1.5 });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            history.replaceState(null, '', '#inicio');
-        });
-    }
-
-    // Add smooth scroll to Hero CTA buttons
-    const heroCtaButtons = document.querySelectorAll('.hero-cta-btn');
+    // Add smooth scroll to hero CTA buttons
+    const heroCtaButtons = document.querySelectorAll('.hero-cta-btn[href^="#"]');
     heroCtaButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const href = btn.getAttribute('href');
             if (!href || !href.startsWith('#')) return;
             e.preventDefault();
+            
             const target = document.querySelector(href);
             if (!target) return;
-
+            
             const y = target.offsetTop - NAV_OFFSET;
             
             // Use Lenis scrollTo if available
             if (window.lenis) {
-                window.lenis.scrollTo(y, { duration: 1.5, easing: (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t });
+                window.lenis.scrollTo(y, { duration: 1.5 });
             } else {
                 window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
             }
