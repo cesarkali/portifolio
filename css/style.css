@@ -823,3 +823,60 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         padding: 2rem 0 !important;
     }
 }
+/* ── Custom Cursor ──────────────────────────────────────────────────────── */
+
+/* Esconde o cursor padrão do navegador em desktops */
+@media (min-width: 769px) {
+  * {
+    cursor: none !important;
+  }
+  
+  /* Mantém cursor em elementos interativos específicos se necessário, 
+     mas o script cuidará do scale do cursor customizado */
+}
+
+/* O ponto central - Alta Resolução */
+#custom-cursor {
+  width: 40px; /* Tamanho base dobrado para nitidez */
+  height: 40px;
+  background: #00d4ff; /* Cor Cyan do projeto */
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  will-change: transform;
+  /* Centralização e escala inicial de 0.5 (resulta em 20px visuais) */
+  transform: translate(-50%, -50%) scale(0.5);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* O círculo que segue (Follower) - Alta Resolução */
+#custom-cursor-follower {
+  width: 80px; /* Tamanho base dobrado para nitidez */
+  height: 80px;
+  border: 1px solid #0070f3; /* Cor Blue do projeto */
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  /* Centralização e escala inicial de 0.5 (resulta em 40px visuais) */
+  transform: translate(-50%, -50%) scale(0.5);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Esconde em dispositivos móveis */
+@media (max-width: 768px) {
+  #custom-cursor, #custom-cursor-follower {
+    display: none;
+  }
+}

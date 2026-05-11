@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<base href="/portifolio/">
+
 
 <head>
+    <script>
+        (function() {
+            const isPortifolio = window.location.pathname.includes('/portifolio');
+            const base = document.createElement('base');
+            base.href = isPortifolio ? '/portifolio/' : '/';
+            document.head.appendChild(base);
+        })();
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -61,6 +70,10 @@
 
 <body
     class="bg-mesh-dynamic text-tech-text antialiased selection:bg-tech-blue selection:text-white relative min-h-screen">
+    <!-- Elementos do Cursor Personalizado -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-follower"></div>
+
     <!-- Overlay de Textura Premium -->
     <div class="noise-overlay"></div>
 

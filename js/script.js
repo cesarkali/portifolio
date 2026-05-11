@@ -151,28 +151,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-fade');
     reveals.forEach(el => revealObserver.observe(el));
 
-    // Parallax effect for sections (eatz.digital style)
+    // Parallax effect for sections (eatz.digital style) - Optimized
     const parallaxSections = document.querySelectorAll('section');
+    let sectionData = [];
+
+    const updateSectionData = () => {
+        sectionData = Array.from(parallaxSections).map(section => ({
+            el: section,
+            top: section.offsetTop,
+            height: section.offsetHeight
+        }));
+    };
+
+    updateSectionData();
+    window.addEventListener('resize', updateSectionData);
     
     const handleParallax = () => {
         const scrolled = window.scrollY;
+        const windowHeight = window.innerHeight;
         
-        parallaxSections.forEach((section, index) => {
-            const rect = section.getBoundingClientRect();
-            const sectionTop = rect.top + scrolled;
-            const sectionHeight = rect.height;
-            const windowHeight = window.innerHeight;
+        sectionData.forEach((data, index) => {
+            const sectionBottom = data.top + data.height;
             
             // Only apply parallax when section is in viewport
-            if (rect.top < windowHeight && rect.bottom > 0) {
-                const progress = (scrolled - sectionTop + windowHeight) / (sectionHeight + windowHeight);
+            if (scrolled + windowHeight > data.top && scrolled < sectionBottom) {
+                const progress = (scrolled - data.top + windowHeight) / (data.height + windowHeight);
                 const translateY = (progress - 0.5) * 30; // Subtle parallax
                 
                 // Apply subtle transform
                 if (index % 2 === 0) {
-                    section.style.transform = `translateY(${translateY}px)`;
+                    data.el.style.transform = `translate3d(0, ${translateY}px, 0)`;
                 } else {
-                    section.style.transform = `translateY(${-translateY}px)`;
+                    data.el.style.transform = `translate3d(0, ${-translateY}px, 0)`;
                 }
             }
         });
@@ -424,7 +434,86 @@ document.addEventListener('DOMContentLoaded', () => {
             kaliCard.addEventListener('touchstart', _stopKaliAutoPlay, { passive: true });
         }
     }
+
+    // ── Custom Cursor Logic ────────────────────────────────────────────────
+    initCustomCursor();
 });
+
+function initCustomCursor() {
+    const cursor = document.getElementById('custom-cursor');
+    const follower = document.getElementById('custom-cursor-follower');
+    if (!cursor || !follower) return;
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let followerX = 0, followerY = 0;
+    
+    let cursorScale = 0.5, followerScale = 0.5;
+    let targetCursorScale = 0.5, targetFollowerScale = 0.5;
+    
+    const cursorLerp = 0.4;
+    const followerLerp = 0.12;
+    const scaleLerp = 0.12;
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * cursorLerp;
+        cursorY += (mouseY - cursorY) * cursorLerp;
+        followerX += (mouseX - followerX) * followerLerp;
+        followerY += (mouseY - followerY) * followerLerp;
+
+        cursorScale += (targetCursorScale - cursorScale) * scaleLerp;
+        followerScale += (targetFollowerScale - followerScale) * scaleLerp;
+
+        cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%) scale(${cursorScale})`;
+        follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%) scale(${followerScale})`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    document.addEventListener('mousedown', () => {
+        targetCursorScale = 0.4;
+        targetFollowerScale = 0.75;
+    });
+
+    document.addEventListener('mouseup', () => {
+        targetCursorScale = 0.5;
+        targetFollowerScale = 0.5;
+    });
+
+    // Efeito de Hover em links e botões
+    const updateHoverElements = () => {
+        document.querySelectorAll('a, button, .clickable, [role="button"]').forEach(link => {
+            if (link.dataset.cursorBound) return;
+            
+            link.addEventListener('mouseenter', () => {
+                targetCursorScale = 0.75;
+                targetFollowerScale = 0.9;
+                cursor.style.background = '#ffffff';
+                follower.style.borderColor = '#ffffff';
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                targetCursorScale = 0.5;
+                targetFollowerScale = 0.5;
+                cursor.style.background = '#00d4ff';
+                follower.style.borderColor = '#0070f3';
+            });
+            
+            link.dataset.cursorBound = "true";
+        });
+    };
+
+    updateHoverElements();
+    // Re-run occasionally or after dynamic content changes if needed
+    setInterval(updateHoverElements, 2000);
+
+    requestAnimationFrame(animateCursor);
+}
 
 // ── Financial Kali Gallery — global state & functions ──────────────────────
 const _kaliGallery = createGallery(0);
