@@ -4,6 +4,7 @@
 # Dependências de desenvolvimento (property tests)
 node_modules/
 package-lock.json
+styles new.md
 
 # Testes locais (não fazem parte do site)
 tests/
