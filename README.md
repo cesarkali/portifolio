@@ -91,7 +91,7 @@ Scripts disponíveis:
 ## 📧 Contato
 
 - **Email:** [julio@caliberda.com.br](mailto:julio@caliberda.com.br)
-- **LinkedIn:** [linkedin.com/in/hxtdll](https://linkedin.com/in/hxtdll)
+- **LinkedIn:** [linkedin.com/in/cesarkali](https://linkedin.com/in/cesarkali)
 - **GitHub:** [@cesarkali](https://github.com/cesarkali)
 - **WhatsApp:** [(46) 99983-9486](https://wa.me/5546999839486)
 
