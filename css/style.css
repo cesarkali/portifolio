@@ -478,7 +478,9 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     .no-print,
     .noise-overlay,
     .fixed,
-    button {
+    button,
+    #custom-cursor,
+    #custom-cursor-follower {
         display: none !important;
         visibility: hidden !important;
         height: 0 !important;
@@ -491,8 +493,33 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     .print-header {
         display: block !important;
         border-bottom: 2px solid #0070f3 !important;
-        padding-bottom: 0.6rem !important;
-        margin-bottom: 1rem !important;
+        padding-bottom: 1.6rem !important;
+        margin-bottom: 2.6rem !important;
+    }
+    .print-header h1 {
+        font-size: 26pt !important;
+        margin-bottom: 6px !important;
+        font-weight: 800 !important;
+        color: #000 !important;
+    }
+    .print-header p {
+        font-size: 13pt !important;
+        color: #444 !important;
+        margin-bottom: 14px !important;
+    }
+    .print-header .grid {
+        gap: 8px 24px !important;
+    }
+    .print-header .grid div {
+        font-size: 10pt !important;
+        color: #555 !important;
+    }
+    .print-header img {
+        max-width: 120px !important;
+        width: 120px !important;
+        height: 120px !important;
+        border-radius: 8px !important;
+        object-fit: cover !important;
     }
 
     /* ── Sections: compact, no padding ── */
@@ -515,6 +542,8 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
         font-weight: 700 !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
     }
 
     h3 {
@@ -522,6 +551,8 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         font-weight: 700 !important;
         margin: 0 0 2px 0 !important;
         color: #111 !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
     }
 
     h4 {
@@ -529,6 +560,8 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         font-weight: 600 !important;
         margin: 0 0 2px 0 !important;
         color: #111 !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
     }
 
     p, li, span, div {
@@ -542,14 +575,26 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     /* ── Sobre ── */
     #sobre {
         padding: 0 !important;
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 2.5rem !important;
     }
     #sobre .grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 1rem !important;
+        gap: 2.5rem !important;
     }
     #sobre .reveal { margin-bottom: 0 !important; }
+    #sobre p {
+        margin-bottom: 1rem !important;
+    }
+    #sobre p:last-of-type {
+        margin-bottom: 0 !important;
+    }
+    #sobre .pillar-group {
+        margin-bottom: 1.2rem !important;
+    }
+    #sobre .pillar-group:last-child {
+        margin-bottom: 0 !important;
+    }
     #sobre .space-y-0 {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
@@ -559,7 +604,7 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         border-bottom: 1px solid #eee !important;
         padding: 2px 0 !important;
     }
-    #sobre .mt-8 { margin-top: 0.4rem !important; }
+    #sobre .mt-8 { margin-top: 1.8rem !important; }
     #sobre .flex-wrap {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -607,16 +652,21 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
     #experiencia ul li span { display: none !important; }
 
     /* ── Formação/Educação ── */
-    #experiencia + section {
+    #experiencia + section,
+    #educacao {
         margin-bottom: 0.6rem !important;
         padding: 0 !important;
         min-height: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
     }
-    #experiencia + section .grid {
+    #experiencia + section .grid,
+    #educacao .grid {
         display: block !important;
         gap: 0 !important;
     }
-    #experiencia + section .grid > div {
+    #experiencia + section .grid > div,
+    #educacao .grid > div {
         display: block !important;
         padding: 0.3rem 0 !important;
         border-bottom: 1px solid #eee !important;
@@ -624,6 +674,7 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
         border-radius: 0 !important;
         min-height: 0 !important;
         margin-bottom: 0 !important;
+        page-break-inside: avoid !important;
     }
     #experiencia + section .grid > div > div {
         padding: 0 !important;
@@ -654,8 +705,6 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 
     /* ── Projetos ── */
     section#projetos {
-        page-break-before: always !important;
-        break-before: page !important;
         margin-top: 0 !important;
     }
     section#projetos .reveal {
