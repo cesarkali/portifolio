@@ -886,8 +886,8 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 
 /* O ponto central - Alta Resolução */
 #custom-cursor {
-  width: 40px; /* Tamanho base dobrado para nitidez */
-  height: 40px;
+  width: 24px; /* Tamanho base reduzido para sutileza e elegância */
+  height: 24px;
   background: #00d4ff; /* Cor Cyan do projeto */
   border-radius: 50%;
   position: fixed;
@@ -897,7 +897,7 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
   z-index: 10000;
   mix-blend-mode: difference;
   will-change: transform;
-  /* Centralização e escala inicial de 0.5 (resulta em 20px visuais) */
+  /* Centralização e escala inicial de 0.5 (resulta em 12px visuais) */
   transform: translate(-50%, -50%) scale(0.5);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -906,8 +906,8 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
 
 /* O círculo que segue (Follower) - Alta Resolução */
 #custom-cursor-follower {
-  width: 80px; /* Tamanho base dobrado para nitidez */
-  height: 80px;
+  width: 48px; /* Tamanho base reduzido para sutileza e elegância */
+  height: 48px;
   border: 1px solid #0070f3; /* Cor Blue do projeto */
   border-radius: 50%;
   position: fixed;
@@ -916,7 +916,7 @@ nav a.nav-link:hover::after, nav a.nav-link.font-bold::after {
   pointer-events: none;
   z-index: 9999;
   will-change: transform;
-  /* Centralização e escala inicial de 0.5 (resulta em 40px visuais) */
+  /* Centralização e escala inicial de 0.5 (resulta em 24px visuais) */
   transform: translate(-50%, -50%) scale(0.5);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
