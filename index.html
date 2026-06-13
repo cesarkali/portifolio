@@ -150,6 +150,7 @@
         <h3>Projetos de Destaque</h3>
         <ul>
             <li><strong>Financial Kali</strong>: Um ecossistema de gestão financeira pessoal proprietário (Web app + Android nativo) com inteligência artificial integrada (Finn IA para voz e visão), desenvolvido utilizando React 19, Vite, React Native com Expo 54, Firebase e APIs Groq/Gemini.</li>
+            <li><strong>FlowVoice</strong>: Utilitário de produtividade de ditado inteligente por IA para Windows e Ubuntu. Permite ditar textos por voz em qualquer campo do sistema operacional. Transcrição via Whisper local (offline) ou APIs de IA na nuvem (Gemini, OpenAI, Groq, GitHub Models). Inclui modos de polimento de texto, tradução por voz, assistente de chat interativo e sistema de atualização automática. Desenvolvido em Python com PySide6 e distribuído como instalador nativo (.exe / .deb). Disponível em: flowvoice.caliberda.com.br e GitHub: github.com/cesarkali/Flow-Voice.</li>
             <li><strong>Módulo de Autoatendimento (App de Mesas)</strong>: Solução que reduziu tempo de espera e fila em restaurantes integrando pedidos direto da mesa com o ERP central, criando nova linha de MRR recorrente e elevando ticket médio.</li>
             <li><strong>Assistente Virtual de Triagem (IA + n8n)</strong>: Automação inteligente integrada com modelos de IA e base de conhecimento para ler, triar e responder chamados de suporte técnico básicos, blindando a equipe e reduzindo drasticamente o SLA.</li>
         </ul>
@@ -398,8 +399,8 @@
                     <div class="text-xs text-white/40 uppercase tracking-widest mt-2">Horas salvas com automação</div>
                 </div>
                 <div>
-                    <div class="text-6xl font-black text-white leading-none">1</div>
-                    <div class="text-xs text-white/40 uppercase tracking-widest mt-2">App no ar (Financial Kali)</div>
+                    <div class="text-6xl font-black text-white leading-none">2</div>
+                    <div class="text-xs text-white/40 uppercase tracking-widest mt-2">Apps no ar (Financial Kali + FlowVoice)</div>
                 </div>
             </div>
 
@@ -776,6 +777,97 @@
                         <p class="text-gray-700 text-sm mb-2">App de gestão financeira pessoal — web + Android nativo. Stack: React 19, React Native + Expo SDK 54, Firebase, Groq IA, Gemini 1.5 Flash.</p>
                         <div class="flex flex-wrap gap-3 text-sm">
                             <span>🌐 <a href="https://kali.caliberda.com.br" class="text-blue-700">kali.caliberda.com.br</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FlowVoice — segundo projeto em destaque -->
+            <div class="reveal mb-12">
+                <div class="rounded-xl overflow-hidden border border-purple-500/20 print:block" style="background: rgba(139,92,246,0.03);">
+
+                    <!-- Header do projeto: título + meta em linha -->
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 pt-6 pb-4 border-b border-white/[0.07]">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[10px] font-mono text-purple-400/70 uppercase tracking-widest">Projeto Open-Source · Lançado</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">FlowVoice <span class="text-white/30 font-light text-lg">v1.8.0</span></h3>
+                            <div class="flex items-center gap-3 mt-1">
+                                <span class="text-[10px] text-white/40 font-mono uppercase tracking-widest">Proprietário · Windows + Ubuntu</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 no-print">
+                            <a href="https://flowvoice.caliberda.com.br" target="_blank" rel="noopener noreferrer"
+                               class="text-xs text-white/60 hover:text-white transition-colors px-3 py-1.5 border border-white/[0.12] rounded hover:border-white/30">
+                                Site ↗
+                            </a>
+                            <a href="https://github.com/cesarkali/Flow-Voice" target="_blank" rel="noopener noreferrer"
+                               class="text-xs text-white/60 hover:text-white transition-colors px-3 py-1.5 border border-white/[0.12] rounded hover:border-white/30">
+                                GitHub ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Body: descrição + features + stack -->
+                    <div class="flex flex-col lg:flex-row">
+
+                        <!-- Coluna de texto principal -->
+                        <div class="lg:w-full flex flex-col gap-5 p-6">
+                            <p class="text-sm text-white/65 leading-relaxed">
+                                Utilitário de produtividade leve e elegante que roda silenciosamente na bandeja do sistema. Pressione um atalho global, dite em voz alta e o texto aparece colado instantaneamente em qualquer campo — editor de código, chat, navegador ou Word. Criado do zero com Python e distribuído como instalador nativo.
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <p class="text-[10px] font-medium text-white/30 tracking-wide uppercase mb-3">Features principais</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Ditado por voz (atalho global)</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Polimento de texto por IA</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Tradução por voz</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Assistente chat interativo</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Whisper Local (100% offline)</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Failover multi-provedor IA</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Auto-update integrado</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-medium text-white/30 tracking-wide uppercase mb-3">Stack</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Python</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">PySide6</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Whisper (OpenAI)</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Gemini / Groq / OpenAI</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">PyInstaller</span>
+                                        <span class="text-xs text-white/90 px-3 py-1.5 bg-white/[0.06] rounded-full hover:bg-white/[0.1] transition-colors">Inno Setup</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stats compactos -->
+                            <div class="flex flex-wrap gap-8 pt-2 border-t border-white/[0.05]">
+                                <div>
+                                    <div class="text-2xl font-black text-white leading-none">~30<span class="text-sm font-normal text-white/40 ml-1">MB RAM</span></div>
+                                    <div class="text-[10px] text-white/30 uppercase tracking-widest mt-1">Footprint em idle</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black text-white leading-none">&lt;1<span class="text-sm font-normal text-white/40 ml-1">% CPU</span></div>
+                                    <div class="text-[10px] text-white/30 uppercase tracking-widest mt-1">Consumo ocioso</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black text-white leading-none">4<span class="text-sm font-normal text-white/40 ml-1">provedores</span></div>
+                                    <div class="text-[10px] text-white/30 uppercase tracking-widest mt-1">IA com failover</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Print-only simplified layout -->
+                    <div class="hidden print:block px-6 pb-6">
+                        <p class="text-gray-700 text-sm mb-2">Utilitário de ditado inteligente por voz para Windows e Ubuntu. Transcrição via Whisper local ou APIs de IA (Gemini, OpenAI, Groq). Stack: Python, PySide6, PyInstaller.</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span>🌐 <a href="https://flowvoice.caliberda.com.br" class="text-blue-700">flowvoice.caliberda.com.br</a></span>
+                            <span>💻 <a href="https://github.com/cesarkali/Flow-Voice" class="text-blue-700">github.com/cesarkali/Flow-Voice</a></span>
                         </div>
                     </div>
                 </div>
