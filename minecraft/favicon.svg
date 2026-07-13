@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff8a6a" />
+      <stop offset="100%" stop-color="#ff3b3b" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="32" height="32" fill="#0b0807" />
+  <!-- Borda pixelada -->
+  <rect x="1.5" y="1.5" width="29" height="29" stroke="url(#glowGrad)" stroke-width="1.5" stroke-opacity="0.85" />
+  <!-- Monograma "J" -->
+  <text x="16" y="22" font-family="'Press Start 2P', 'Courier New', monospace" font-weight="700" font-size="14" fill="url(#glowGrad)" text-anchor="middle">J</text>
+</svg>

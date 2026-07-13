@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════
-   JÚLIO CALIBERDA — Portfólio "SYSTEM CORE"
-   Dados dos projetos + toda a lógica de interação (vanilla JS, sem deps).
+   JÚLIO CALIBERDA — Portfólio "PORTCRAFT"
+   Mesmos dados e lógica do portfólio principal; loader, fundo e barra
+   de progresso reconstruídos com a pele pixel/voxel em vermelho.
    ═══════════════════════════════════════════════════════════════════ */
 
 (function () {
@@ -273,34 +274,39 @@
     }
     function githubUrl(slug) { return 'https://github.com/cesarkali/' + slug; }
 
-    /* ═══════════════ LOADER (ANEL DE PROGRESSO) ═══════════════ */
+    /* ═══════════════ LOADER (BARRA SEGMENTADA) ═══════════════ */
     function initLoader() {
         const loader = $('#site-loader');
+        const segWrap = $('#loader-segments');
         const pctEl = $('#loader-pct');
         const captionEl = $('#loader-caption');
-        const ring = $('#loader-ring-progress');
-        if (!loader || !pctEl || !captionEl || !ring) return;
+        if (!loader || !segWrap || !pctEl || !captionEl) return;
 
-        const RADIUS = Number(ring.getAttribute('r'));
-        const CIRC = 2 * Math.PI * RADIUS;
-        ring.style.strokeDasharray = String(CIRC);
-        ring.style.strokeDashoffset = String(CIRC);
+        const TOTAL_SEGS = 20;
+        const segs = [];
+        for (let i = 0; i < TOTAL_SEGS; i++) {
+            const seg = document.createElement('div');
+            seg.className = 'loader-seg';
+            segWrap.appendChild(seg);
+            segs.push(seg);
+        }
 
-        const captions = [
-            'carregando projetos',
-            'organizando categorias',
-            'ajustando os detalhes',
-            'quase lá',
-        ];
+        const captions = ['carregando projetos', 'montando blocos', 'ajustando o terreno', 'quase lá'];
 
         document.body.classList.add('no-scroll');
 
+        function paint(pct) {
+            pctEl.textContent = String(Math.round(pct));
+            const lit = Math.round((pct / 100) * TOTAL_SEGS);
+            segs.forEach((seg, i) => seg.classList.toggle('is-lit', i < lit));
+        }
+
         if (REDUCED_MOTION) {
-            pctEl.textContent = '100';
-            ring.style.strokeDashoffset = '0';
+            paint(100);
             captionEl.textContent = 'pronto';
             loader.classList.add('loaded');
             document.body.classList.remove('no-scroll');
+            document.dispatchEvent(new Event('portcraft:loaded'));
             return;
         }
 
@@ -314,20 +320,22 @@
 
         function tick() {
             pct = Math.min(100, pct + Math.random() * 9 + 3);
-            pctEl.textContent = String(Math.round(pct));
-            ring.style.strokeDashoffset = String(CIRC * (1 - pct / 100));
+            paint(pct);
             setCaption();
             if (pct < 100) setTimeout(tick, 90 + Math.random() * 130);
             else finish();
         }
 
+        let finished = false;
         function finish() {
+            if (finished) return;
+            finished = true;
             captionEl.textContent = 'pronto';
-            loader.classList.add('ring-complete');
             setTimeout(() => {
                 loader.classList.add('loaded');
                 document.body.classList.remove('no-scroll');
-            }, 320);
+                document.dispatchEvent(new Event('portcraft:loaded'));
+            }, 260);
         }
 
         setCaption();
@@ -335,25 +343,96 @@
         setTimeout(finish, 4200);
     }
 
-    /* ═══════════════ FUNDO — PARTÍCULAS AMBIENTE ═══════════════ */
+    /* ═══════════════ FUNDO — PARTÍCULAS (ORBES DE PIXEL) ═══════════════ */
     function initParticles() {
         const wrap = $('#bg-particles');
         if (!wrap || REDUCED_MOTION) return;
-        const count = Math.max(14, Math.min(30, Math.floor(window.innerWidth / 70)));
+        const colors = ['#ff3b3b', '#ffc24b', '#b56bff'];
+        const count = Math.max(14, Math.min(28, Math.floor(window.innerWidth / 75)));
 
         for (let i = 0; i < count; i++) {
             const p = document.createElement('div');
             p.className = 'particle';
-            const size = 1 + Math.random() * 2.4;
+            const size = 4 + Math.round(Math.random() * 3);
             p.style.width = size + 'px';
             p.style.height = size + 'px';
             p.style.left = (Math.random() * 100) + '%';
             p.style.bottom = (Math.random() * 100) + '%';
-            p.style.setProperty('--max-opacity', (0.15 + Math.random() * 0.3).toFixed(2));
-            p.style.animationDuration = (16 + Math.random() * 18) + 's';
-            p.style.animationDelay = (-Math.random() * 30) + 's';
+            p.style.setProperty('--c', colors[Math.floor(Math.random() * colors.length)]);
+            p.style.setProperty('--max-opacity', (0.35 + Math.random() * 0.35).toFixed(2));
+            p.style.animationDuration = (12 + Math.random() * 16) + 's';
+            p.style.animationDelay = (-Math.random() * 26) + 's';
             wrap.appendChild(p);
         }
+    }
+
+    /* ═══════════════ CENÁRIO VOXEL (skyline procedural, não é o jogo) ═══════════════ */
+    function initHorizon() {
+        const canvas = $('#hz-canvas');
+        if (!canvas || REDUCED_MOTION) return;
+
+        function render() {
+            const hero = $('.hero');
+            if (!hero) return;
+            const scale = 3;
+            const W = Math.max(320, Math.round(hero.clientWidth * 1.5 / scale));
+            const H = Math.max(140, Math.round(hero.clientHeight * 0.68 / scale));
+            canvas.width = W;
+            canvas.height = H;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, W, H);
+
+            function hash(ix, iz) {
+                let h = (ix * 374761393 + iz * 668265263) | 0;
+                h = Math.imul(h ^ (h >>> 13), 1274126177);
+                return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+            }
+
+            const horizonY = Math.round(H * 0.34);
+            const colW = 3;
+
+            for (let x = 0; x < W; x += colW) {
+                const col = Math.floor(x / colW);
+                const n1 = hash(col, 7);
+                const n2 = hash(col, 19);
+                const towerH = Math.round((Math.pow(n1, 2.1) * 0.75 + n2 * 0.1) * (H - horizonY) * 0.92);
+                const y = horizonY + (H - horizonY) - towerH;
+                const lit = hash(col, 31) > 0.72;
+                const shade = 0.55 + hash(col, 3) * 0.45;
+                const r = Math.round((lit ? 255 : 120) * shade);
+                const g = Math.round((lit ? 90 : 30) * shade);
+                const b = Math.round((lit ? 60 : 26) * shade);
+                ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+                ctx.fillRect(x, y, colW, H - y);
+            }
+
+            const haze = ctx.createLinearGradient(0, horizonY - H * 0.3, 0, horizonY + H * 0.1);
+            haze.addColorStop(0, 'rgba(255,90,50,0)');
+            haze.addColorStop(0.7, 'rgba(255,90,50,0.18)');
+            haze.addColorStop(1, 'rgba(255,60,40,0.30)');
+            ctx.fillStyle = haze;
+            ctx.fillRect(0, horizonY - H * 0.3, W, H * 0.4);
+        }
+
+        render();
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(render, 250);
+        });
+    }
+
+    /* ═══════════════ BARRA DE PROGRESSO DO SCROLL ═══════════════ */
+    function initScrollProgress() {
+        const bar = $('#scroll-progress');
+        if (!bar) return;
+        function update() {
+            const scroll = window.scrollY;
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (height > 0 ? (scroll / height) * 100 : 0) + '%';
+        }
+        window.addEventListener('scroll', update, { passive: true });
+        update();
     }
 
     /* ═══════════════ NAVBAR ═══════════════ */
@@ -493,7 +572,6 @@
     function cardHtml(p, idx) {
         return `
         <article class="pcard" data-id="${p.id}" tabindex="0" role="button" aria-haspopup="dialog" style="animation-delay:${Math.min(idx * 0.04, 0.4)}s">
-            <span class="corner corner-tl"></span><span class="corner corner-tr"></span><span class="corner corner-bl"></span><span class="corner corner-br"></span>
             <div class="pcard-top">
                 <div class="pcard-icon"><i class="${p.icon}"></i></div>
                 <div class="pcard-pills">${pillsHtml(p)}</div>
@@ -643,22 +721,17 @@
             track.innerHTML = itemsHtml;
             return;
         }
-        // duplica a lista uma vez para permitir um loop de scroll contínuo e sem emenda
         track.innerHTML = itemsHtml + itemsHtml;
         initBuildLogAutoScroll(track);
     }
 
     /* Scroll automático estilo ticker: contínuo e infinito, nunca pausa. */
     function initBuildLogAutoScroll(track) {
-        const SPEED = 26; // px por segundo
+        const SPEED = 26;
         let halfWidth = track.scrollWidth / 2;
-        // acumulador próprio em ponto flutuante: scrollLeft arredonda pra inteiro a cada
-        // leitura/escrita, e o incremento por frame (~0.4px) some se depender só dele
         let virtualScroll = track.scrollLeft;
         let lastTs = null;
 
-        // re-mede sempre que o tamanho real do conteúdo mudar — a medida feita na
-        // hora do innerHTML pode capturar um layout ainda não estabilizado (fontes/CSS)
         if ('ResizeObserver' in window) {
             new ResizeObserver(() => { halfWidth = track.scrollWidth / 2; }).observe(track);
         } else {
@@ -680,7 +753,7 @@
         requestAnimationFrame(tick);
     }
 
-    /* ═══════════════ ESTATÍSTICAS AGREGADAS (fonte única de verdade) ═══════════════ */
+    /* ═══════════════ ESTATÍSTICAS AGREGADAS ═══════════════ */
     function computeStats() {
         const live = PROJECTS.filter((p) => p.deploy).length;
         const pub = PROJECTS.filter((p) => p.visibility === 'public').length;
@@ -720,6 +793,151 @@
         if (el) el.textContent = new Date().getFullYear();
     }
 
+    /* ═══════════════ TEMA CLARO/ESCURO + ECLIPSE DE ENTRADA ═══════════════
+       A página entra no tema claro (a mostra principal) e, se o visitante
+       ainda não escolheu um tema, escurece sozinha pouco depois: um véu se
+       expande em círculo a partir do sol, e a cor de cada bloco da página
+       vira progressivamente de cima pra baixo — o que está mais perto do
+       topo (onde fica o botão) muda primeiro, o resto acompanha logo atrás.
+       Cada bloco propaga seu atraso (--wave-delay) pros filhos via CSS, daí
+       o texto/ícone dentro de um card muda junto com o fundo dele, não solto. */
+    function initTheme() {
+        const STORAGE_KEY = 'portcraft-theme';
+        const toggles = $$('#theme-toggle, #theme-toggle-mobile');
+        if (!toggles.length) return;
+
+        const ECLIPSE_FILL = { dark: '#0b0807', light: '#f3ead8' };
+        const ECLIPSE_GLOW = '#ffe9b8';
+        const WAVE_MS = 700;
+
+        // Blocos visuais que recebem o atraso; tudo dentro deles herda via --wave-delay
+        const THEMED_SELECTOR = [
+            '.navbar',
+            '.hero-eyebrow-row .tag', '.hero-hello', '.hero-name-line', '.hero-role',
+            '.hero-bio', '.hero-ctas .btn', '.hero-social-btn', '.hero-photo-panel',
+            '.marquee',
+            '.section-head', '.career-item', '.about-body', '.about-facts', '.about-stats',
+            '.stack-card', '.pcard',
+            '.buildlog',
+            '.contact-panel',
+            '.footer',
+        ].join(', ');
+
+        function paintIcons(theme) {
+            toggles.forEach((btn) => {
+                const icon = btn.querySelector('i');
+                if (icon) icon.className = theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+            });
+        }
+
+        function currentTheme() {
+            return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        }
+
+        function setThemeInstant(theme) {
+            if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+            else document.documentElement.removeAttribute('data-theme');
+            paintIcons(theme);
+        }
+
+        // Atraso proporcional à posição vertical na tela: topo = quase 0, o que
+        // já saiu da tela por baixo = atraso máximo (não importa, está invisível)
+        function applyWaveDelays() {
+            const els = $$(THEMED_SELECTOR);
+            const vh = window.innerHeight;
+            els.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.width === 0 && rect.height === 0) return;
+                const y = rect.top + rect.height / 2;
+                const ratio = Math.min(1, Math.max(0, y / vh));
+                el.style.setProperty('--wave-delay', Math.round(ratio * WAVE_MS) + 'ms');
+            });
+            return els;
+        }
+
+        function clearWaveDelays(els) {
+            els.forEach((el) => el.style.removeProperty('--wave-delay'));
+        }
+
+        let transitioning = false;
+
+        function animateThemeChange(nextTheme, originEl, persist) {
+            // Ignora cliques durante uma transição em andamento (evita corrida com o auto-eclipse de entrada)
+            if (transitioning || currentTheme() === nextTheme) return;
+
+            if (REDUCED_MOTION) {
+                setThemeInstant(nextTheme);
+                if (persist !== false) { try { localStorage.setItem(STORAGE_KEY, nextTheme); } catch (e) {} }
+                return;
+            }
+
+            const btn = originEl || toggles[0];
+            const rect = btn.getBoundingClientRect();
+            const cx = Math.round(rect.left + rect.width / 2);
+            const cy = Math.round(rect.top + rect.height / 2);
+            const maxR = Math.ceil(Math.hypot(
+                Math.max(cx, window.innerWidth - cx),
+                Math.max(cy, window.innerHeight - cy)
+            ));
+
+            transitioning = true;
+            const waveEls = applyWaveDelays();
+
+            const veil = document.createElement('div');
+            veil.className = 'theme-eclipse';
+            // Lampejo bem pequeno e fixo em pixels: o resto do disco (a maior parte do
+            // crescimento) já nasce na cor sólida do tema de destino, em ambas as direções
+            veil.style.background = `radial-gradient(circle ${maxR}px at ${cx}px ${cy}px, ${ECLIPSE_GLOW} 0px, ${ECLIPSE_GLOW} 14px, ${ECLIPSE_FILL[nextTheme]} 80px, ${ECLIPSE_FILL[nextTheme]} 100%)`;
+            veil.style.clipPath = `circle(0px at ${cx}px ${cy}px)`;
+            document.body.appendChild(veil);
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    veil.style.clipPath = `circle(${maxR}px at ${cx}px ${cy}px)`;
+                    // Troca o tema já no início do crescimento: cada bloco entra em
+                    // cena no seu próprio atraso (--wave-delay), de cima pra baixo
+                    setThemeInstant(nextTheme);
+                    if (persist !== false) { try { localStorage.setItem(STORAGE_KEY, nextTheme); } catch (err) {} }
+                });
+            });
+
+            veil.addEventListener('transitionend', function onClipDone(e) {
+                if (e.propertyName !== 'clip-path') return;
+                veil.removeEventListener('transitionend', onClipDone);
+                requestAnimationFrame(() => { veil.style.opacity = '0'; });
+            });
+            veil.addEventListener('transitionend', function onFadeDone(e) {
+                if (e.propertyName !== 'opacity') return;
+                veil.removeEventListener('transitionend', onFadeDone);
+                veil.remove();
+            });
+
+            // So libera novos cliques depois que o bloco mais distante ja assentou
+            setTimeout(() => {
+                clearWaveDelays(waveEls);
+                transitioning = false;
+            }, WAVE_MS + 550);
+        }
+
+        paintIcons(currentTheme());
+
+        toggles.forEach((btn) => {
+            btn.addEventListener('click', () => animateThemeChange(currentTheme() === 'light' ? 'dark' : 'light', btn, true));
+        });
+
+        let stored = null;
+        try { stored = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+        // Sem preferência salva: deixa o visitante ver o tema claro por um instante e escurece sozinho
+        if (!stored && !REDUCED_MOTION) {
+            document.addEventListener('portcraft:loaded', () => {
+                setTimeout(() => {
+                    if (currentTheme() === 'light') animateThemeChange('dark', toggles[0], false);
+                }, 1400);
+            }, { once: true });
+        }
+    }
+
     /* ═══════════════ BOOT ═══════════════ */
     document.addEventListener('DOMContentLoaded', () => {
         injectStats();
@@ -735,6 +953,9 @@
         initCopy();
         initYear();
         initParticles();
+        initHorizon();
+        initScrollProgress();
         initLoader();
+        initTheme();
     });
 })();

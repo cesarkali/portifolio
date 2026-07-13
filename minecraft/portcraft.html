@@ -8,66 +8,60 @@
     <!-- ===== SEO ===== -->
     <title>Júlio Caliberda | Tech Product Manager e Orquestrador de IA</title>
     <meta name="description" content="Júlio Caliberda, Tech Product Manager que dirige IA para construir produtos reais: SaaS financeiro, apps mobile, jogos com física em GPU e ferramentas de automação.">
-    <meta name="keywords" content="Júlio Caliberda, Tech Product Manager, Product Manager, Especialista em Automação, n8n, prompter, orquestração de IA, portfólio">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Júlio Caliberda">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://portifolio.caliberda.com.br/">
+    <meta name="theme-color" content="#0b0807">
 
-    <!-- ===== Open Graph ===== -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://portifolio.caliberda.com.br/">
-    <meta property="og:title" content="Júlio Caliberda | Tech Product Manager e Orquestrador de IA">
-    <meta property="og:description" content="Projetos reais construídos sob direção de IA: SaaS financeiro, apps mobile, jogos com física em GPU e ferramentas de automação. Veja o dossiê completo.">
-    <meta property="og:image" content="https://portifolio.caliberda.com.br/julio.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Júlio Caliberda">
-    <meta property="og:locale" content="pt_BR">
-
-    <!-- ===== Twitter Card ===== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Júlio Caliberda | Tech Product Manager e Orquestrador de IA">
-    <meta name="twitter:description" content="Projetos reais construídos sob direção de IA: SaaS financeiro, apps mobile, jogos com física em GPU e ferramentas de automação.">
-    <meta name="twitter:image" content="https://portifolio.caliberda.com.br/julio.jpg">
-
-    <meta name="theme-color" content="#05070d">
+    <!-- Aplica o tema antes do CSS pintar a tela: entra no claro (a menos que o
+         visitante já tenha escolhido um tema, ou prefira menos movimento) e o
+         JS cuida do eclipse até o escuro depois que a página carrega -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('portcraft-theme');
+                var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (stored === 'light' || (!stored && !reduced)) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {}
+        })();
+    </script>
 
     <!-- ===== Favicon ===== -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="julio.jpg">
+    <link rel="apple-touch-icon" href="../julio.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portcraft.css">
 </head>
 
 <body>
     <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
+    <!-- Barra de progresso do scroll -->
+    <div id="scroll-progress" aria-hidden="true"></div>
 
     <!-- ================= FUNDO DECORATIVO ================= -->
     <div class="bg-scene" aria-hidden="true">
         <div class="bg-grid"></div>
         <div class="bg-glow-a"></div>
         <div class="bg-glow-b"></div>
-        <div class="bg-scanline"></div>
         <div class="bg-particles" id="bg-particles"></div>
     </div>
 
-    <!-- ================= LOADER (ANEL DE PROGRESSO) ================= -->
+    <!-- ================= LOADER (BARRA SEGMENTADA) ================= -->
     <div id="site-loader" class="site-loader" aria-hidden="true">
-        <div class="loader-core">
-            <div class="loader-deco-ring"></div>
-            <svg class="loader-ring" viewBox="0 0 200 200">
-                <circle class="ring-track" cx="100" cy="100" r="88"></circle>
-                <circle class="ring-progress" id="loader-ring-progress" cx="100" cy="100" r="88"></circle>
-            </svg>
-            <div class="loader-center">
-                <span class="loader-pct" id="loader-pct">0</span><span class="loader-pct-sign">%</span>
+        <div class="loader-panel">
+            <div class="loader-title">JÚLIO <em>CALIBERDA</em></div>
+            <div class="loader-segments" id="loader-segments"></div>
+            <div class="loader-foot">
+                <span id="loader-caption">iniciando</span>
+                <span class="loader-pct"><span id="loader-pct">0</span>%</span>
             </div>
-            <div class="loader-caption" id="loader-caption">iniciando</div>
         </div>
     </div>
 
@@ -89,6 +83,9 @@
             </nav>
 
             <div class="nav-actions">
+                <button class="icon-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Tema claro/escuro">
+                    <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                </button>
                 <a href="#contato" class="btn btn-primary btn-sm">Contato</a>
                 <button class="nav-burger" id="nav-burger" aria-label="Abrir menu" aria-expanded="false">
                     <span></span><span></span><span></span>
@@ -109,11 +106,25 @@
             <a href="https://github.com/cesarkali/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
             <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
+        <div class="drawer-tools">
+            <button class="icon-toggle" id="theme-toggle-mobile" aria-label="Alternar tema claro/escuro" title="Tema claro/escuro">
+                <i class="fa-solid fa-sun" aria-hidden="true"></i>
+            </button>
+        </div>
     </div>
 
     <main>
         <!-- ================= HERO ================= -->
         <section id="inicio" class="hero">
+            <!-- Cenário: skyline de dados procedural (voxel, não referencia o jogo) -->
+            <div class="horizon" aria-hidden="true">
+                <div class="hz-sky"></div>
+                <div class="hz-stars"></div>
+                <canvas id="hz-canvas"></canvas>
+                <div class="hz-core"></div>
+                <div class="hz-fade"></div>
+            </div>
+
             <div class="hero-inner">
                 <div>
                     <div class="hero-eyebrow-row reveal-fade">
@@ -123,8 +134,8 @@
                     <span class="hero-hello reveal-fade">$ whoami</span>
 
                     <h1>
-                        <span class="hero-name-line wipe">JÚLIO</span>
-                        <span class="hero-name-line wipe wipe-d1"><span class="hero-name-accent">CALIBERDA</span></span>
+                        <span class="hero-name-line">JÚLIO</span>
+                        <span class="hero-name-line"><span class="hero-name-accent">CALIBERDA</span></span>
                     </h1>
 
                     <div class="hero-role reveal-fade">
@@ -153,11 +164,8 @@
                 </div>
 
                 <div class="hero-photo-panel reveal-fade">
-                    <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
-                    <span class="corner corner-bl"></span><span class="corner corner-br"></span>
-
                     <div class="hero-photo-frame">
-                        <img src="julio.jpg" alt="Júlio Caliberda" loading="lazy">
+                        <img src="../julio.jpg" alt="Júlio Caliberda" loading="lazy">
                     </div>
                     <div class="hero-photo-caption">
                         <span class="hpc-name">Júlio Caliberda</span>
@@ -168,6 +176,9 @@
 
             <div class="hero-scroll-cue"><span>Scroll</span><i class="fa-solid fa-chevron-down"></i></div>
         </section>
+
+        <!-- Divisor de terreno -->
+        <div class="terrain" aria-hidden="true"></div>
 
         <!-- ================= MARQUEE ================= -->
         <div class="marquee" aria-hidden="true">
@@ -416,7 +427,7 @@
                     <span class="section-eyebrow"><i class="fa-solid fa-timeline"></i>BUILD LOG</span>
                     <span class="head-rule"></span>
                 </div>
-                <h2 class="section-title reveal">Do primeiro commit até <em>hoje</em></h2>
+                <h2 class="section-title reveal">Do primeiro commit ao <em>presente</em></h2>
                 <p class="section-sub reveal">Cronologia real de criação de cada projeto, do mais antigo ao mais recente.</p>
             </div>
 
@@ -432,9 +443,6 @@
             </div>
 
             <div class="contact-panel reveal-fade">
-                <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
-                <span class="corner corner-bl"></span><span class="corner corner-br"></span>
-
                 <div>
                     <h2 class="contact-title">Vamos construir algo <em>fora da curva</em>?</h2>
                     <p class="contact-desc">Se você chegou até aqui explorando os projetos, já sabe que não fico só no discurso. Bora conversar sobre produto, automação ou o próximo passo. Respondo rápido.</p>
@@ -496,8 +504,8 @@
                 <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
             <div class="footer-legal">
-                <span>&copy; <span id="footer-year">2026</span> Júlio Caliberda · Pato Branco, PR</span>
-                <a href="view-source:https://portifolio.caliberda.com.br/" class="easter">&lt;/&gt; sem frameworks: HTML, CSS e JS puros</a>
+                <span>&copy; <span id="footer-year">2026</span> Júlio Caliberda</span>
+                <span class="easter">&lt;/&gt; sem frameworks: HTML, CSS e JS puros</span>
             </div>
         </div>
     </footer>
@@ -507,7 +515,7 @@
         <div class="modal-box" id="modal-box"></div>
     </div>
 
-    <script src="js/script.js" defer></script>
+    <script src="js/portcraft.js" defer></script>
 </body>
 
 </html>
