@@ -1,22 +1,25 @@
-# 🚀 Júlio Caliberda | Portfolio - IA Developer & Vibecoder
+# 🚀 Júlio Caliberda | Portfolio
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://portifolio.caliberda.com.br)
 [![Testing](https://img.shields.io/badge/tests-property--based-blue.svg)](#-testes)
 
-Este é o repositório do meu portfólio profissional, focado em demonstrar minhas habilidades como **IA Developer**, **Product Manager** e **Especialista em Automação**. O projeto foi construído com foco em performance, design premium (glassmorphism, animações fluidas) e robustez técnica através de testes de propriedade.
+Este é o repositório do meu portfólio profissional, posicionado como **Tech Product Manager** e **orquestrador de IA**: dirijo IA para construir produtos reais, do primeiro rascunho ao deploy.
 
 🔗 **Acesse agora:** [portifolio.caliberda.com.br](https://portifolio.caliberda.com.br)
+
+A versão anterior do portfólio continua disponível em `/v1`, mantida por transparência mas sem divulgação ativa.
 
 ---
 
 ## 🛠️ Tecnologias e Ferramentas
 
 ### Frontend
-- **HTML5 & CSS3**: Estrutura semântica e estilização avançada com variáveis CSS e Mesh Gradients.
-- **Tailwind CSS**: Framework utilitário para design responsivo e consistente.
-- **Vanilla JavaScript**: Lógica de interação, cursor personalizado, galerias e efeitos de scroll sem dependências pesadas.
-- **Google Fonts (Inter)**: Tipografia moderna e legível.
+- **HTML5 & CSS3**: Estrutura semântica e estilização com variáveis CSS, sem frameworks.
+- **Vanilla JavaScript**: Toda a interação (filtros, busca, modal, animações) sem dependências pesadas.
+- **Google Fonts (Space Grotesk, Inter, JetBrains Mono)**: Tipografia.
 - **Font Awesome**: Ícones vetoriais.
+
+> A versão anterior (`/v1`) usa uma stack diferente: Tailwind CSS (via CDN) e Vanilla JS com galerias e cursor personalizado.
 
 ### Qualidade e Testes
 - **Node.js Test Runner**: Execução de testes nativa.
@@ -42,13 +45,19 @@ Este é o repositório do meu portfólio profissional, focado em demonstrar minh
 ## 📂 Estrutura do Projeto
 
 ```text
-├── assets/             # Imagens e recursos estáticos
-├── css/                # Estilização (style.css com variáveis dinâmicas)
-├── js/                 # Lógica do site (configurações Tailwind, galerias, etc.)
-├── tests/              # Suíte completa de testes de propriedade (fast-check)
-├── index.html          # Ponto de entrada principal
-├── package.json        # Dependências e scripts de teste
-└── vercel.json         # Configurações de deploy na Vercel
+├── index.html           # Ponto de entrada principal (versão atual)
+├── css/style.css        # Estilização da versão atual
+├── js/script.js         # Lógica da versão atual
+├── julio.jpg            # Foto compartilhada entre as versões
+├── favicon.svg          # Favicon compartilhado
+├── v1/                  # Versão anterior do portfólio, mantida acessível em /v1
+│   ├── index.html       # Ponto de entrada da v1 (não divulgada, mas acessível)
+│   ├── css/style.css
+│   ├── js/               # script.js, gallery.js, scroll-lock.js, tailwind-config.js
+│   ├── assets/           # Imagens e recursos estáticos da v1
+│   └── tests/            # Suíte de testes de propriedade (fast-check) da v1
+├── package.json          # Dependências e scripts de teste (apontam para v1/tests)
+└── vercel.json           # Configurações de deploy na Vercel (rewrite de /v1)
 ```
 
 ---
@@ -73,7 +82,7 @@ Este é o repositório do meu portfólio profissional, focado em demonstrar minh
 
 ## 🧪 Testes
 
-Este projeto utiliza uma abordagem de testes rigorosa para garantir a integridade da UI.
+A suíte de testes de propriedade (fast-check) valida a versão anterior (`/v1`), preservada em `v1/tests`.
 
 Para rodar todos os testes:
 ```bash

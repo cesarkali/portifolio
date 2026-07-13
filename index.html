@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== SEO ===== -->
+    <title>Júlio Caliberda | Tech Product Manager e Orquestrador de IA</title>
+    <meta name="description" content="Júlio Caliberda, Tech Product Manager que dirige IA para construir produtos reais: SaaS financeiro, apps mobile, jogos com física em GPU e ferramentas de automação.">
+    <meta name="keywords" content="Júlio Caliberda, Tech Product Manager, Product Manager, Especialista em Automação, n8n, prompter, orquestração de IA, portfólio">
+    <meta name="author" content="Júlio Caliberda">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://portifolio.caliberda.com.br/">
+
+    <!-- ===== Open Graph ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portifolio.caliberda.com.br/">
+    <meta property="og:title" content="Júlio Caliberda | Tech Product Manager e Orquestrador de IA">
+    <meta property="og:description" content="Projetos reais construídos sob direção de IA: SaaS financeiro, apps mobile, jogos com física em GPU e ferramentas de automação. Veja o dossiê completo.">
+    <meta property="og:image" content="https://portifolio.caliberda.com.br/julio.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Júlio Caliberda">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- ===== Twitter Card ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Júlio Caliberda | Tech Product Manager e Orquestrador de IA">
+    <meta name="twitter:description" content="Projetos reais construídos sob direção de IA: SaaS financeiro, apps mobile, jogos com física em GPU e ferramentas de automação.">
+    <meta name="twitter:image" content="https://portifolio.caliberda.com.br/julio.jpg">
+
+    <meta name="theme-color" content="#05070d">
+
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="julio.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
+    <!-- ================= FUNDO DECORATIVO ================= -->
+    <div class="bg-scene" aria-hidden="true">
+        <div class="bg-grid"></div>
+        <div class="bg-glow-a"></div>
+        <div class="bg-glow-b"></div>
+        <div class="bg-scanline"></div>
+        <div class="bg-particles" id="bg-particles"></div>
+    </div>
+
+    <!-- ================= LOADER (ANEL DE PROGRESSO) ================= -->
+    <div id="site-loader" class="site-loader" aria-hidden="true">
+        <div class="loader-core">
+            <div class="loader-deco-ring"></div>
+            <svg class="loader-ring" viewBox="0 0 200 200">
+                <circle class="ring-track" cx="100" cy="100" r="88"></circle>
+                <circle class="ring-progress" id="loader-ring-progress" cx="100" cy="100" r="88"></circle>
+            </svg>
+            <div class="loader-center">
+                <span class="loader-pct" id="loader-pct">0</span><span class="loader-pct-sign">%</span>
+            </div>
+            <div class="loader-caption" id="loader-caption">iniciando</div>
+        </div>
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#inicio" class="nav-brand">
+                <span class="nav-mark">JC</span>
+                <span class="nav-brand-name">JÚLIO <em>CALIBERDA</em></span>
+            </a>
+
+            <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#stack" class="nav-link">Stack</a>
+                <a href="#projetos" class="nav-link">Projetos</a>
+                <a href="#timeline" class="nav-link">Timeline</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#contato" class="btn btn-primary btn-sm">Contato</a>
+                <button class="nav-burger" id="nav-burger" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-drawer" id="mobile-drawer">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#stack">Stack</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contato">Contato</a>
+        <div class="msoc">
+            <a href="https://www.linkedin.com/in/cesarkali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/cesarkali/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <main>
+        <!-- ================= HERO ================= -->
+        <section id="inicio" class="hero">
+            <div class="hero-inner">
+                <div>
+                    <div class="hero-eyebrow-row reveal-fade">
+                        <span class="tag"><i class="fa-solid fa-earth-americas"></i>Remoto, qualquer lugar do mundo</span>
+                    </div>
+
+                    <span class="hero-hello reveal-fade">$ whoami</span>
+
+                    <h1>
+                        <span class="hero-name-line wipe">JÚLIO</span>
+                        <span class="hero-name-line wipe wipe-d1"><span class="hero-name-accent">CALIBERDA</span></span>
+                    </h1>
+
+                    <div class="hero-role reveal-fade">
+                        <span class="role-prefix">&gt;</span>
+                        <span id="hero-role-text"></span><span class="role-cursor"></span>
+                    </div>
+
+                    <p class="hero-bio reveal-fade">
+                        Construo a ponte entre <strong>estratégia de negócio</strong> e <strong>engenharia de software</strong>.
+                        Sou Product Manager, mas no tempo livre viro o tipo de profissional que dirige IA para construir produtos
+                        reais, do primeiro rascunho ao deploy. Este portfólio reúne parte desses projetos autorais, de SaaS com
+                        IA embarcada a jogos com física simulada em GPU.
+                    </p>
+
+                    <div class="hero-ctas reveal-fade">
+                        <a href="#projetos" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i>Ver Projetos</a>
+                        <a href="#contato" class="btn btn-ghost"><i class="fa-solid fa-paper-plane"></i>Falar comigo</a>
+                    </div>
+
+                    <div class="hero-socials reveal-fade">
+                        <a href="https://www.linkedin.com/in/cesarkali/" target="_blank" rel="noopener noreferrer" class="hero-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com/cesarkali/" target="_blank" rel="noopener noreferrer" class="hero-social-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" class="hero-social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="mailto:julio@caliberda.com.br" class="hero-social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="hero-photo-panel reveal-fade">
+                    <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+                    <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+
+                    <div class="hero-photo-frame">
+                        <img src="julio.jpg" alt="Júlio Caliberda" loading="lazy">
+                    </div>
+                    <div class="hero-photo-caption">
+                        <span class="hpc-name">Júlio Caliberda</span>
+                        <span class="hpc-role">Product Manager<br>Orquestrador de IA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-scroll-cue"><span>Scroll</span><i class="fa-solid fa-chevron-down"></i></div>
+        </section>
+
+        <!-- ================= MARQUEE ================= -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span class="marquee-item"><i class="fa-solid fa-briefcase"></i><b>Tech Product Manager</b></span>
+                <span class="marquee-item"><i class="fa-solid fa-clipboard-check"></i>Product Manager</span>
+                <span class="marquee-item"><i class="fa-solid fa-diagram-project"></i>Automação com n8n</span>
+                <span class="marquee-item"><i class="fa-solid fa-cubes"></i><b>18 repositórios</b></span>
+                <span class="marquee-item"><i class="fa-brands fa-react"></i>React 19 / Next.js</span>
+                <span class="marquee-item"><i class="fa-solid fa-mobile-screen"></i>React Native + Expo</span>
+                <span class="marquee-item"><i class="fa-brands fa-android"></i>Kotlin / Jetpack Compose</span>
+                <span class="marquee-item"><i class="fa-solid fa-shapes"></i>Flutter / Dart</span>
+                <span class="marquee-item"><i class="fa-brands fa-python"></i>Python / FastAPI</span>
+                <span class="marquee-item"><i class="fa-solid fa-database"></i>PostgreSQL / Firebase</span>
+                <span class="marquee-item"><i class="fa-solid fa-microchip"></i>Groq · Gemini · Whisper</span>
+                <span class="marquee-item"><i class="fa-solid fa-cube"></i>WebGL2 / GLSL Shaders</span>
+                <span class="marquee-item"><i class="fa-solid fa-terminal"></i>TypeScript</span>
+                <span class="marquee-item"><i class="fa-brands fa-github"></i>CI/CD · GitHub Actions</span>
+                <!-- duplicado para loop contínuo -->
+                <span class="marquee-item"><i class="fa-solid fa-briefcase"></i><b>Tech Product Manager</b></span>
+                <span class="marquee-item"><i class="fa-solid fa-clipboard-check"></i>Product Manager</span>
+                <span class="marquee-item"><i class="fa-solid fa-diagram-project"></i>Automação com n8n</span>
+                <span class="marquee-item"><i class="fa-solid fa-cubes"></i><b>18 repositórios</b></span>
+                <span class="marquee-item"><i class="fa-brands fa-react"></i>React 19 / Next.js</span>
+                <span class="marquee-item"><i class="fa-solid fa-mobile-screen"></i>React Native + Expo</span>
+                <span class="marquee-item"><i class="fa-brands fa-android"></i>Kotlin / Jetpack Compose</span>
+                <span class="marquee-item"><i class="fa-solid fa-shapes"></i>Flutter / Dart</span>
+                <span class="marquee-item"><i class="fa-brands fa-python"></i>Python / FastAPI</span>
+                <span class="marquee-item"><i class="fa-solid fa-database"></i>PostgreSQL / Firebase</span>
+                <span class="marquee-item"><i class="fa-solid fa-microchip"></i>Groq · Gemini · Whisper</span>
+                <span class="marquee-item"><i class="fa-solid fa-cube"></i>WebGL2 / GLSL Shaders</span>
+                <span class="marquee-item"><i class="fa-solid fa-terminal"></i>TypeScript</span>
+                <span class="marquee-item"><i class="fa-brands fa-github"></i>CI/CD · GitHub Actions</span>
+            </div>
+        </div>
+
+        <!-- ================= SOBRE ================= -->
+        <section id="sobre" class="section">
+            <div class="section-head">
+                <div class="head-row">
+                    <span class="section-index">02</span>
+                    <span class="section-eyebrow"><i class="fa-solid fa-user"></i>QUEM CONSTRÓI ISSO</span>
+                    <span class="head-rule"></span>
+                </div>
+                <h2 class="section-title reveal">De recepcionista a <em>Product Manager</em> orquestrando IA</h2>
+                <p class="section-sub reveal">Sem bootcamp, sem atalhos. Só uma trajetória construída na prática e a curiosidade de aprender a dirigir IA para entregar produto de verdade.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="reveal">
+                    <span class="section-eyebrow career-eyebrow"><i class="fa-solid fa-route"></i>TRAJETÓRIA, DO MAIS RECENTE AO PRIMEIRO</span>
+                    <div class="career-track">
+                        <div class="career-item is-current">
+                            <span class="career-dot"></span>
+                            <div class="career-year">2022 até hoje</div>
+                            <div class="career-role">Suporte, QA e Product Manager</div>
+                            <div class="career-place">Bitz Softwares</div>
+                        </div>
+                        <div class="career-item">
+                            <span class="career-dot"></span>
+                            <div class="career-year">2022</div>
+                            <div class="career-role">Técnico em TI e Suporte</div>
+                            <div class="career-place">Faculdade Unise</div>
+                        </div>
+                        <div class="career-item">
+                            <span class="career-dot"></span>
+                            <div class="career-year">2020 a 2021</div>
+                            <div class="career-role">Líder de Delivery</div>
+                            <div class="career-place">Supermercado Condor</div>
+                        </div>
+                        <div class="career-item">
+                            <span class="career-dot"></span>
+                            <div class="career-year">Curitiba, PR</div>
+                            <div class="career-role">Agente de Conservação</div>
+                            <div class="career-place">Verzani e Sandrini</div>
+                        </div>
+                        <div class="career-item">
+                            <span class="career-dot"></span>
+                            <div class="career-year">São Luís, MA</div>
+                            <div class="career-role">Recepcionista</div>
+                            <div class="career-place">Pousada Tambaú</div>
+                        </div>
+                        <div class="career-item">
+                            <span class="career-dot"></span>
+                            <div class="career-year">2013</div>
+                            <div class="career-role">Jovem Aprendiz Administrativo</div>
+                            <div class="career-place">Super União</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="about-body">
+                        <p>Comecei como recepcionista e passei por operação, suporte e qualidade antes de virar Product Manager. Uma trajetória construída na prática, sem atalhos, sempre resolvendo o problema que estava na frente.</p>
+                        <p>Não sou desenvolvedor tradicional. Sou prompter: sei conduzir a IA com instruções precisas, revisar cada entrega e corrigir com poucos erros. É assim que nasceram os projetos deste portfólio, a maioria fora do expediente, cobrindo desde SaaS com IA embarcada até jogos com física simulada em GPU.</p>
+                    </div>
+                    <ul class="about-facts">
+                        <li><b>Cargo</b><span>Product Manager</span></li>
+                        <li><b>Formação</b><span>Técnico em Informática, SENAI/PR</span></li>
+                        <li><b>Diferencial</b><span>Conduzir IA com instruções precisas e poucos erros</span></li>
+                        <li><b>Trajetória</b><span>De recepcionista a Product Manager, sem atalhos</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-stats reveal-fade">
+                <div class="about-stat"><b data-count="10">0</b><span>Anos de trajetória profissional</span></div>
+                <div class="about-stat"><b data-stat="total">0</b><span>Projetos autorais</span></div>
+                <div class="about-stat"><b data-stat="live">0</b><span>Em produção</span></div>
+                <div class="about-stat"><b data-stat="categories">0</b><span>Frentes diferentes</span></div>
+            </div>
+        </section>
+
+        <!-- ================= STACK ================= -->
+        <section id="stack" class="section">
+            <div class="section-head">
+                <div class="head-row">
+                    <span class="section-index">03</span>
+                    <span class="section-eyebrow"><i class="fa-solid fa-layer-group"></i>TECNOLOGIAS ENVOLVIDAS</span>
+                    <span class="head-rule"></span>
+                </div>
+                <h2 class="section-title reveal">Eu não escrevo cada linha. Eu dirijo <em>quem escreve</em></h2>
+                <p class="section-sub reveal">Sou prompter, não desenvolvedor tradicional. Meu diferencial é saber conduzir a IA com instruções precisas, revisar o resultado e corrigir com poucos erros. Estas são as tecnologias que ela usa quando eu comando.</p>
+            </div>
+
+            <div class="stack-grid">
+                <div class="stack-card reveal-fade">
+                    <div class="stack-card-head">
+                        <div class="stack-card-icon"><i class="fa-solid fa-window-maximize"></i></div>
+                        <div>
+                            <h3>Frontend Web</h3>
+                            <span>Interfaces & Design Systems</span>
+                        </div>
+                    </div>
+                    <div class="stack-tags">
+                        <span>React 19</span><span>Next.js</span><span>Vite</span><span>TypeScript</span>
+                        <span>Tailwind CSS</span><span>shadcn/ui</span><span>TanStack Query</span>
+                    </div>
+                </div>
+
+                <div class="stack-card reveal-fade">
+                    <div class="stack-card-head">
+                        <div class="stack-card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <div>
+                            <h3>Mobile & Multiplataforma</h3>
+                            <span>Android, iOS & Tablets</span>
+                        </div>
+                    </div>
+                    <div class="stack-tags">
+                        <span>React Native</span><span>Expo</span><span>Jetpack Compose</span>
+                        <span>Kotlin</span><span>Flutter</span><span>Riverpod</span>
+                    </div>
+                </div>
+
+                <div class="stack-card reveal-fade">
+                    <div class="stack-card-head">
+                        <div class="stack-card-icon"><i class="fa-solid fa-database"></i></div>
+                        <div>
+                            <h3>Backend & Dados</h3>
+                            <span>APIs, banco & tempo real</span>
+                        </div>
+                    </div>
+                    <div class="stack-tags">
+                        <span>NestJS</span><span>FastAPI</span><span>PostgreSQL</span>
+                        <span>Firebase</span><span>SQL avançado</span><span>Node.js</span>
+                    </div>
+                </div>
+
+                <div class="stack-card reveal-fade">
+                    <div class="stack-card-head">
+                        <div class="stack-card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div>
+                            <h3>IA & Automação</h3>
+                            <span>Voz, visão & fluxos</span>
+                        </div>
+                    </div>
+                    <div class="stack-tags">
+                        <span>n8n</span><span>Groq (Llama / Whisper)</span><span>Gemini</span>
+                        <span>OpenAI</span><span>Whisper local</span>
+                    </div>
+                </div>
+
+                <div class="stack-card reveal-fade">
+                    <div class="stack-card-head">
+                        <div class="stack-card-icon"><i class="fa-solid fa-cube"></i></div>
+                        <div>
+                            <h3>Jogos & Graphics</h3>
+                            <span>Simulação em tempo real</span>
+                        </div>
+                    </div>
+                    <div class="stack-tags">
+                        <span>WebGL2</span><span>GLSL Shaders</span><span>Canvas2D</span>
+                        <span>Web Audio API</span><span>SDF Rendering</span>
+                    </div>
+                </div>
+
+                <div class="stack-card reveal-fade">
+                    <div class="stack-card-head">
+                        <div class="stack-card-icon"><i class="fa-solid fa-server"></i></div>
+                        <div>
+                            <h3>Infra & Ferramentas</h3>
+                            <span>Build, deploy & CI/CD</span>
+                        </div>
+                    </div>
+                    <div class="stack-tags">
+                        <span>Vercel</span><span>GitHub Actions</span><span>EAS Build</span>
+                        <span>PyInstaller</span><span>Manifest V3</span><span>Puppeteer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROJETOS ================= -->
+        <section id="projetos" class="section">
+            <div class="section-head">
+                <div class="head-row">
+                    <span class="section-index">04</span>
+                    <span class="section-eyebrow"><i class="fa-solid fa-folder-tree"></i>REPOSITÓRIOS</span>
+                    <span class="head-rule"></span>
+                </div>
+                <h2 class="section-title reveal">Todo o ecossistema, <em>projeto por projeto</em></h2>
+                <p class="section-sub reveal">Projetos reais, do SaaS financeiro aos jogos procedurais, passando por automações e sites. Filtre por categoria ou busque por tecnologia.</p>
+            </div>
+
+            <div class="projects-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="project-search" placeholder="buscar por nome, stack, tecnologia..." aria-label="Buscar projeto">
+                </div>
+                <div class="filter-tabs" id="filter-tabs"></div>
+            </div>
+
+            <div class="projects-meta-row">
+                <span id="projects-meta-count"></span>
+                <span>Cada card leva à demonstração ou ao repositório.</span>
+            </div>
+
+            <div class="projects-grid" id="projects-grid"></div>
+        </section>
+
+        <!-- ================= TIMELINE / BUILD LOG ================= -->
+        <section id="timeline" class="section">
+            <div class="section-head">
+                <div class="head-row">
+                    <span class="section-index">05</span>
+                    <span class="section-eyebrow"><i class="fa-solid fa-timeline"></i>BUILD LOG</span>
+                    <span class="head-rule"></span>
+                </div>
+                <h2 class="section-title reveal">Do primeiro commit até <em>hoje</em></h2>
+                <p class="section-sub reveal">Cronologia real de criação de cada projeto, do mais antigo ao mais recente.</p>
+            </div>
+
+            <div class="buildlog" id="buildlog-track"></div>
+        </section>
+
+        <!-- ================= CONTATO ================= -->
+        <section id="contato" class="section">
+            <div class="head-row">
+                <span class="section-index">06</span>
+                <span class="section-eyebrow"><i class="fa-solid fa-paper-plane"></i>PRÓXIMO PASSO</span>
+                <span class="head-rule"></span>
+            </div>
+
+            <div class="contact-panel reveal-fade">
+                <span class="corner corner-tl"></span><span class="corner corner-tr"></span>
+                <span class="corner corner-bl"></span><span class="corner corner-br"></span>
+
+                <div>
+                    <h2 class="contact-title">Vamos construir algo <em>fora da curva</em>?</h2>
+                    <p class="contact-desc">Se você chegou até aqui explorando os projetos, já sabe que não fico só no discurso. Bora conversar sobre produto, automação ou o próximo passo. Respondo rápido.</p>
+                    <div class="hero-ctas">
+                        <a href="mailto:julio@caliberda.com.br" class="btn btn-primary"><i class="fa-solid fa-envelope"></i>Enviar email</a>
+                        <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" class="btn btn-ghost"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div class="cl-body">
+                            <span class="cl-label">Email</span>
+                            <a href="mailto:julio@caliberda.com.br" class="cl-value">julio@caliberda.com.br</a>
+                        </div>
+                        <button class="copy-btn" data-copy="julio@caliberda.com.br" aria-label="Copiar email" title="Copiar email">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div class="cl-body"><span class="cl-label">WhatsApp</span><span class="cl-value">(46) 99983-9486</span></div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/cesarkali/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <div class="cl-body"><span class="cl-label">LinkedIn</span><span class="cl-value">linkedin.com/in/cesarkali</span></div>
+                    </a>
+
+                    <a href="https://github.com/cesarkali/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fa-brands fa-github"></i>
+                        <div class="cl-body"><span class="cl-label">GitHub</span><span class="cl-value">github.com/cesarkali</span></div>
+                    </a>
+
+                    <div class="contact-item">
+                        <i class="fa-solid fa-earth-americas"></i>
+                        <div class="cl-body"><span class="cl-label">Disponibilidade</span><span class="cl-value">Remoto, qualquer lugar do mundo</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">JÚLIO <em>CALIBERDA</em></span>
+            <nav class="footer-links" aria-label="Links do rodapé">
+                <a href="#inicio">Início</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#contato">Contato</a>
+                <a href="https://www.caliberda.com.br" target="_blank" rel="noopener noreferrer">caliberda.com.br</a>
+            </nav>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/cesarkali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/cesarkali/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://wa.me/5546999839486" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-legal">
+                <span>&copy; <span id="footer-year">2026</span> Júlio Caliberda · Pato Branco, PR</span>
+                <a href="view-source:https://portifolio.caliberda.com.br/" class="easter">&lt;/&gt; sem frameworks: HTML, CSS e JS puros</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= MODAL DE PROJETO ================= -->
+    <div class="modal-overlay" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Detalhes do projeto">
+        <div class="modal-box" id="modal-box"></div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>
