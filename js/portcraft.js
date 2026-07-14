@@ -227,7 +227,7 @@
             created: '2026-05-16',
         },
         {
-            id: 'testeotelia', name: 'TesteOtelia', sub: null, category: 'sites',
+            id: 'Script index', name: 'Script Index', sub: null, category: 'sites',
             icon: 'fa-solid fa-flask', visibility: 'private', repoSlug: null,
             deploy: 'https://script.caliberda.com.br',
             desc: 'Site para testar scripts em HTML rapidamente, antes de levá-los a um produto com nome próprio.',
