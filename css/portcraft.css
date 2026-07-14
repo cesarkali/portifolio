@@ -622,12 +622,16 @@ button { font: inherit; }
 .projects-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 36px; padding-bottom: 28px; border-bottom: 2px solid var(--panel-bd); }
 
 .search-box {
-    position: relative; flex: 1; min-width: 220px; max-width: 340px;
+    position: relative; flex: 1; min-width: 260px; max-width: 340px;
     display: flex; align-items: center; gap: 10px; padding: 12px 16px;
     background: var(--surface-2); box-shadow: inset 2px 2px 0 var(--bevel-dark), inset -2px -2px 0 var(--bevel-light);
 }
-.search-box i { color: var(--muted-dim); }
-.search-box input { flex: 1; background: none; border: none; outline: none; font-family: var(--font-label); font-size: 0.82rem; color: var(--text); }
+.search-box i { color: var(--muted-dim); flex-shrink: 0; }
+.search-box input {
+    flex: 1; min-width: 0; background: none; border: none; outline: none;
+    font-family: var(--font-label); font-size: 0.82rem; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis;
+}
 .search-box input::placeholder { color: var(--muted-dim); }
 
 .filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
