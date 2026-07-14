@@ -7,7 +7,7 @@ Este é o repositório do meu portfólio profissional, posicionado como **Tech P
 
 🔗 **Acesse agora:** [portifolio.caliberda.com.br](https://portifolio.caliberda.com.br)
 
-A versão anterior do portfólio continua disponível em `/v1`, mantida por transparência mas sem divulgação ativa.
+Versões anteriores continuam disponíveis, mantidas por transparência mas sem divulgação ativa: `/v1` (a original) e `/v2` (a segunda versão, estilo HUD).
 
 ---
 
@@ -15,11 +15,11 @@ A versão anterior do portfólio continua disponível em `/v1`, mantida por tran
 
 ### Frontend
 - **HTML5 & CSS3**: Estrutura semântica e estilização com variáveis CSS, sem frameworks.
-- **Vanilla JavaScript**: Toda a interação (filtros, busca, modal, animações) sem dependências pesadas.
-- **Google Fonts (Space Grotesk, Inter, JetBrains Mono)**: Tipografia.
+- **Vanilla JavaScript**: Toda a interação (filtros, busca, modal, tema claro/escuro, animações) sem dependências pesadas.
+- **Google Fonts (Press Start 2P, Silkscreen)**: Tipografia com pele pixel/voxel.
 - **Font Awesome**: Ícones vetoriais.
 
-> A versão anterior (`/v1`) usa uma stack diferente: Tailwind CSS (via CDN) e Vanilla JS com galerias e cursor personalizado.
+> A versão anterior (`/v2`) usa uma identidade visual de HUD tecnológico (Space Grotesk, Inter, JetBrains Mono). A primeira versão (`/v1`) usa uma stack diferente: Tailwind CSS (via CDN) e Vanilla JS com galerias e cursor personalizado.
 
 ### Qualidade e Testes
 - **Node.js Test Runner**: Execução de testes nativa.
@@ -34,30 +34,36 @@ A versão anterior do portfólio continua disponível em `/v1`, mantida por tran
 
 ## ✨ Características Principais
 
-- **Design Premium**: Interface com estética moderna, efeito noise, cursor dinâmico e animações micro-interativas.
+- **Design Premium**: Identidade visual pixel/voxel, cantos em bisel e animações micro-interativas.
+- **Tema claro/escuro**: Alternância com transição animada (eclipse), padrão escuro.
 - **100% Responsivo**: Adaptado para dispositivos móveis, tablets e desktops.
 - **SEO Optimized**: Meta tags configuradas para compartilhamento em redes sociais (Open Graph e Twitter Cards).
 - **Acessibilidade**: Foco em contraste e semântica.
-- **Modo de Impressão**: Layout otimizado para gerar currículo em PDF diretamente do navegador (`Ctrl + P`).
 
 ---
 
 ## 📂 Estrutura do Projeto
 
 ```text
-├── index.html           # Ponto de entrada principal (versão atual)
-├── css/style.css        # Estilização da versão atual
-├── js/script.js         # Lógica da versão atual
-├── julio.jpg            # Foto compartilhada entre as versões
-├── favicon.svg          # Favicon compartilhado
-├── v1/                  # Versão anterior do portfólio, mantida acessível em /v1
+├── index.html           # Ponto de entrada principal (versão atual, estilo pixel/voxel)
+├── css/portcraft.css     # Estilização da versão atual
+├── js/portcraft.js       # Lógica da versão atual
+├── julio.jpg             # Foto compartilhada entre as versões
+├── favicon.svg           # Favicon da versão atual
+├── v1/                   # Primeira versão do portfólio, mantida acessível em /v1
 │   ├── index.html       # Ponto de entrada da v1 (não divulgada, mas acessível)
 │   ├── css/style.css
 │   ├── js/               # script.js, gallery.js, scroll-lock.js, tailwind-config.js
 │   ├── assets/           # Imagens e recursos estáticos da v1
 │   └── tests/            # Suíte de testes de propriedade (fast-check) da v1
+├── v2/                   # Segunda versão (estilo HUD), mantida acessível em /v2
+│   ├── index.html
+│   ├── css/style.css
+│   ├── js/script.js
+│   ├── julio.jpg
+│   └── favicon.svg
 ├── package.json          # Dependências e scripts de teste (apontam para v1/tests)
-└── vercel.json           # Configurações de deploy na Vercel (rewrite de /v1)
+└── vercel.json           # Configurações de deploy na Vercel (rewrite de /v1 e /v2)
 ```
 
 ---
