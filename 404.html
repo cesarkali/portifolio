@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>404 · Página não encontrada | Júlio Caliberda</title>
+  <meta name="description" content="Essa página não existe. Volte ao portfólio de Júlio Caliberda.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0c0d0f">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Tema: mesma chave do portfólio (escuro por padrão) -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('caliberda-pf-theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) { }
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    /* a página cabe exatamente na tela: barra + conteúdo + rodapé, sem sobra */
+    body.page-404 { min-height: 100svh; display: flex; flex-direction: column; }
+    body.page-404 main { flex: 1; display: flex; min-height: 0; }
+    body.page-404 .footer { margin-top: 0; }
+    .e404 {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      grid-template-rows: auto 1fr;
+      gap: 24px 64px;
+      padding-top: 18px;
+      padding-bottom: clamp(24px, 4vw, 48px);
+    }
+    .e404 .hero-meta { grid-column: 1 / -1; }
+    .e404-art { align-self: center; position: relative; }
+    .e404-art canvas { width: 100%; aspect-ratio: 16 / 10; touch-action: pan-y; }
+    .e404-copy { align-self: center; }
+    .e404-copy .sec-title { font-size: clamp(2.4rem, 5vw, 5rem); }
+    .e404-text { color: var(--ink-2); font-size: 1.08rem; line-height: 1.65; margin-top: 22px; max-width: 46ch; }
+    .e404-copy .ctas { margin-top: 34px; grid-template-columns: minmax(0, 1fr); max-width: 360px; }
+    .e404-code { margin-top: 28px; font: 400 0.72rem/1.4 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    @media (max-width: 900px) {
+      .e404 { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr; gap: 20px; }
+      .e404-art canvas { aspect-ratio: 16 / 9; }
+      .e404-copy { align-self: start; }
+      .e404-copy .sec-title { font-size: clamp(2rem, 9vw, 3.2rem); }
+      .e404-text { font-size: 1rem; margin-top: 14px; }
+      .e404-copy .ctas { max-width: none; margin-top: 22px; }
+      .e404-copy .cta { padding-block: 13px 11px; }
+      .e404-code { display: none; }
+    }
+  </style>
+</head>
+
+<body class="page-404">
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+  <!-- ═════════ BARRA SUPERIOR ═════════ -->
+  <header class="bar" id="bar">
+    <div class="bar-inner">
+      <a class="bar-mark" href="/" aria-label="Júlio Caliberda, voltar ao início">
+        <span class="mark-slot" aria-hidden="true">
+          <i class="mark-sq"></i>
+          <canvas class="mark-avatar"></canvas>
+        </span>
+        <span>Caliberda</span>
+      </a>
+
+      <nav class="bar-nav" aria-label="Seções">
+        <a href="/#projetos">Projetos</a>
+        <a href="/#sobre">Sobre</a>
+        <a href="/#ferramentas">Ferramentas</a>
+        <a href="/#linha">Linha do tempo</a>
+        <a href="/#contato">Contato</a>
+      </nav>
+
+      <div class="bar-tools">
+        <nav class="bar-social" aria-label="Redes sociais">
+          <a class="s-email" href="mailto:julio@caliberda.com.br" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="soc-name">Email</span></a>
+          <a class="s-linkedin" href="https://www.linkedin.com/in/cesarkali/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="soc-name">LinkedIn</span></a>
+          <a class="s-github" href="https://github.com/cesarkali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span class="soc-name">GitHub</span></a>
+          <a class="s-instagram" href="https://www.instagram.com/cesar.kali/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span class="soc-name">Instagram</span></a>
+        </nav>
+        <button class="bar-btn" id="theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" /></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" /></svg>
+        </button>
+        <button class="bar-btn bar-menu" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+          <span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+          <span class="sr-only">Abrir menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu de tela cheia (mobile) -->
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Menu">
+      <a href="/#projetos">Projetos</a>
+      <a href="/#sobre">Sobre</a>
+      <a href="/#ferramentas">Ferramentas</a>
+      <a href="/#linha">Linha do tempo</a>
+      <a href="/#contato">Contato</a>
+    </nav>
+    <div class="menu-foot">
+      <nav class="menu-social" aria-label="Redes sociais">
+        <a class="s-email" href="mailto:julio@caliberda.com.br" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="soc-name">Email</span></a>
+        <a class="s-linkedin" href="https://www.linkedin.com/in/cesarkali/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="soc-name">LinkedIn</span></a>
+        <a class="s-github" href="https://github.com/cesarkali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span class="soc-name">GitHub</span></a>
+        <a class="s-instagram" href="https://www.instagram.com/cesar.kali/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span class="soc-name">Instagram</span></a>
+      </nav>
+      <a href="https://www.caliberda.com.br" target="_blank" rel="noopener">caliberda.com.br ↗</a>
+    </div>
+  </div>
+
+  <main id="conteudo">
+    <section class="e404 wrap">
+      <div class="hero-meta rule-bleed" data-reveal>
+        <span>Erro 404</span>
+        <span>Rota não encontrada</span>
+      </div>
+
+      <div class="e404-art" data-reveal>
+        <canvas id="dots404" role="img" aria-label="404 desenhado em pontos"></canvas>
+      </div>
+
+      <div class="e404-copy">
+        <h1 class="sec-title" data-words>Essa página <em>saiu do ar.</em></h1>
+        <p class="e404-text" data-reveal>A rota que você tentou acessar não existe, foi movida ou nunca existiu. Os
+          pontinhos se perderam no caminho, mas o resto do portfólio está todo aqui.</p>
+
+        <div class="ctas" data-reveal>
+          <a class="cta cta-main" href="/">
+            <span class="cta-label">Voltar ao início</span>
+            <svg class="cta-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+          </a>
+          <a class="cta" href="/#projetos">
+            <span class="cta-label">Ver projetos</span>
+            <svg class="cta-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+          </a>
+          <a class="cta" href="/#contato">
+            <span class="cta-label">Falar comigo</span>
+            <svg class="cta-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+          </a>
+        </div>
+
+        <p class="e404-code" data-reveal>status 404 · rota não encontrada</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═════════ RODAPÉ ═════════ -->
+  <footer class="footer">
+    <div class="footer-row">
+      <span class="ft-copy">© <span id="ft-year">2026</span> Júlio Caliberda</span>
+      <nav class="ft-links" aria-label="Links do rodapé">
+        <a href="https://www.caliberda.com.br" target="_blank" rel="noopener">caliberda.com.br</a>
+        <a href="/v3/">portfólio v3</a>
+        <a href="/v2/">v2</a>
+        <a href="/v1/">v1</a>
+        <a href="https://github.com/cesarkali" target="_blank" rel="noopener">github</a>
+        <a href="/" class="ft-top">início ↑</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="/app.js" defer></script>
+  <script src="/404.js" defer></script>
+</body>
+
+</html>
