@@ -3,7 +3,7 @@
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://portifolio.caliberda.com.br)
 [![Testing](https://img.shields.io/badge/tests-property--based-blue.svg)](#-testes)
 
-Este é o repositório do meu portfólio profissional, posicionado como **Analista de Sistemas** e **orquestrador de IA**: dirijo IA para construir produtos reais, do primeiro rascunho ao deploy.
+Este é o repositório do meu portfólio profissional, posicionado como **Product Analyst** e **orquestrador de IA**: dirijo IA para construir produtos reais, do primeiro rascunho ao deploy.
 
 🔗 **Acesse agora:** [portifolio.caliberda.com.br](https://portifolio.caliberda.com.br)
 

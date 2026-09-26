@@ -732,7 +732,7 @@
 
   /* ── FRASE ROTATIVA ─────────────────────────────────────────────── */
   const rotWin = $('.rot-window');
-  const PHRASES = ['Analista de Sistemas', 'Arquiteto de automação (n8n)', 'Ponte entre negócio e engenharia', 'Do discovery ao deploy'];
+  const PHRASES = ['Do discovery ao deploy', 'Arquiteto de automação (n8n)', 'Ponte entre negócio e engenharia'];
   if (rotWin && !noMotion) {
     let idx = 0;
     setInterval(() => {
