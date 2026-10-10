@@ -60,8 +60,9 @@
     const cat = CATS[p.category] || '';
     const live = !!p.deploy;
     const links = [];
-    if (p.deploy) links.push('<a class="cta cta-main" href="' + p.deploy + '" target="_blank" rel="noopener"><span class="cta-label">Abrir ' + esc(host(p.deploy)) + '</span>' + ARROW + '</a>');
+    if (p.deploy) links.push('<a class="cta cta-main" href="' + p.deploy + '" target="_blank" rel="noopener"><span class="cta-label">' + esc(p.ctaLabel || 'Abrir ' + host(p.deploy)) + '</span>' + ARROW + '</a>');
     if (p.repoSlug) links.push('<a class="cta" href="https://github.com/cesarkali/' + p.repoSlug + '" target="_blank" rel="noopener"><span class="cta-label">Ver no GitHub</span>' + ARROW + '</a>');
+    else if (p.source) links.push('<a class="cta" href="' + p.source + '" target="_blank" rel="noopener"><span class="cta-label">Ver o código</span>' + ARROW + '</a>');
     else links.push('<span class="cta is-off"><span class="cta-label">Repositório privado</span></span>');
     const status = (live ? 'No ar' : 'Ainda não publicado') + ', código ' + (p.visibility === 'public' ? 'aberto' : 'privado');
     return '<li class="row" id="p-' + p.id + '" data-id="' + p.id + '">' +

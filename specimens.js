@@ -226,6 +226,186 @@
     ctx.globalAlpha = 1;
   };
 
+  /* ── Alt+Tab Flip 3D · a pilha de janelas gira a cada Alt+Tab ───── */
+  G.flip3d = function (ctx, w, h, t, C) {
+    const small = Math.min(w, h) < 110;
+    const N = small ? 4 : 5, T = 2.6;
+    const step = Math.floor(t / T) + easeBack(seg(t % T, 1.5, 2.3));
+    const fs = clamp(w * 0.03, 9, 14);
+
+    // vaga k da pilha: 0 é a da frente, embaixo à esquerda; as outras sobem para trás
+    function slot(k) {
+      return {
+        x: w * (small ? 0.4 : 0.36) + k * w * (small ? 0.075 : 0.08),
+        y: h * (small ? 0.58 : 0.55) - k * h * (small ? 0.075 : 0.07),
+        s: 1 - k * 0.09,
+        a: clamp(1 - k * 0.2, 0.15, 1),
+      };
+    }
+    function win(k, alpha, i) {
+      const P = slot(k);
+      const W = w * (small ? 0.46 : 0.4) * P.s, H = h * (small ? 0.46 : 0.42) * P.s;
+      const x0 = P.x - W / 2, x1 = P.x + W / 2, t0 = P.y - H / 2, b0 = P.y + H / 2;
+      const t1 = P.y - H * 0.4, b1 = P.y + H * 0.4;     // a borda direita fica mais longe
+      const at = (u, v) => [lerp(x0, x1, u), lerp(lerp(t0, b0, v), lerp(t1, b1, v), u)];
+      ctx.globalAlpha = alpha * P.a;
+      ctx.beginPath(); ctx.moveTo(x0, t0); ctx.lineTo(x1, t1); ctx.lineTo(x1, b1); ctx.lineTo(x0, b0); ctx.closePath();
+      ctx.fillStyle = C.mix('ink', 0.07); ctx.fill();
+      ctx.strokeStyle = C.rgba('accent', k < 0.5 ? 0.95 : 0.5); ctx.lineWidth = k < 0.5 ? 1.6 : 1; ctx.stroke();
+      // barra de título
+      const tb = 0.12;
+      ctx.beginPath();
+      ctx.moveTo(x0, t0); ctx.lineTo(x1, t1);
+      ctx.lineTo(...at(1, tb)); ctx.lineTo(...at(0, tb)); ctx.closePath();
+      ctx.fillStyle = C.rgba('accent', k < 0.5 ? 0.55 : 0.22); ctx.fill();
+      if (!small) {
+        // conteúdo: umas linhas de texto e um bloco, diferente em cada janela
+        ctx.strokeStyle = C.rgba('ink', 0.28); ctx.lineWidth = Math.max(1.5, H * 0.035);
+        for (let r = 0; r < 4; r++) {
+          const v = 0.28 + r * 0.13, len = 0.35 + hash(i * 7 + r) * 0.45;
+          const p0 = at(0.1, v), p1 = at(0.1 + len * 0.8, v);
+          line(ctx, p0[0], p0[1], p1[0], p1[1]);
+        }
+        const q = [at(0.1, 0.8), at(0.45 + hash(i) * 0.4, 0.8), at(0.45 + hash(i) * 0.4, 0.9), at(0.1, 0.9)];
+        ctx.beginPath(); q.forEach((p, j) => (j ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]))); ctx.closePath();
+        ctx.fillStyle = C.rgba('accent', 0.25); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // cada janela sabe a vaga em que está; a da frente sai pela frente e volta lá atrás
+    const items = [];
+    for (let i = 0; i < N; i++) {
+      const f = (((i - step) % N) + N) % N;
+      if (f > N - 1) {
+        const q = N - f;                                  // 0 → 1 enquanto sai
+        items.push({ k: -q * 0.9, a: 1 - q, i });
+        items.push({ k: N - 1, a: q, i });
+      } else items.push({ k: f, a: 1, i });
+    }
+    items.sort((A, B) => B.k - A.k).forEach((it) => win(it.k, it.a, it.i));
+
+    if (!small) {
+      const press = seg(t % T, 1.3, 1.5) * (1 - seg(t % T, 2.1, 2.3));
+      font(ctx, fs * 0.85, 'mono', 500);
+      const txt = 'Alt + Tab', tw = ctx.measureText(txt).width + fs * 1.6, th = fs * 1.9;
+      const kx = w - tw - w * 0.06, ky = h * 0.86;
+      ctx.fillStyle = press > 0.5 ? C.accent : C.mix('ink', 0.1);
+      rrect(ctx, kx, ky, tw, th, 4); ctx.fill();
+      ctx.strokeStyle = C.rgba('ink', 0.25); ctx.lineWidth = 1; ctx.stroke();
+      label(ctx, txt, kx + tw / 2, ky + th / 2, fs * 0.85, 'mono', 500, press > 0.5 ? C.bg : C.ink, 'center');
+    }
+  };
+
+  /* ── Mac Island & Dock · a pílula vira notificação e central ────── */
+  G.island = function (ctx, w, h, t, C) {
+    const small = Math.min(w, h) < 110;
+    const fs = clamp(w * 0.03, 9, 14);
+
+    // papel de parede grafite, como no GIF do mod
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, C.mix('ink', 0.04)); g.addColorStop(1, C.mix('ink', 0.17));
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+
+    const T = small ? 4 : 9.5, ph = t % T;
+    const grow = (a, b, c, d) => easeBack(seg(ph, a, b)) * (1 - ease(seg(ph, c, d)));
+    const nA = small ? grow(0.8, 1.5, 2.8, 3.3) : grow(1.0, 1.7, 3.4, 3.9);    // notificação
+    const cA = small ? 0 : grow(4.6, 5.4, 8.1, 8.7);                             // central de controle
+
+    const top = h * 0.05;
+    const base = { w: w * (small ? 0.5 : 0.56), h: Math.max(small ? 9 : 14, h * 0.075) };
+    const note = { w: w * (small ? 0.74 : 0.66), h: h * (small ? 0.3 : 0.2) };
+    const ctl = { w: w * 0.6, h: h * 0.6 };
+    const pw = base.w + (note.w - base.w) * nA + (ctl.w - base.w) * cA;
+    const pH = base.h + (note.h - base.h) * nA + (ctl.h - base.h) * cA;
+    const r = Math.min(pH / 2, base.h / 2 + (small ? 6 : 12) * clamp(Math.max(nA, cA)));
+    const px = (w - pw) / 2;
+
+    ctx.fillStyle = '#000'; rrect(ctx, px, top, pw, pH, r); ctx.fill();
+    ctx.strokeStyle = C.rgba('ink', 0.14); ctx.lineWidth = 1; ctx.stroke();
+
+    const pin = 1 - clamp(Math.max(nA, cA) * 3);
+    const nIn = clamp((nA - 0.65) / 0.35), cIn = clamp((cA - 0.65) / 0.35);
+    const cy = top + base.h / 2;
+
+    if (small) {
+      if (pin > 0) {
+        ctx.globalAlpha = pin; ctx.fillStyle = C.ink;
+        dot(ctx, px + pw * 0.16, cy, 1.4); dot(ctx, px + pw * 0.26, cy, 1.4);
+        ctx.fillStyle = C.accent; dot(ctx, px + pw * 0.84, cy, 1.6);
+      }
+      if (nIn > 0) {
+        ctx.globalAlpha = nIn;
+        const s = pH * 0.5;
+        ctx.fillStyle = C.accent; rrect(ctx, px + pH * 0.25, top + (pH - s) / 2, s, s, 2); ctx.fill();
+        ctx.fillStyle = C.rgba('ink', 0.8); ctx.fillRect(px + pH * 0.25 + s + 4, top + pH * 0.36, pw * 0.4, 1.6);
+        ctx.fillStyle = C.rgba('ink', 0.4); ctx.fillRect(px + pH * 0.25 + s + 4, top + pH * 0.6, pw * 0.3, 1.4);
+      }
+      ctx.globalAlpha = 1;
+    } else {
+      // pílula fechada: música à esquerda, ícones e relógio à direita
+      if (pin > 0) {
+        ctx.globalAlpha = pin;
+        const ih = base.h * 0.56;
+        ctx.fillStyle = C.accent; rrect(ctx, px + base.h * 0.35, cy - ih / 2, ih, ih, 2); ctx.fill();
+        label(ctx, 'Tocando agora', px + base.h * 0.45 + ih, cy, fs * 0.72, 'sans', 500, C.rgba('ink', 0.85));
+        for (let i = 0; i < 4; i++) { ctx.fillStyle = C.rgba('ink', 0.6); dot(ctx, px + pw * 0.56 + i * fs * 0.95, cy, fs * 0.18); }
+        label(ctx, '21:04', px + pw - base.h * 0.45, cy, fs * 0.78, 'mono', 500, C.ink, 'right');
+      }
+      // notificação nova
+      if (nIn > 0) {
+        ctx.globalAlpha = nIn;
+        const ic = pH * 0.46, ix = px + pH * 0.27, iy = top + (pH - ic) / 2;
+        ctx.fillStyle = C.accent; rrect(ctx, ix, iy, ic, ic, ic * 0.25); ctx.fill();
+        label(ctx, 'Ana', ix + ic + fs * 0.8, top + pH * 0.38, fs * 0.95, 'sans', 700, C.ink);
+        label(ctx, 'agora', px + pw - pH * 0.3, top + pH * 0.38, fs * 0.72, 'sans', 400, C.muted, 'right');
+        font(ctx, fs * 0.82, 'sans', 400);
+        label(ctx, ell(ctx, 'Chego em 10 min, pode descer?', pw - ic - pH * 0.9), ix + ic + fs * 0.8, top + pH * 0.66, fs * 0.82, 'sans', 400, C.rgba('ink', 0.7));
+      }
+      // central de controle
+      if (cIn > 0) {
+        ctx.globalAlpha = cIn;
+        const pad = pw * 0.06, gx = px + pad, gy = top + pad, gw = (pw - pad * 3) / 2, gh = pH * 0.17;
+        const tiles = [['Wi-Fi', 1], ['Bluetooth', 1], ['Não perturbe', 0], ['Modo escuro', 1]];
+        tiles.forEach((tl, i) => {
+          const tx = gx + (i % 2) * (gw + pad), ty = gy + Math.floor(i / 2) * (gh + pad * 0.7);
+          ctx.fillStyle = C.rgba('ink', 0.09); rrect(ctx, tx, ty, gw, gh, gh * 0.3); ctx.fill();
+          const rr = gh * 0.27;
+          ctx.fillStyle = tl[1] ? C.accent : C.rgba('ink', 0.22); dot(ctx, tx + gh * 0.5, ty + gh / 2, rr);
+          let lf = fs * 0.74; font(ctx, lf, 'sans', 600);
+          while (lf > 7 && ctx.measureText(tl[0]).width > gw - gh * 1.1) { lf -= 0.5; font(ctx, lf, 'sans', 600); }
+          label(ctx, ell(ctx, tl[0], gw - gh * 1.1), tx + gh * 0.95, ty + gh / 2, lf, 'sans', 600, C.ink);
+        });
+        const sy0 = gy + 2 * (gh + pad * 0.7) + pad * 0.3;
+        [['Tela', 0.62 + 0.12 * Math.sin(t * 1.3)], ['Som', 0.45 + 0.2 * Math.sin(t * 0.9 + 1)]].forEach((sl, i) => {
+          const sy = sy0 + i * (gh * 1.25);
+          label(ctx, sl[0], gx, sy + fs * 0.4, fs * 0.72, 'sans', 600, C.rgba('ink', 0.8));
+          const by = sy + fs * 1.1, bw = pw - pad * 2, bh = gh * 0.42;
+          ctx.fillStyle = C.rgba('ink', 0.14); rrect(ctx, gx, by, bw, bh, bh / 2); ctx.fill();
+          ctx.fillStyle = C.ink; rrect(ctx, gx, by, bw * sl[1], bh, bh / 2); ctx.fill();
+        });
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // dock com ampliação seguindo o mouse
+    const n = small ? 5 : 7;
+    const isz = small ? w * 0.09 : clamp(w * 0.055, 12, 30);
+    const gap = isz * 0.3, dw = n * isz + (n + 1) * gap, dh = isz + gap * 2;
+    const dx = (w - dw) / 2, dy = h - dh - h * 0.04;
+    ctx.fillStyle = C.rgba('ink', 0.12); rrect(ctx, dx, dy, dw, dh, dh * 0.3); ctx.fill();
+    ctx.strokeStyle = C.rgba('ink', 0.18); ctx.lineWidth = 1; ctx.stroke();
+    const hx = w / 2 + dw * 0.42 * Math.sin(t * 0.8);
+    for (let i = 0; i < n; i++) {
+      const cx = dx + gap + isz / 2 + i * (isz + gap);
+      const k = small ? 1 : 1 + 0.5 * Math.exp(-Math.pow((cx - hx) / (isz * 1.3), 2));
+      const s = isz * k;
+      ctx.fillStyle = i === 2 ? C.accent : C.mix('ink', 0.22 + hash(i + 3) * 0.3);
+      rrect(ctx, cx - s / 2, dy + gap + isz - s, s, s, s * 0.24); ctx.fill();
+      if (i === 0 || i === 2) { ctx.fillStyle = C.rgba('ink', 0.7); dot(ctx, cx, dy + dh - gap * 0.45, Math.max(1, isz * 0.05)); }
+    }
+  };
+
   /* ── Semantic Tab Grouper · abas viram grupo ────────────────────── */
   G.stg = function (ctx, w, h, t, C) {
     const m = Math.min(w, h), small = m < 110;
